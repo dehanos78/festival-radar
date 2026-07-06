@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Festival Radar — Vik's shortlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15101f;
+    --bg-2:#1b1429;
+    --surface:#221a33;
+    --surface-2:#2a2040;
+    --line:#372b52;
+    --ink:#f3eef9;
+    --muted:#a193bf;
+    --faint:#766a92;
+    /* zone accents — kleur = functie */
+    --near:#5fd3c4;      /* voor de deur */
+    --road:#f0915e;      /* roadtrip */
+    --bucket:#c06bff;    /* bucketlist */
+    /* status */
+    --go:#54e0a6;
+    --watch:#ffb24d;
+    --gone:#ff6c8a;
+    --past:#6b5f88;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:
+      radial-gradient(120% 80% at 80% -10%, #271a3e 0%, rgba(39,26,62,0) 55%),
+      radial-gradient(90% 60% at -10% 0%, #1d2740 0%, rgba(29,39,64,0) 50%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"DM Sans",system-ui,sans-serif;
+    line-height:1.5;
+    padding:22px 16px 64px;
+    max-width:760px;margin:0 auto;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- header ---------- */
+  .eyebrow{
+    font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:8px;
+  }
+  .ping{width:7px;height:7px;border-radius:50%;background:var(--go);box-shadow:0 0 0 0 rgba(84,224,166,.5);animation:ping 2.6s infinite}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(84,224,166,.45)}70%{box-shadow:0 0 0 9px rgba(84,224,166,0)}100%{box-shadow:0 0 0 0 rgba(84,224,166,0)}}
+  h1{
+    font-family:"Syne",sans-serif;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(34px,9vw,52px);line-height:.98;margin:10px 0 8px;
+    background:linear-gradient(96deg,#fff 10%,#cdb6ff 55%,#7fe6d8 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{color:var(--muted);font-size:15px;max-width:54ch}
+  .lede b{color:var(--ink);font-weight:600}
+
+  /* ---------- legend ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
+  .lg{
+    display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 10px;
+  }
+  .dot{width:9px;height:9px;border-radius:3px;flex:none}
+
+  /* ---------- zone ---------- */
+  .zone{margin-top:34px}
+  .zhead{display:flex;align-items:baseline;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .znum{font-family:"Space Mono",monospace;font-size:12px;color:var(--zc);opacity:.8}
+  .ztitle{font-family:"Syne",sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
+  .zmeta{font-family:"Space Mono",monospace;font-size:11px;color:var(--faint);margin-left:auto;text-align:right}
+  .zdesc{color:var(--muted);font-size:13.5px;margin:-6px 0 18px}
+
+  /* ---------- card ---------- */
+  .grid{display:grid;gap:12px}
+  .card{
+    position:relative;background:linear-gradient(180deg,var(--surface) 0%,var(--bg-2) 100%);
+    border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px 18px;overflow:hidden;
+    opacity:0;transform:translateY(8px);animation:rise .5s ease forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--zc)}
+  .card.dim{opacity:.62}
+  .card.dim::before{background:var(--past)}
+
+  .ctop{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+  .name{font-family:"Syne",sans-serif;font-weight:700;font-size:18.5px;letter-spacing:-.01em;line-height:1.1}
+  .badge{
+    margin-left:auto;flex:none;font-family:"Space Mono",monospace;font-size:10.5px;font-weight:700;
+    letter-spacing:.04em;text-transform:uppercase;padding:5px 9px;border-radius:8px;white-space:nowrap;
+    border:1px solid transparent;
+  }
+  .b-go{color:#0b2c20;background:var(--go)}
+  .b-watch{color:#3a2400;background:var(--watch)}
+  .b-gone{color:#3a0014;background:var(--gone)}
+  .b-past{color:var(--muted);background:transparent;border-color:var(--line)}
+
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .tag{font-size:11px;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+  .tag.hot{color:#1a1027;background:var(--bucket);border-color:transparent;font-weight:600}
+
+  .rows{display:grid;gap:5px;font-size:13px}
+  .row{display:flex;gap:9px;align-items:flex-start}
+  .row .k{font-family:"Space Mono",monospace;font-size:11px;color:var(--faint);flex:none;width:74px;padding-top:1px;text-transform:uppercase;letter-spacing:.04em}
+  .row .v{color:var(--ink)}
+  .row .v .mono{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--muted)}
+  .note{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--muted)}
+  .note b{color:var(--zc);font-weight:600}
+
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint)}
+  footer b{color:var(--muted);font-weight:600}
+
+  @media(min-width:560px){.grid{grid-template-columns:1fr 1fr}.zone.single .grid{grid-template-columns:1fr}}
+  @media(hover:hover){.card{transition:transform .18s ease,border-color .18s ease}.card:hover{transform:translateY(-3px);border-color:var(--zc)}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- tabs ---------- */
+  .tabs{display:flex;gap:8px;margin:22px 0 6px}
+  .tab{
+    font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:9px 16px;cursor:pointer;transition:all .15s ease;
+  }
+  .tab:hover{color:var(--ink);border-color:var(--faint)}
+  .tab.active{
+    color:#15101f;font-weight:700;border-color:transparent;
+    background:linear-gradient(96deg,#fff 10%,#cdb6ff 55%,#7fe6d8 100%);
+  }
+  .view{display:none}
+  .view.active{display:block}
+
+  /* ---------- calendar / timeline ---------- */
+  .zlegend{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 30px}
+  .timeline{margin-top:6px}
+  .tmonth{margin-top:28px}
+  .tmonth:first-child{margin-top:0}
+  .tmonth-label{
+    font-family:"Syne",sans-serif;font-weight:800;font-size:14.5px;letter-spacing:.03em;
+    color:var(--muted);text-transform:uppercase;padding-bottom:9px;border-bottom:1px solid var(--line);
+    margin-bottom:12px;display:flex;align-items:baseline;gap:10px;
+  }
+  .tmonth-label .count{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0}
+  .titem{display:flex;gap:12px;align-items:flex-start;padding:9px 10px;border-radius:12px;margin-bottom:4px;border:1px solid transparent}
+  .titem:hover{border-color:var(--line);background:var(--surface)}
+  .titem .zdot{width:10px;height:10px;border-radius:3px;flex:none;margin-top:5px;background:var(--zc)}
+  .titem .tdate{font-family:"Space Mono",monospace;font-size:11.5px;color:var(--faint);flex:none;width:78px;padding-top:2px}
+  .titem .tbody{flex:1;min-width:0}
+  .titem .tname{font-family:"Syne",sans-serif;font-weight:700;font-size:15.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .titem .tmeta{font-size:12px;color:var(--muted);margin-top:2px}
+  .titem.dim{opacity:.55}
+  .titem .mini-badge{font-family:"Space Mono",monospace;font-size:9.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:6px}
+  .today-line{display:flex;align-items:center;gap:10px;margin:26px 0;color:var(--go);font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  .today-line::before,.today-line::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--go),transparent)}
+  .tbc-section{margin-top:34px;padding-top:18px;border-top:1px dashed var(--line)}
+  .tbc-note{font-size:12.5px;color:var(--faint);margin-top:-2px;margin-bottom:14px}
+
+  /* ---------- subsection (past-nearby, within a zone) ---------- */
+  .subhead{margin-top:32px;padding-top:18px;border-top:1px dashed var(--line);font-family:"Syne",sans-serif;font-weight:700;font-size:15px;color:var(--muted)}
+  .subdesc{color:var(--faint);font-size:12.5px;margin:2px 0 14px}
+
+  /* ---------- add-button ---------- */
+  .addbtn{
+    font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    color:#15101f;font-weight:700;border:none;border-radius:999px;padding:9px 16px;cursor:pointer;
+    margin-left:auto;transition:transform .15s ease,filter .15s ease;
+    background:linear-gradient(96deg,#fff 10%,#cdb6ff 55%,#7fe6d8 100%);
+  }
+  .addbtn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+  .tabs{align-items:center}
+
+  /* ---------- community zone status ---------- */
+  .cstatus{font-size:13px;color:var(--faint);padding:14px 0;font-family:"Space Mono",monospace}
+  .cstatus.err{color:var(--gone)}
+  .card .byline{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--faint);margin-top:10px}
+
+  /* ---------- modal ---------- */
+  .overlay{
+    position:fixed;inset:0;background:rgba(10,7,18,.72);backdrop-filter:blur(4px);
+    display:none;align-items:flex-start;justify-content:center;padding:32px 16px;z-index:50;overflow-y:auto;
+  }
+  .overlay.open{display:flex}
+  .modal{
+    width:100%;max-width:480px;background:linear-gradient(180deg,var(--surface) 0%,var(--bg-2) 100%);
+    border:1px solid var(--line);border-radius:18px;padding:22px 20px 20px;
+    box-shadow:0 24px 60px rgba(0,0,0,.5);
+  }
+  .modal h2{font-family:"Syne",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.01em;margin-bottom:4px}
+  .modal .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+  .field input,.field select,.field textarea{
+    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;
+    color:var(--ink);font-family:"DM Sans",sans-serif;font-size:14px;padding:10px 12px;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--near)}
+  .field textarea{resize:vertical;min-height:52px}
+  .field .hint{font-size:11px;color:var(--faint);margin-top:5px}
+  .frow{display:flex;gap:12px}
+  .frow .field{flex:1}
+  .mactions{display:flex;gap:10px;margin-top:20px}
+  .btn{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+    font-weight:700;border-radius:10px;padding:11px 16px;cursor:pointer;border:1px solid var(--line);}
+  .btn-primary{flex:1;color:#15101f;border-color:transparent;background:linear-gradient(96deg,#fff 10%,#cdb6ff 55%,#7fe6d8 100%)}
+  .btn-primary:disabled{opacity:.55;cursor:not-allowed}
+  .btn-ghost{color:var(--muted);background:transparent}
+  .btn-ghost:hover{color:var(--ink);border-color:var(--faint)}
+  .fmsg{font-size:12.5px;margin-top:12px;color:var(--watch);min-height:16px}
+  .fmsg.ok{color:var(--go)}
+  .fmsg.err{color:var(--gone)}
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="eyebrow"><span class="ping"></span> live ticket-tracker · +Nataraj Beach Party · 6 jul 2026</div>
+    <h1>Festival Radar</h1>
+    <p class="lede">Jouw shortlist intieme/underground festivals — gesorteerd op <b>hoe ver rijden</b>. De kern: ik bewaak <b>wanneer de kaartverkoop opent</b>, want de leukste kleintjes zijn vaak in januari al weg.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-view="list" onclick="switchView('list')">Overzicht</button>
+      <button class="tab" data-view="calendar" onclick="switchView('calendar')">Kalender</button>
+      <button class="addbtn" onclick="openModal()">+ Evenement</button>
+    </div>
+  </header>
+
+  <div id="view-list" class="view active">
+
+    <div class="legend">
+      <span class="lg"><span class="dot" style="background:var(--go)"></span>actie / binnenkort</span>
+      <span class="lg"><span class="dot" style="background:var(--watch)"></span>in de gaten houden</span>
+      <span class="lg"><span class="dot" style="background:var(--gone)"></span>uitverkocht → resale</span>
+      <span class="lg"><span class="dot" style="background:var(--past)"></span>2026 gespeeld · volg 2027</span>
+    </div>
+
+  <!-- ZONE 1 -->
+  <section class="zone" style="--zc:var(--near)">
+    <div class="zhead">
+      <span class="znum">01</span>
+      <span class="ztitle">Binnenkort voor de deur</span>
+      <span class="zmeta">NL · eerstvolgende 3 mnd vanuit Apeldoorn</span>
+    </div>
+    <p class="zdesc">Wat er de komende 3 maanden dichtbij gebeurt — geen gedoe, dagje of kort nachtje.</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="ctop"><span class="name">Wildeburg</span><span class="badge b-gone">resale</span></div>
+        <div class="tags"><span class="tag">eigenwijs</span><span class="tag">techno</span><span class="tag">geen plattegrond</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Kraggenburg · <span class="mono">~40 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">9–12 jul 2026</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">weekend uitverkocht · verkoop ging 28 jan</span></div>
+        </div>
+        <div class="note"><b>Next:</b> TicketSwap-alert aanzetten. 2027: alarm ~eind januari.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Thuishaven x Mees Salomé</span><span class="badge b-go">te scoren</span></div>
+        <div class="tags"><span class="tag">melodic house</span><span class="tag">techno</span><span class="tag">10HRS</span><span class="tag">18+</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Contactweg, Amsterdam · <span class="mono">~1u15</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">11 jul 2026 · 13:00–23:00</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">te koop via Weeztix/RA · €31,50 · Mees Salomé 10 uur, Kerri Chandler, Dennis Quin e.a.</span></div>
+        </div>
+        <div class="note"><b>Next:</b> Sealed Tickets — download pas 48u van tevoren via je bevestiging.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Geheime Liefde</span><span class="badge b-gone">resale</span></div>
+        <div class="tags"><span class="tag">techno</span><span class="tag">house</span><span class="tag">disco</span><span class="tag">geheime line-up</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">De Middengaarde, Nieuwegein · <span class="mono">~55 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">25 jul 2026 · 14:00–23:00</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">uitverkocht · TicketSwap voor resale</span></div>
+        </div>
+        <div class="note"><b>Next:</b> "Tuinen van Geluk"-editie. Shuttle vanaf Utrecht CS (13:30–16:30 heen); line-up blijft traditioneel geheim.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Flow in the Park</span><span class="badge b-go">te scoren</span></div>
+        <div class="tags"><span class="tag">house</span><span class="tag">weekender</span><span class="tag">park</span><span class="tag">18+</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Park Sonsbeek, Arnhem · <span class="mono">~25 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">1–2 aug 2026 · za 14:00–23:00, zo 17:00–23:00</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">vanaf €42,50 via listentoflow.com · Franky Rizardo, Toman, Prunk, Chelina Manuhutu e.a.</span></div>
+        </div>
+        <div class="note"><b>Next:</b> volgens organisatie de grootste editie tot nu toe.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Het Systeem</span><span class="badge b-go">te scoren</span></div>
+        <div class="tags"><span class="tag hot">jouw boog</span><span class="tag">techno</span><span class="tag">kunst</span><span class="tag">org: Nachtparlement</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Ter Hunnepe, Deventer · <span class="mono">~20 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">7–8 aug 2026 · vr concert, za 12:00–00:00</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">verkoop open · los (vr/za) of combi via nachtparlement.nl · Sterac, Sandrien, Mama Snake, Pariah, upsammy</span></div>
+        </div>
+        <div class="note"><b>Next:</b> vr Joep Beving-concert (meditatief) → za 3 stages: "The Opposition" (rave/acid/techno) en "The Coalition" (house/trance). Locatie + tickets bevestigd.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Lief</span><span class="badge b-watch">in gaten</span></div>
+        <div class="tags"><span class="tag">techno</span><span class="tag">house</span><span class="tag">disco</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Utrecht · <span class="mono">~50 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">eind aug / begin sept</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">verkoopt consequent uit · komt nog in 2026</span></div>
+        </div>
+        <div class="note"><b>Next:</b> status 2026 live checken — kan nog kaarten hebben.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Nataraj Beach Party</span><span class="badge b-watch">in gaten</span></div>
+        <div class="tags"><span class="tag">psy/organic</span><span class="tag">strand</span><span class="tag">yoga & workshops</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Zuiderstrand, Zandvoort (Manii Beach) · <span class="mono">~1u25</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">30 aug 2026</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">kaartverkoop via Hipsy · beschikbaarheid per editie checken</span></div>
+        </div>
+        <div class="note"><b>Next:</b> onderdeel van jaarlijkse reeks (ook 31 mei & 12 jul edities) — hippie market, yoga, live muziek op het strand.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Draaimolen</span><span class="badge b-watch">in gaten</span></div>
+        <div class="tags"><span class="tag hot">topkeuze</span><span class="tag">melodic techno</span><span class="tag">bos/kunst</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">MOB Complex, Tilburg · <span class="mono">~1u20</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">4–5 sept 2026</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">deep/melodic, kunstzinnige stages, ~18k</span></div>
+        </div>
+        <div class="note"><b>Next:</b> status 2026 live checken — komt nog. Vergunning loopt nog 3 jaar.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Into the Woods</span><span class="badge b-gone">resale</span></div>
+        <div class="tags"><span class="tag">sprookjesbos</span><span class="tag">electronic</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Amersfoort · <span class="mono">~40 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">18–19 sept 2026</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">uitverkocht binnen 1u · TicketSwap/wachtlijst</span></div>
+        </div>
+        <div class="note"><b>Next:</b> beste 2026-kans dichtbij. Fallback: ITW ADE (23–24 okt, NDSM). 2027: alarm ~half maart.</div>
+      </article>
+
+    </div>
+
+    <div class="subhead">Dichtbij, maar dit jaar al gehad</div>
+    <p class="subdesc">Buiten de 3-maanden horizon voor 2026 — bewaard voor de 2027-alarms.</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="ctop"><span class="name">Soenda</span><span class="badge b-past">2026 gehad</span></div>
+        <div class="tags"><span class="tag">underground techno</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Utrecht · <span class="mono">~50 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">voorjaar (apr/mei)</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">venster meestal winter → vroege lente</span></div>
+        </div>
+        <div class="note"><b>Next:</b> alarm dec/jan voor 2027.</div>
+      </article>
+
+      <article class="card dim">
+        <div class="ctop"><span class="name">Komm Schon Alter</span><span class="badge b-past">2026 gehad</span></div>
+        <div class="tags"><span class="tag">melodic house</span><span class="tag">techno</span><span class="tag">24+</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Tuinen van West, A'dam · <span class="mono">~1u15</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">23 mei 2026 (gehad)</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">"playground for grown-ups" · gaat vlot</span></div>
+        </div>
+        <div class="note"><b>Next:</b> alarm jan/feb voor de 2027-editie.</div>
+      </article>
+
+      <article class="card dim">
+        <div class="ctop"><span class="name">Awakenings Upclose</span><span class="badge b-past">2026 gehad</span></div>
+        <div class="tags"><span class="tag">intieme techno</span><span class="tag">natuur</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Houtrak, Spaarnwoude · <span class="mono">~1u20</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">16–17 mei 2026 (gehad)</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">het kleine, scherpe broertje van Awakenings</span></div>
+        </div>
+        <div class="note"><b>Next:</b> alarm winter voor 2027.</div>
+      </article>
+
+      <article class="card dim">
+        <div class="ctop"><span class="name">Lente Kabinet</span><span class="badge b-past">2026 gehad</span></div>
+        <div class="tags"><span class="tag">kunstzinnig</span><span class="tag">house</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Het Twiske, Oostzaan · <span class="mono">~1u20</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">Pinksteren (mei/jun)</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">het kleine zusje van Dekmantel</span></div>
+        </div>
+        <div class="note"><b>Next:</b> alarm jan/feb voor 2027.</div>
+      </article>
+
+      <article class="card dim">
+        <div class="ctop"><span class="name">Lago Lago</span><span class="badge b-past">net gehad</span></div>
+        <div class="tags"><span class="tag">house</span><span class="tag">melodic</span><span class="tag">kamperen</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Stroombroek, Braamt · <span class="mono">~45 min</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">26–28 jun 2026 (net gehad)</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">Job Jobse, Joy O, Shanti Celeste, Call Super</span></div>
+        </div>
+        <div class="note"><b>Next:</b> editie 06 — alarm winter 2026/27.</div>
+      </article>
+
+      <article class="card dim">
+        <div class="ctop"><span class="name">Gardens of Babylon</span><span class="badge b-past">2026: Ibiza</span></div>
+        <div class="tags"><span class="tag hot">jouw lane</span><span class="tag">organic</span><span class="tag">melodic/psy</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">strandeditie NH · <span class="mono">n.v.t.</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">geen NL-strand in 2026</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">strandeditie zit dit jaar op Ibiza (buiten scope)</span></div>
+        </div>
+        <div class="note"><b>Next:</b> volg 2027 voor de terugkeer van de NL-strandeditie.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ZONE 2 -->
+  <section class="zone" style="--zc:var(--road)">
+    <div class="zhead">
+      <span class="znum">02</span>
+      <span class="ztitle">Roadtrip</span>
+      <span class="zmeta">DE/BE · paar uur rijden</span>
+    </div>
+    <p class="zdesc">Weekendje wegplannen. Hier zit je psytrance-thuis in Duitsland — met de camper goed te doen.</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="ctop"><span class="name">Antaris Project</span><span class="badge b-watch">terug in '26</span></div>
+        <div class="tags"><span class="tag hot">psytrance</span><span class="tag">progressive</span><span class="tag">goa</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">bij Berlijn (DE) · <span class="mono">~5,5u</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">datum 2026 TBC</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">keert terug na pauze · legendarisch, anti-commercie</span></div>
+        </div>
+        <div class="note"><b>Next:</b> datum + verkoop nog niet bevestigd — ik hou 'm in de peiling.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">VooV Experience</span><span class="badge b-watch">in gaten</span></div>
+        <div class="tags"><span class="tag hot">psytrance</span><span class="tag">goa</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Putlitz (DE) · <span class="mono">~5u</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">juli</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">"mother of all Goa festivals", al decennia</span></div>
+        </div>
+        <div class="note"><b>Next:</b> editie + verkoopdatum voor je laten checken.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ZONE 3 -->
+  <section class="zone single" style="--zc:var(--bucket)">
+    <div class="zhead">
+      <span class="znum">03</span>
+      <span class="ztitle">Bucketlist</span>
+      <span class="zmeta">internationaal · vliegen / lange reis</span>
+    </div>
+    <p class="zdesc">De grote psytrance-bedevaarten. Niet om-de-hoek, maar één keer all-in waard.</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="ctop"><span class="name">OZORA</span><span class="badge b-watch">jaarlijks</span></div>
+        <div class="tags"><span class="tag hot">psytrance</span><span class="tag">7 dagen</span><span class="tag">30k+</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Dádpuszta, Hongarije · <span class="mono">vlucht Boedapest</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">eerste week augustus</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">een van de meest iconische ter wereld</span></div>
+        </div>
+        <div class="note"><b>Next:</b> verkoop opent meestal najaar/winter ervoor.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">Mo:Dem</span><span class="badge b-watch">jaarlijks</span></div>
+        <div class="tags"><span class="tag hot">underground psy</span><span class="tag">natuur</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v">Primišlje, Kroatië · <span class="mono">vlucht Zagreb</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">zomer</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">diep underground, ongerepte natuur</span></div>
+        </div>
+        <div class="note"><b>Next:</b> editie + verkoop laten opzoeken.</div>
+      </article>
+
+      <article class="card">
+        <div class="ctop"><span class="name">LAS Festival</span><span class="badge b-watch">checken</span></div>
+        <div class="tags"><span class="tag hot">progressive</span><span class="tag">psy-chill</span><span class="tag">forest</span></div>
+        <div class="rows">
+          <div class="row"><span class="k">Waar</span><span class="v"><span class="mono">📍 nog uitzoeken</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">zomer</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">progressive → full on → forest reis; camper-vriendelijk</span></div>
+        </div>
+        <div class="note"><b>Next:</b> land + datum verifiëren voor ik 'm hard inplan.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ZONE 4 — community / toegevoegd door vrienden -->
+  <section class="zone" style="--zc:var(--go)">
+    <div class="zhead">
+      <span class="znum">04</span>
+      <span class="ztitle">Toegevoegd door vrienden</span>
+      <span class="zmeta">live · gedeeld met iedereen</span>
+    </div>
+    <p class="zdesc">Tips van vrienden. Klik rechtsboven op <b>+ Evenement</b> om er zelf een toe te voegen — iedereen ziet 'm meteen.</p>
+    <div id="community-status" class="cstatus">Evenementen laden…</div>
+    <div id="community-grid" class="grid"></div>
+  </section>
+
+  </div>
+
+  <div id="view-calendar" class="view">
+
+    <div class="zlegend">
+      <span class="lg"><span class="dot" style="background:var(--near)"></span>voor de deur</span>
+      <span class="lg"><span class="dot" style="background:var(--road)"></span>roadtrip</span>
+      <span class="lg"><span class="dot" style="background:var(--bucket)"></span>bucketlist</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tmonth">
+        <div class="tmonth-label">Mei 2026 <span class="count">— gehad</span></div>
+
+        <div class="titem dim" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">apr–mei</span>
+          <div class="tbody">
+            <div class="tname">Soenda <span class="mini-badge b-past">gehad</span></div>
+            <div class="tmeta">Utrecht · voorjaar, exacte datum niet vastgelegd</div>
+          </div>
+        </div>
+
+        <div class="titem dim" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">16–17 mei</span>
+          <div class="tbody">
+            <div class="tname">Awakenings Upclose <span class="mini-badge b-past">gehad</span></div>
+            <div class="tmeta">Houtrak, Spaarnwoude</div>
+          </div>
+        </div>
+
+        <div class="titem dim" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">23 mei</span>
+          <div class="tbody">
+            <div class="tname">Komm Schon Alter <span class="mini-badge b-past">gehad</span></div>
+            <div class="tmeta">Tuinen van West, Amsterdam</div>
+          </div>
+        </div>
+
+        <div class="titem dim" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">~24–25 mei</span>
+          <div class="tbody">
+            <div class="tname">Lente Kabinet <span class="mini-badge b-past">gehad</span></div>
+            <div class="tmeta">Het Twiske, Oostzaan · Pinksteren</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tmonth">
+        <div class="tmonth-label">Juni 2026 <span class="count">— gehad</span></div>
+
+        <div class="titem dim" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">26–28 jun</span>
+          <div class="tbody">
+            <div class="tname">Lago Lago <span class="mini-badge b-past">net gehad</span></div>
+            <div class="tmeta">Stroombroek, Braamt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="today-line">vandaag · 6 jul 2026</div>
+
+      <div class="tmonth">
+        <div class="tmonth-label">Juli 2026</div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">9–12 jul</span>
+          <div class="tbody">
+            <div class="tname">Wildeburg <span class="mini-badge b-gone">resale</span></div>
+            <div class="tmeta">Kraggenburg · weekend uitverkocht, check TicketSwap</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">11 jul</span>
+          <div class="tbody">
+            <div class="tname">Thuishaven x Mees Salomé <span class="mini-badge b-go">te scoren</span></div>
+            <div class="tmeta">Contactweg, Amsterdam · 10 uur set, tickets te koop</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">25 jul</span>
+          <div class="tbody">
+            <div class="tname">Geheime Liefde <span class="mini-badge b-gone">resale</span></div>
+            <div class="tmeta">De Middengaarde, Nieuwegein · uitverkocht, check TicketSwap</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--road)">
+          <span class="zdot"></span>
+          <span class="tdate">juli (tbc)</span>
+          <div class="tbody">
+            <div class="tname">VooV Experience <span class="mini-badge b-watch">in gaten</span></div>
+            <div class="tmeta">Putlitz (DE) · exacte datum nog checken</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tmonth">
+        <div class="tmonth-label">Augustus 2026</div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">1–2 aug</span>
+          <div class="tbody">
+            <div class="tname">Flow in the Park <span class="mini-badge b-go">te scoren</span></div>
+            <div class="tmeta">Park Sonsbeek, Arnhem · tickets vanaf €42,50</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">7–8 aug</span>
+          <div class="tbody">
+            <div class="tname">Het Systeem <span class="mini-badge b-go">te scoren</span></div>
+            <div class="tmeta">Ter Hunnepe, Deventer · org. Nachtparlement · verkoop open</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--bucket)">
+          <span class="zdot"></span>
+          <span class="tdate">1e week aug</span>
+          <div class="tbody">
+            <div class="tname">OZORA <span class="mini-badge b-watch">jaarlijks</span></div>
+            <div class="tmeta">Dádpuszta, Hongarije</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">eind aug</span>
+          <div class="tbody">
+            <div class="tname">Lief <span class="mini-badge b-watch">in gaten</span></div>
+            <div class="tmeta">Utrecht · eind aug / begin sept, exacte datum tbc</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">30 aug</span>
+          <div class="tbody">
+            <div class="tname">Nataraj Beach Party <span class="mini-badge b-watch">in gaten</span></div>
+            <div class="tmeta">Zuiderstrand, Zandvoort · beschikbaarheid checken</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tmonth">
+        <div class="tmonth-label">September 2026</div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">4–5 sept</span>
+          <div class="tbody">
+            <div class="tname">Draaimolen <span class="mini-badge b-watch">in gaten</span></div>
+            <div class="tmeta">MOB Complex, Tilburg</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">18–19 sept</span>
+          <div class="tbody">
+            <div class="tname">Into the Woods <span class="mini-badge b-gone">resale</span></div>
+            <div class="tmeta">Amersfoort · uitverkocht, fallback ITW ADE 23–24 okt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tbc-section">
+        <div class="tmonth-label">Onbevestigd / seizoen <span class="count">— geen harde datum</span></div>
+        <p class="tbc-note">Wel op de radar, nog geen datum bekend — check ik zodra bevestigd.</p>
+
+        <div class="titem" style="--zc:var(--road)">
+          <span class="zdot"></span>
+          <span class="tdate">2026 tbc</span>
+          <div class="tbody">
+            <div class="tname">Antaris Project <span class="mini-badge b-watch">terug in '26</span></div>
+            <div class="tmeta">bij Berlijn (DE) · keert terug na pauze</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--bucket)">
+          <span class="zdot"></span>
+          <span class="tdate">zomer</span>
+          <div class="tbody">
+            <div class="tname">Mo:Dem <span class="mini-badge b-watch">jaarlijks</span></div>
+            <div class="tmeta">Primišlje, Kroatië</div>
+          </div>
+        </div>
+
+        <div class="titem" style="--zc:var(--bucket)">
+          <span class="zdot"></span>
+          <span class="tdate">zomer</span>
+          <div class="tbody">
+            <div class="tname">LAS Festival <span class="mini-badge b-watch">checken</span></div>
+            <div class="tmeta">locatie nog uitzoeken</div>
+          </div>
+        </div>
+
+        <div class="titem dim" style="--zc:var(--near)">
+          <span class="zdot"></span>
+          <span class="tdate">2026</span>
+          <div class="tbody">
+            <div class="tname">Gardens of Babylon <span class="mini-badge b-past">buiten scope</span></div>
+            <div class="tmeta">strandeditie zit dit jaar op Ibiza, geen NL-datum</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ADD-EVENT MODAL -->
+  <div id="overlay" class="overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <h2>Evenement toevoegen</h2>
+      <p class="sub">Je tip komt live op de radar te staan — zichtbaar voor iedereen met de link.</p>
+      <form id="eventForm" onsubmit="return submitEvent(event)">
+        <div class="field">
+          <label for="f-name">Naam *</label>
+          <input id="f-name" type="text" required maxlength="80" placeholder="bv. Boothstock Festival">
+        </div>
+        <div class="frow">
+          <div class="field">
+            <label for="f-zone">Zone</label>
+            <select id="f-zone">
+              <option value="near">Voor de deur (NL)</option>
+              <option value="road">Roadtrip (DE/BE)</option>
+              <option value="bucket">Bucketlist (ver)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-status">Status</label>
+            <select id="f-status">
+              <option value="go">Te scoren</option>
+              <option value="watch">In de gaten</option>
+              <option value="gone">Uitverkocht / resale</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-where">Waar</label>
+          <input id="f-where" type="text" maxlength="120" placeholder="bv. Kraggenburg · ~40 min">
+        </div>
+        <div class="field">
+          <label for="f-when">Wanneer</label>
+          <input id="f-when" type="text" maxlength="80" placeholder="bv. 9–12 jul 2026">
+        </div>
+        <div class="field">
+          <label for="f-tickets">Tickets / info</label>
+          <textarea id="f-tickets" maxlength="240" placeholder="bv. verkoop opent 28 jan via de site"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-tags">Tags</label>
+          <input id="f-tags" type="text" maxlength="80" placeholder="techno, bos, 18+ (komma-gescheiden)">
+        </div>
+        <div class="field">
+          <label for="f-by">Toegevoegd door</label>
+          <input id="f-by" type="text" maxlength="40" placeholder="je naam">
+        </div>
+        <div id="formMsg" class="fmsg"></div>
+        <div class="mactions">
+          <button type="button" class="btn btn-ghost" onclick="closeModal()">Annuleren</button>
+          <button type="submit" id="submitBtn" class="btn btn-primary">Plaatsen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <b>Hoe ik dit inzet:</b> deze lijst is de bron. Per festival check ik wanneer de verkoop opent en geef ik je een seintje vóór de drukte — extra scherp op de "voor de deur"-kleintjes die in januari al weg zijn. Zeg welke je sowieso wilt en ik zet die op scherp.
+  </footer>
+
+  <!-- ============================================================
+       FIREBASE CONFIG — plak hier je eigen config uit de Firebase
+       console (Project settings → Your apps → SDK setup, "Config").
+       Zie README.md voor het stap-voor-stap plan.
+       ============================================================ -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js';
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp }
+      from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
+
+    const firebaseConfig = {
+      apiKey: "PASTE_API_KEY",
+      authDomain: "PASTE_PROJECT.firebaseapp.com",
+      projectId: "PASTE_PROJECT_ID",
+      storageBucket: "PASTE_PROJECT.appspot.com",
+      messagingSenderId: "PASTE_SENDER_ID",
+      appId: "PASTE_APP_ID"
+    };
+
+    const CONFIGURED = !firebaseConfig.projectId.startsWith("PASTE");
+    let db = null;
+    if (CONFIGURED) {
+      const app = initializeApp(firebaseConfig);
+      db = getFirestore(app);
+    }
+
+    // ---------- helpers ----------
+    const ZONES = {
+      near:   { label:"Voor de deur",  css:"var(--near)" },
+      road:   { label:"Roadtrip",      css:"var(--road)" },
+      bucket: { label:"Bucketlist",    css:"var(--bucket)" }
+    };
+    const STATUS = {
+      go:    { cls:"b-go",    label:"te scoren" },
+      watch: { cls:"b-watch", label:"in gaten" },
+      gone:  { cls:"b-gone",  label:"resale" }
+    };
+    function esc(s){
+      return String(s == null ? "" : s)
+        .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+    }
+
+    function cardHTML(ev){
+      const zone = ZONES[ev.zone] || ZONES.near;
+      const st = STATUS[ev.status] || STATUS.watch;
+      const tags = (ev.tags || "").split(",").map(t=>t.trim()).filter(Boolean)
+        .map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+      const rows = [];
+      if (ev.where)   rows.push(`<div class="row"><span class="k">Waar</span><span class="v">${esc(ev.where)}</span></div>`);
+      if (ev.when)    rows.push(`<div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">${esc(ev.when)}</span></span></div>`);
+      if (ev.tickets) rows.push(`<div class="row"><span class="k">Tickets</span><span class="v">${esc(ev.tickets)}</span></div>`);
+      const by = ev.by ? `<div class="byline">— getipt door ${esc(ev.by)}</div>` : "";
+      return `<article class="card" style="--zc:${zone.css}">
+        <div class="ctop"><span class="name">${esc(ev.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
+        ${tags ? `<div class="tags">${tags}</div>` : ""}
+        ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
+        ${by}
+      </article>`;
+    }
+
+    async function loadEvents(){
+      const status = document.getElementById("community-status");
+      const grid = document.getElementById("community-grid");
+      if (!CONFIGURED){
+        status.textContent = "⚙️ Database nog niet gekoppeld — plak je Firebase-config in index.html.";
+        status.classList.add("err");
+        return;
+      }
+      try {
+        const q = query(collection(db, "events"), orderBy("createdAt", "desc"));
+        const snap = await getDocs(q);
+        if (snap.empty){
+          status.textContent = "Nog geen tips — voeg als eerste een evenement toe.";
+          grid.innerHTML = "";
+          return;
+        }
+        status.style.display = "none";
+        grid.innerHTML = snap.docs.map(d => cardHTML(d.data())).join("");
+      } catch (err){
+        console.error(err);
+        status.textContent = "Kon evenementen niet laden: " + err.message;
+        status.classList.add("err");
+      }
+    }
+
+    // ---------- modal + submit (global voor inline onclick) ----------
+    window.openModal = function(){
+      document.getElementById("overlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+      setTimeout(()=>document.getElementById("f-name").focus(), 50);
+    };
+    window.closeModal = function(){
+      document.getElementById("overlay").classList.remove("open");
+      document.body.style.overflow = "";
+    };
+    document.addEventListener("keydown", e=>{ if(e.key==="Escape") window.closeModal(); });
+
+    window.submitEvent = function(e){
+      e.preventDefault();
+      const msg = document.getElementById("formMsg");
+      const btn = document.getElementById("submitBtn");
+      msg.className = "fmsg"; msg.textContent = "";
+
+      if (!CONFIGURED){
+        msg.textContent = "Database nog niet gekoppeld — zie README.";
+        msg.classList.add("err");
+        return false;
+      }
+      const ev = {
+        name:    document.getElementById("f-name").value.trim(),
+        zone:    document.getElementById("f-zone").value,
+        status:  document.getElementById("f-status").value,
+        where:   document.getElementById("f-where").value.trim(),
+        when:    document.getElementById("f-when").value.trim(),
+        tickets: document.getElementById("f-tickets").value.trim(),
+        tags:    document.getElementById("f-tags").value.trim(),
+        by:      document.getElementById("f-by").value.trim(),
+        createdAt: serverTimestamp()
+      };
+      if (!ev.name){ msg.textContent = "Naam is verplicht."; msg.classList.add("err"); return false; }
+
+      btn.disabled = true;
+      msg.textContent = "Plaatsen…";
+      addDoc(collection(db, "events"), ev)
+        .then(()=>{
+          msg.textContent = "✓ Geplaatst!";
+          msg.classList.add("ok");
+          document.getElementById("eventForm").reset();
+          setTimeout(()=>{ window.closeModal(); msg.className="fmsg"; msg.textContent=""; loadEvents(); }, 700);
+        })
+        .catch(err=>{
+          console.error(err);
+          msg.textContent = "Mislukt: " + err.message;
+          msg.classList.add("err");
+        })
+        .finally(()=>{ btn.disabled = false; });
+      return false;
+    };
+
+    loadEvents();
+  </script>
+
+  <script>
+    function switchView(view){
+      document.querySelectorAll('.view').forEach(function(el){
+        el.classList.toggle('active', el.id === 'view-' + view);
+      });
+      document.querySelectorAll('.tab').forEach(function(el){
+        el.classList.toggle('active', el.dataset.view === view);
+      });
+    }
+  </script>
+
+</body>
+</html>

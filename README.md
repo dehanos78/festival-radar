@@ -1,0 +1,103 @@
+# Festival Radar
+
+Vik's shortlist van intieme/underground festivals — gesorteerd op reisafstand, met live
+ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde events-database
+(Firebase Firestore) waar vrienden zelf evenementen aan kunnen toevoegen.
+
+- **Live site:** zie GitHub Pages URL (Settings → Pages)
+- **Toevoegen:** knop **+ Evenement** rechtsboven → verschijnt live voor iedereen
+
+---
+
+## Firebase koppelen (eenmalig, ~5 min)
+
+De site werkt meteen als statische pagina, maar de **+ Evenement**-knop heeft een gratis
+Firebase-database nodig. Zo zet je die op:
+
+### 1. Project aanmaken
+1. Ga naar <https://console.firebase.google.com> en log in met je Google-account.
+2. Klik **Add project** → geef 'm een naam (bv. `festival-radar`) → **Continue**.
+3. Google Analytics mag je **uitzetten** (niet nodig) → **Create project**.
+
+### 2. Firestore database aanzetten
+1. Linkermenu → **Build → Firestore Database** → **Create database**.
+2. Kies een **locatie** in Europa (bv. `eur3` of `europe-west`).
+3. Start in **production mode** (rules zetten we hieronder goed) → **Enable**.
+
+### 3. Beveiligingsregels instellen
+Ga naar **Firestore → Rules**, vervang alles door onderstaande en klik **Publish**.
+Dit staat lezen toe voor iedereen en toevoegen van nette events, maar géén wijzigen/verwijderen:
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /events/{doc} {
+      allow read: if true;
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.name.size() > 0
+                    && request.resource.data.name.size() < 100;
+      allow update, delete: if false;
+    }
+  }
+}
+```
+
+> Verwijderen/bewerken kan altijd handmatig via de Firestore-console (tab **Data**).
+
+### 4. Web-app registreren en config kopiëren
+1. **Project settings** (tandwiel linksboven) → tab **General** → onderaan **Your apps**.
+2. Klik het **web-icoon `</>`** → geef een bijnaam (bv. `web`) → **Register app**
+   (Firebase Hosting mag je overslaan).
+3. Je krijgt een `firebaseConfig`-blok te zien. Kopieer de waarden.
+
+### 5. Config in de site plakken
+Open `index.html`, zoek het blok `const firebaseConfig = { ... }` (onderaan, in de
+`<script type="module">`) en vervang de `PASTE_...`-waarden door die van jou:
+
+```js
+const firebaseConfig = {
+  apiKey: "AIza...",
+  authDomain: "festival-radar-xxxx.firebaseapp.com",
+  projectId: "festival-radar-xxxx",
+  storageBucket: "festival-radar-xxxx.appspot.com",
+  messagingSenderId: "1234567890",
+  appId: "1:1234567890:web:abcdef123456"
+};
+```
+
+> Deze waarden zijn **niet geheim** — ze horen in client-code en mogen gewoon op GitHub staan.
+> De beveiliging zit in de Firestore-rules uit stap 3.
+
+### 6. Committen en pushen
+```bash
+git add index.html
+git commit -m "Firebase-config gekoppeld"
+git push
+```
+Na ~1 minuut is de live site bijgewerkt en werkt **+ Evenement**.
+
+---
+
+## Datamodel
+
+Collection **`events`**, per document:
+
+| Veld        | Type    | Voorbeeld                        |
+|-------------|---------|----------------------------------|
+| `name`      | string  | "Boothstock Festival"            |
+| `zone`      | string  | `near` \| `road` \| `bucket`     |
+| `status`    | string  | `go` \| `watch` \| `gone`        |
+| `where`     | string  | "Kraggenburg · ~40 min"          |
+| `when`      | string  | "9–12 jul 2026"                  |
+| `tickets`   | string  | "verkoop opent 28 jan"           |
+| `tags`      | string  | "techno, bos, 18+"               |
+| `by`        | string  | "Viktor"                         |
+| `createdAt` | timestamp | (automatisch)                  |
+
+## Lokaal bekijken
+Open `index.html` in de browser, of start een simpele server:
+```bash
+python3 -m http.server 8000
+# → http://localhost:8000
+```
