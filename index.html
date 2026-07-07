@@ -143,6 +143,8 @@
   }
   @keyframes rise{to{opacity:1;transform:none}}
   .card.dim{opacity:.6}
+  .cover{margin:-20px -20px 16px;height:78px;overflow:hidden}
+  .cover svg{display:block;width:100%;height:100%}
 
   .ctop{display:flex;align-items:flex-start;gap:11px;margin-bottom:12px}
   .ctop::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--zc);flex:none;margin-top:8px;box-shadow:0 0 10px 0 var(--zc)}
@@ -258,6 +260,7 @@
   .reviews .rv-top{display:flex;align-items:baseline;gap:8px}
   .reviews .rv-head{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
   .reviews .rv-overall{color:var(--ink);font-weight:700;margin-left:auto}
+  .reviews .rv-split{font-family:"Space Mono",monospace;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#7a3c00;background:#ffdca0;border-radius:6px;padding:2px 7px;margin-left:8px}
   .reviews .rv-dims{margin-top:3px;color:var(--muted)}
   .reviews .rv-dims .d{white-space:nowrap;margin-right:4px}
   .reviews .rv-people{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);display:grid;gap:8px}
@@ -1038,6 +1041,30 @@
       return m ? (parseInt(m[3],10) + " " + MONTHS[parseInt(m[2],10)-1]) : "";
     }
 
+    // ---------- cover-art (uniek gegenereerd per festival, rechtenvrij) ----------
+    const COVER_GRAD = {
+      near:      ["#14b8a6", "#6ee7d7"],
+      road:      ["#f97316", "#fbb474"],
+      bucket:    ["#9b45f0", "#c89bff"],
+      community: ["#12ab6d", "#6fe0ad"]
+    };
+    function coverSVG(name, zone){
+      const [c1, c2] = COVER_GRAD[zone] || COVER_GRAD.near;
+      let h = 2166136261;
+      for (let i = 0; i < name.length; i++){ h = (h ^ name.charCodeAt(i)) >>> 0; h = (h * 16777619) >>> 0; }
+      const rnd = (n) => { h = (h * 1103515245 + 12345) >>> 0; return (h % 10000) / 10000 * n; };
+      const gid = "cg" + h.toString(36);
+      let blobs = "";
+      for (let i = 0; i < 5; i++){
+        const cx = rnd(600).toFixed(0), cy = rnd(180).toFixed(0), r = (34 + rnd(72)).toFixed(0);
+        const o = (0.10 + rnd(0.24)).toFixed(2);
+        blobs += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${i % 2 ? "#ffffff" : c2}" opacity="${o}"/>`;
+      }
+      return `<svg viewBox="0 0 600 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">`
+        + `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>`
+        + `<rect width="600" height="180" fill="url(#${gid})"/>${blobs}</svg>`;
+    }
+
     function cardHTML(ev){
       const zone = ZONES[ev.zone] || ZONES.near;
       const st = STATUS[ev.status] || STATUS.watch;
@@ -1052,6 +1079,7 @@
       const eid = slug(ev.name);
       const scq = encodeURIComponent(ev.name);
       return `<article class="card" style="--zc:${zone.css}">
+        <div class="cover">${coverSVG(ev.name, ev.zone || "near")}</div>
         <div class="ctop"><span class="name">${esc(ev.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
@@ -1222,6 +1250,12 @@
         if (!nameEl) return;
         const sl = slug(nameEl.textContent);
         const f = FESTBY[sl];
+        if (!card.querySelector(".cover")){
+          const cov = document.createElement("div");
+          cov.className = "cover";
+          cov.innerHTML = coverSVG(nameEl.textContent.trim(), (f && f.zone) || cardZone(card) || "near");
+          card.insertBefore(cov, card.firstChild);
+        }
         const lineup = (f && f.lineup) || [];
         const hasLineup = lineup.length > 0;
         const listenQ = encodeURIComponent(hasLineup ? lineup.join(" ") : nameEl.textContent.trim());
@@ -1385,6 +1419,10 @@
         if (!list.length){ box.innerHTML = ""; return; }
         const overall = ["music", "sfeer", "publiek", "setting"].reduce((s, k) => s + avg(list, k), 0) / 4;
         const dims = RV_DIMS.map(([k, ic]) => `<span class="d">${ic} ${avg(list, k).toFixed(1)}</span>`).join(" · ");
+        const perOverall = list.map(r => ["music", "sfeer", "publiek", "setting"].reduce((s, k) => s + (+r[k] || 0), 0) / 4);
+        const spread = list.length >= 2 ? Math.max(...perOverall) - Math.min(...perOverall) : 0;
+        const split = spread >= 1.5
+          ? `<span class="rv-split" title="Meningen lopen uiteen (${Math.min(...perOverall).toFixed(1)}–${Math.max(...perOverall).toFixed(1)})">⚡ verdeeld</span>` : "";
         const people = list.map(r => {
           const mine = myReviews.has(r.id);
           const sc = RV_DIMS.map(([k, ic]) => `${ic}${(+r[k] || 0)}`).join(" ");
@@ -1392,7 +1430,7 @@
           const x = mine ? ` <span class="rvx" data-id="${esc(r.id)}" title="Verwijder je review">×</span>` : "";
           return `<div class="rv-person${mine ? " me" : ""}"><span class="who">${esc(r.name || "?")}</span><span class="sc">${sc}</span>${x}${note}</div>`;
         }).join("");
-        box.innerHTML = `<div class="rv-top"><span class="rv-head">Reviews (${list.length})</span><span class="rv-overall">★ ${overall.toFixed(1)} gem.</span></div>`
+        box.innerHTML = `<div class="rv-top"><span class="rv-head">Reviews (${list.length})</span>${split}<span class="rv-overall">★ ${overall.toFixed(1)} gem.</span></div>`
           + `<div class="rv-dims">${dims}</div>`
           + `<div class="rv-people">${people}</div>`;
       });
