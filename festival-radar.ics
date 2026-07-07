@@ -34,10 +34,20 @@ UID:geheime-liefde@festival-radar
 DTSTAMP:20260707T000000Z
 DTSTART;VALUE=DATE:20260725
 DTEND;VALUE=DATE:20260726
-SUMMARY:♪ Geheime Liefde · Voor de deur
+SUMMARY:♪ Geheime Liefde · Tuinen van Geluk · Voor de deur
 DESCRIPTION:De Middengaarde\, Nieuwegein — Reistijd ~55 min — Status: 
  uitverkocht / resale — Uitverkocht · TicketSwap voor resale. — https
  ://geheimeliefde.nl
+END:VEVENT
+BEGIN:VEVENT
+UID:geheime-liefde-hrfst@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:♪ Geheime Liefde · HRFST · Voor de deur
+DESCRIPTION:locatie TBC (regio Utrecht) — Reistijd ~55 min — Status: i
+ n de gaten — Herfst-editie aangekondigd · locatie + verkoop checken vi
+ a geheimeliefde.nl. — https://geheimeliefde.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:flow-in-the-park@festival-radar

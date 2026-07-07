@@ -148,6 +148,7 @@
   .cover{margin:-20px -20px 16px;height:78px;overflow:hidden}
   .cover svg{display:block;width:100%;height:100%}
 
+  .edition{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--zc);font-weight:700;margin:-8px 0 12px 20px}
   .ctop{display:flex;align-items:flex-start;gap:11px;margin-bottom:12px}
   .ctop::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--zc);flex:none;margin-top:8px;box-shadow:0 0 10px 0 var(--zc)}
   .card.dim .ctop::before{background:var(--past);box-shadow:none}
@@ -428,6 +429,7 @@
 
       <article class="card">
         <div class="ctop"><span class="name">Geheime Liefde</span><span class="badge b-gone">resale</span></div>
+        <div class="edition">Tuinen van Geluk</div>
         <div class="tags"><span class="tag">techno</span><span class="tag">house</span><span class="tag">disco</span><span class="tag">geheime line-up</span></div>
         <div class="rows">
           <div class="row"><span class="k">Waar</span><span class="v">De Middengaarde, Nieuwegein · <span class="mono">~55 min</span></span></div>
@@ -1280,6 +1282,13 @@
       return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
         .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
     }
+    // unieke sleutel per festival-editie (naam + editienaam)
+    function festKey(f){ return slug(f.name + (f.edition ? " " + f.edition : "")); }
+    function cardKey(card){
+      const nameEl = card.querySelector(".name");
+      const ed = card.querySelector(".edition");
+      return slug((nameEl ? nameEl.textContent : "") + (ed ? " " + ed.textContent : ""));
+    }
 
     // ---------- festivals.json (voor kaart + Spotify-lineups) ----------
     let FEST = [], FESTBY = {};
@@ -1288,16 +1297,15 @@
         const r = await fetch("data/festivals.json", { cache: "no-store" });
         const j = await r.json();
         FEST = j.festivals || [];
-        FEST.forEach(f => { FESTBY[slug(f.name)] = f; });
+        FEST.forEach(f => { FESTBY[festKey(f)] = f; });
       } catch (e){ console.warn("festivals.json niet geladen:", e); }
     }
     // Festivals uit festivals.json zonder eigen HTML-kaart (bv. gepromoveerde tips)
     // automatisch in de juiste zone renderen — zo hoeft niemand HTML aan te passen.
     function renderPromoted(){
-      const existing = new Set([...document.querySelectorAll("#view-list .card .name")]
-        .map(n => slug(n.textContent)));
+      const existing = new Set([...document.querySelectorAll("#view-list .card")].map(cardKey));
       FEST.forEach(f => {
-        const sl = slug(f.name);
+        const sl = festKey(f);
         if (existing.has(sl)) return;
         const grid = document.querySelector(`#view-list section.zone[data-zone="${f.zone}"] .grid`);
         if (!grid) return;
@@ -1312,6 +1320,7 @@
         el.className = "card";
         el.innerHTML = `
           <div class="ctop"><span class="name">${esc(f.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
+          ${f.edition ? `<div class="edition">${esc(f.edition)}</div>` : ""}
           ${tags ? `<div class="tags">${tags}</div>` : ""}
           ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
           ${tipped}`;
@@ -1325,17 +1334,19 @@
         if (card.querySelector(".cactions")) return;           // community-kaarten hebben er al één
         const nameEl = card.querySelector(".name");
         if (!nameEl) return;
-        const sl = slug(nameEl.textContent);
+        const sl = cardKey(card);
         const f = FESTBY[sl];
+        const edEl = card.querySelector(".edition");
+        const fullLabel = nameEl.textContent.trim() + (edEl ? " · " + edEl.textContent.trim() : "");
         if (!card.querySelector(".cover")){
           const cov = document.createElement("div");
           cov.className = "cover";
-          cov.innerHTML = coverSVG(nameEl.textContent.trim(), (f && f.zone) || cardZone(card) || "near");
+          cov.innerHTML = coverSVG(fullLabel, (f && f.zone) || cardZone(card) || "near");
           card.insertBefore(cov, card.firstChild);
         }
         const lineup = (f && f.lineup) || [];
         const hasLineup = lineup.length > 0;
-        const listenQ = encodeURIComponent(hasLineup ? lineup.join(" ") : nameEl.textContent.trim());
+        const listenQ = encodeURIComponent(hasLineup ? lineup.join(" ") : fullLabel);
         const parts = [];
         if (f && f.url){
           parts.push(`<a class="weblink" href="${f.url}" target="_blank" rel="noopener">↗ Website</a>`);
@@ -1345,7 +1356,7 @@
         }
         parts.push(`<a class="sclink" href="https://soundcloud.com/search?q=${listenQ}" target="_blank" rel="noopener">☁ Live sets</a>`);
         parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga</button>`);
-        parts.push(`<button class="rvbtn" data-eid="${sl}" data-name="${esc(nameEl.textContent.trim())}">★ Review</button>`);
+        parts.push(`<button class="rvbtn" data-eid="${sl}" data-name="${esc(fullLabel)}">★ Review</button>`);
         const div = document.createElement("div");
         div.className = "cactions";
         div.innerHTML = parts.join("");
@@ -1738,7 +1749,8 @@
         }).addTo(mapObj);
         const site = f.url ? `<br><a href="${f.url}" target="_blank" rel="noopener" class="popup-link">Website &amp; line-up →</a>` : "";
         const trv = travelText(f);
-        m.bindPopup(`<b>${f.name}</b><br>${f.when || ""}<br>${f.where || ""}${trv ? " · " + trv : ""}${site}`);
+        const edLbl = f.edition ? ` · ${f.edition}` : "";
+        m.bindPopup(`<b>${f.name}${edLbl}</b><br>${f.when || ""}<br>${f.where || ""}${trv ? " · " + trv : ""}${site}`);
         pts.push([f.lat, f.lng]);
       });
       if (pts.length) mapObj.fitBounds(pts, { padding: [40, 40] });
@@ -1766,7 +1778,7 @@
       document.querySelectorAll("#view-list .card").forEach(card => {
         const nameEl = card.querySelector(".name");
         if (!nameEl) return;
-        const f = FESTBY[slug(nameEl.textContent)];
+        const f = FESTBY[cardKey(card)];
         if (!f || !HOME.custom) return;
         const t = travelText(f);
         if (!t) return;

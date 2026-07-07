@@ -87,6 +87,33 @@
         "price": "richtprijs ~€90 (tweedehands)",
         "url": "https://www.ticketswap.com/festival-tickets/a/geheime-liefde"
       },
+      "parking": "",
+      "edition": "Tuinen van Geluk"
+    },
+    {
+      "id": "geheime-liefde-hrfst",
+      "name": "Geheime Liefde",
+      "edition": "HRFST",
+      "zone": "near",
+      "status": "watch",
+      "where": "locatie TBC (regio Utrecht)",
+      "travel": "~55 min",
+      "lat": null,
+      "lng": null,
+      "start": "2026-10-03",
+      "end": "2026-10-03",
+      "when": "3 okt 2026",
+      "tickets": "Herfst-editie aangekondigd · locatie + verkoop checken via geheimeliefde.nl.",
+      "ticketSaleStart": null,
+      "tags": [
+        "techno",
+        "house",
+        "disco",
+        "herfst"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://geheimeliefde.nl",
       "parking": ""
     },
     {

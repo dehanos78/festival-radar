@@ -160,11 +160,12 @@ def build():
                 if p
             ]
             prefix = "♪ " if not ev.get("community") else "★ "
+            label = ev["name"] + (f" · {ev['edition']}" if ev.get("edition") else "")
             body += vevent(
                 ev["id"],
                 start,
                 end + timedelta(days=1),  # DTEND is exclusief bij all-day
-                f"{prefix}{ev['name']}" + (f" · {zone}" if zone else ""),
+                f"{prefix}{label}" + (f" · {zone}" if zone else ""),
                 " — ".join(desc_parts),
             )
             n_fest += 1
