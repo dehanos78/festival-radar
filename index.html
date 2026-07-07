@@ -267,6 +267,20 @@
   .stars span.on{color:var(--watch)}
   .rv-scalehint{font-size:11px;color:var(--faint);margin-left:2px;align-self:center}
 
+  /* ---------- top / ranglijst ---------- */
+  #top-list{max-width:640px}
+  .toprow{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(45,30,60,.04)}
+  .toprank{font-family:"Syne",sans-serif;font-weight:800;font-size:19px;color:var(--faint);width:30px;text-align:center;flex:none}
+  .topbody{flex:1;min-width:0}
+  .topname{font-family:"Syne",sans-serif;font-weight:700;font-size:16.5px;display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+  .topname .tdot{width:9px;height:9px;border-radius:50%;flex:none}
+  .topdims{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .topdims .topcount{color:var(--faint)}
+  .topbar{height:6px;background:var(--surface-2);border-radius:999px;margin-top:9px;overflow:hidden}
+  .topbar span{display:block;height:100%;border-radius:999px}
+  .topscore{font-family:"Syne",sans-serif;font-weight:800;font-size:18px;color:var(--ink);flex:none}
+  .top-empty{color:var(--muted);font-size:14px;padding:24px 2px}
+
   /* ---------- map ---------- */
   #map{height:520px;border:1px solid var(--line);border-radius:18px;background:var(--surface);margin-top:4px}
   .map-note{color:var(--faint);font-size:13px;margin-top:12px}
@@ -315,6 +329,7 @@
       <button class="tab active" data-view="list" onclick="switchView('list')">Overzicht</button>
       <button class="tab" data-view="calendar" onclick="switchView('calendar')">Kalender</button>
       <button class="tab" data-view="map" onclick="switchView('map')">Kaart</button>
+      <button class="tab" data-view="top" onclick="switchView('top')">Top</button>
       <button class="addbtn" onclick="openModal()">+ Evenement</button>
     </div>
   </header>
@@ -856,6 +871,18 @@
     <p class="map-note">Locaties bij benadering — klik een stip voor naam, datum en reisafstand.</p>
   </div>
 
+  <div id="view-top" class="view">
+    <p class="zdesc" style="margin-top:18px">Festivals gerangschikt op jullie reviews. Sorteer op totaal of op één onderdeel — zo zie je in één oogopslag wat werkt.</p>
+    <div class="chips" style="margin:0 0 20px">
+      <button class="chip active" data-sort="overall" onclick="setTopSort('overall',this)">Totaal</button>
+      <button class="chip" data-sort="music" onclick="setTopSort('music',this)">🎵 Muziek</button>
+      <button class="chip" data-sort="sfeer" onclick="setTopSort('sfeer',this)">✨ Sfeer</button>
+      <button class="chip" data-sort="publiek" onclick="setTopSort('publiek',this)">👥 Publiek</button>
+      <button class="chip" data-sort="setting" onclick="setTopSort('setting',this)">📍 Setting</button>
+    </div>
+    <div id="top-list"></div>
+  </div>
+
   <!-- ADD-EVENT MODAL -->
   <div id="overlay" class="overlay" onclick="if(event.target===this)closeModal()">
     <div class="modal">
@@ -1306,7 +1333,7 @@
 
     // ---------- reviews (score per onderdeel) ----------
     let REVIEWS = {};
-    let reviewEid = null;
+    let reviewEid = null, reviewFest = null, topSort = "overall";
     const reviewScores = { music: 0, sfeer: 0, publiek: 0, setting: 0 };
     const RV_DIMS = [["music", "🎵"], ["sfeer", "✨"], ["publiek", "👥"], ["setting", "📍"]];
 
@@ -1334,7 +1361,47 @@
         box.innerHTML = `<span class="rv-head">Reviews (${list.length})</span><span class="rv-overall">★ ${overall.toFixed(1)}</span>`
           + `<div class="rv-dims">${dims}</div>${comments}`;
       });
+      renderTop();
     }
+
+    // ---------- top / ranglijst ----------
+    const ZC_MAP = { near: "var(--near)", road: "var(--road)", bucket: "var(--bucket)" };
+    function renderTop(){
+      const box = document.getElementById("top-list");
+      if (!box) return;
+      const rows = Object.keys(REVIEWS).map(eid => {
+        const list = REVIEWS[eid];
+        const dims = { music: avg(list, "music"), sfeer: avg(list, "sfeer"), publiek: avg(list, "publiek"), setting: avg(list, "setting") };
+        const overall = (dims.music + dims.sfeer + dims.publiek + dims.setting) / 4;
+        const name = (list.find(r => r.fest) || {}).fest || eid;
+        return { eid, name, dims, overall, count: list.length, zone: (FESTBY[eid] || {}).zone };
+      });
+      if (!rows.length){
+        box.innerHTML = `<p class="top-empty">Nog geen reviews. Scoor een festival via <b>★ Review</b> op het Overzicht — dan verschijnt hier de ranglijst.</p>`;
+        return;
+      }
+      rows.sort((a, b) => (topSort === "overall" ? b.overall - a.overall : b.dims[topSort] - a.dims[topSort]));
+      box.innerHTML = rows.map((r, i) => {
+        const score = topSort === "overall" ? r.overall : r.dims[topSort];
+        const color = ZC_MAP[r.zone] || "var(--go)";
+        const rank = ["🥇", "🥈", "🥉"][i] || (i + 1);
+        const dims = RV_DIMS.map(([k, ic]) => `<span class="d">${ic} ${r.dims[k].toFixed(1)}</span>`).join(" · ");
+        return `<div class="toprow">
+          <div class="toprank">${rank}</div>
+          <div class="topbody">
+            <div class="topname"><span class="tdot" style="background:${color}"></span>${esc(r.name)}</div>
+            <div class="topdims">${dims} · <span class="topcount">${r.count} review${r.count === 1 ? "" : "s"}</span></div>
+            <div class="topbar"><span style="width:${(score / 5 * 100).toFixed(0)}%;background:${color}"></span></div>
+          </div>
+          <div class="topscore">★ ${score.toFixed(1)}</div>
+        </div>`;
+      }).join("");
+    }
+    window.setTopSort = function(key, btn){
+      topSort = key;
+      document.querySelectorAll('#view-top .chip').forEach(c => c.classList.toggle("active", c === btn));
+      renderTop();
+    };
 
     function setStar(key, v){
       if (!(key in reviewScores)) return;
@@ -1344,6 +1411,7 @@
     }
     function openReview(eid, name){
       reviewEid = eid;
+      reviewFest = name || "";
       document.getElementById("review-fest").textContent = name ? "· " + name : "";
       Object.keys(reviewScores).forEach(k => setStar(k, 0));
       document.getElementById("rv-comment").value = "";
@@ -1369,7 +1437,7 @@
       const btn = document.getElementById("reviewBtn"); btn.disabled = true;
       msg.textContent = "Plaatsen…";
       addDoc(collection(db, "reviews"), {
-        eid: reviewEid, name,
+        eid: reviewEid, fest: reviewFest || "", name,
         music: reviewScores.music, sfeer: reviewScores.sfeer,
         publiek: reviewScores.publiek, setting: reviewScores.setting,
         comment: document.getElementById("rv-comment").value.trim(),

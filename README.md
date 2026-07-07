@@ -17,6 +17,7 @@ ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde even
 - **+ Evenement / verwijderen** — gedeelde tips via Firestore, met verwijder-knop
 - **🙌 Ik ga** — RSVP per festival, met zichtbare namen/initialen van wie er gaat
 - **★ Review** — score 1–5 per onderdeel (🎵 muziek · ✨ sfeer · 👥 publiek · 📍 setting) + toelichting; kaarten tonen de gemiddelden zodat je leert wat werkt (Firestore `reviews`)
+- **Top (ranglijst)** — alle beoordeelde festivals gerangschikt op totaalscore, met medailles en sorteren per onderdeel (muziek/sfeer/publiek/setting)
 - **🎤 Line-up** — toont wie er speelt zodra bekend (uit `lineup`), anders "Line-up nog niet bekend"; de scheduler checkt tweewekelijks de officiële site
 - **♫ Spotify / ☁ Live sets** — Spotify-zoeklink (bij bekende artiesten) + SoundCloud-zoeklink voor live DJ-sets, om te luisteren
 - **Deel-preview** — Open-Graph `og.png` voor mooie link-previews (WhatsApp/social)
