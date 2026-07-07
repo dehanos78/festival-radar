@@ -219,13 +219,14 @@
   /* ---------- card actions (spotify / soundcloud / rsvp / delete) ---------- */
   .cactions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:15px;padding-top:14px;border-top:1px solid var(--line)}
   .cactions .delbtn{margin-left:auto}
-  .splink,.sclink,.weblink,.rsvp,.delbtn{
+  .splink,.sclink,.weblink,.rsvp,.rvbtn,.delbtn{
     display:inline-flex;align-items:center;gap:6px;font-family:"Space Mono",monospace;
     font-size:11px;letter-spacing:.02em;border-radius:999px;padding:6px 12px;cursor:pointer;
     border:1px solid var(--line);background:var(--surface-2);color:var(--muted);
     transition:all .15s ease;text-decoration:none;
   }
   .weblink:hover{color:var(--near);border-color:var(--near)}
+  .rvbtn:hover{color:var(--watch);border-color:var(--watch)}
   .splink:hover{color:#1db954;border-color:#1db954}
   .sclink:hover{color:#ff5500;border-color:#ff5500}
   .rsvp:hover{color:var(--ink);border-color:var(--line-2)}
@@ -251,6 +252,20 @@
   .lineup-tag{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.05em;color:var(--faint);text-transform:uppercase;margin-right:7px;font-style:normal}
   .lineup-more{color:var(--near);font-weight:600;text-decoration:none;white-space:nowrap;font-style:normal}
   .lineup-more:hover{text-decoration:underline}
+
+  /* ---------- reviews ---------- */
+  .reviews{margin-top:11px;font-size:13px;color:var(--muted);line-height:1.55}
+  .reviews .rv-head{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin-right:8px}
+  .reviews .rv-overall{color:var(--ink);font-weight:700}
+  .reviews .rv-dims{margin-top:3px;color:var(--ink)}
+  .reviews .rv-dims .d{white-space:nowrap;margin-right:4px}
+  .reviews .rv-comment{color:var(--muted);margin-top:5px;padding-left:2px;border-left:2px solid var(--line);padding-left:9px}
+  .reviews .rv-comment b{color:var(--ink);font-weight:600}
+  /* sterren in de review-modal */
+  .stars{display:flex;gap:5px;font-size:26px;line-height:1}
+  .stars span{color:var(--line-2);cursor:pointer;transition:color .12s ease}
+  .stars span.on{color:var(--watch)}
+  .rv-scalehint{font-size:11px;color:var(--faint);margin-left:2px;align-self:center}
 
   /* ---------- map ---------- */
   #map{height:520px;border:1px solid var(--line);border-radius:18px;background:var(--surface);margin-top:4px}
@@ -903,6 +918,33 @@
     </div>
   </div>
 
+  <!-- REVIEW MODAL -->
+  <div id="review-overlay" class="overlay" onclick="if(event.target===this)closeReview()">
+    <div class="modal">
+      <h2>Review <span id="review-fest"></span></h2>
+      <p class="sub">Scoor 1–5 sterren per onderdeel — zo leren we samen wat werkt.</p>
+      <form id="reviewForm" onsubmit="return submitReview(event)">
+        <div class="field"><label>🎵 Goede muziek</label>
+          <div class="stars" data-key="music"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div></div>
+        <div class="field"><label>✨ Sfeer</label>
+          <div class="stars" data-key="sfeer"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div></div>
+        <div class="field"><label>👥 Publiek</label>
+          <div class="stars" data-key="publiek"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div></div>
+        <div class="field"><label>📍 Setting / plek</label>
+          <div class="stars" data-key="setting"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div></div>
+        <div class="field"><label for="rv-comment">Toelichting (optioneel)</label>
+          <textarea id="rv-comment" maxlength="240" placeholder="Wat maakte het wel/niet leuk?"></textarea></div>
+        <div class="field"><label for="rv-name">Je naam of initialen</label>
+          <input id="rv-name" type="text" maxlength="24" placeholder="bv. VDH"></div>
+        <div id="reviewMsg" class="fmsg"></div>
+        <div class="mactions">
+          <button type="button" class="btn btn-ghost" onclick="closeReview()">Annuleren</button>
+          <button type="submit" id="reviewBtn" class="btn btn-primary">Plaatsen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <footer>
     <b>Hoe ik dit inzet:</b> deze lijst is de bron. Per festival check ik wanneer de verkoop opent en geef ik je een seintje vóór de drukte — extra scherp op de "voor de deur"-kleintjes die in januari al weg zijn. Zeg welke je sowieso wilt en ik zet die op scherp.
   </footer>
@@ -976,8 +1018,9 @@
         ${tags ? `<div class="tags">${tags}</div>` : ""}
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
         ${byline}
-        <div class="cactions"><a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga</button>${del}</div>
+        <div class="cactions"><a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga</button><button class="rvbtn" data-eid="${esc(eid)}" data-name="${esc(ev.name)}">★ Review</button>${del}</div>
         <div class="goers" data-eid="${esc(eid)}"></div>
+        <div class="reviews" data-eid="${esc(eid)}"></div>
       </article>`;
     }
 
@@ -1035,6 +1078,7 @@
         renderCalendarCommunity(events);
         doFilter();
         paintRsvps();
+        paintReviews();
       } catch (err){
         console.error(err);
         status.textContent = "Kon evenementen niet laden: " + err.message;
@@ -1152,6 +1196,7 @@
         }
         parts.push(`<a class="sclink" href="https://soundcloud.com/search?q=${listenQ}" target="_blank" rel="noopener">☁ Live sets</a>`);
         parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga</button>`);
+        parts.push(`<button class="rvbtn" data-eid="${sl}" data-name="${esc(nameEl.textContent.trim())}">★ Review</button>`);
         const div = document.createElement("div");
         div.className = "cactions";
         div.innerHTML = parts.join("");
@@ -1173,6 +1218,11 @@
         goers.className = "goers";
         goers.dataset.eid = sl;
         card.appendChild(goers);
+
+        const rv = document.createElement("div");
+        rv.className = "reviews";
+        rv.dataset.eid = sl;
+        card.appendChild(rv);
       });
     }
 
@@ -1244,11 +1294,102 @@
     }
 
     document.addEventListener("click", function(e){
+      const star = e.target.closest(".stars span");
+      if (star){ const grp = star.closest(".stars"); setStar(grp.dataset.key, +star.dataset.v); return; }
+      const rvb = e.target.closest(".rvbtn");
+      if (rvb){ openReview(rvb.dataset.eid, rvb.dataset.name); return; }
       const x = e.target.closest(".goer-x");
       if (x){ const chip = x.closest(".goer"); if (chip) rsvpRemove(chip.dataset.eid, chip.dataset.rid); return; }
       const btn = e.target.closest(".rsvp");
       if (btn) rsvpAdd(btn.dataset.eid);
     });
+
+    // ---------- reviews (score per onderdeel) ----------
+    let REVIEWS = {};
+    let reviewEid = null;
+    const reviewScores = { music: 0, sfeer: 0, publiek: 0, setting: 0 };
+    const RV_DIMS = [["music", "🎵"], ["sfeer", "✨"], ["publiek", "👥"], ["setting", "📍"]];
+
+    async function loadReviews(){
+      if (!CONFIGURED) return;
+      try {
+        const snap = await getDocs(collection(db, "reviews"));
+        REVIEWS = {};
+        snap.docs.forEach(d => {
+          const x = d.data(); const e = x.eid || "";
+          (REVIEWS[e] = REVIEWS[e] || []).push(Object.assign({ id: d.id }, x));
+        });
+      } catch (e){ console.warn("reviews niet geladen:", e); }
+      paintReviews();
+    }
+    function avg(list, key){ return list.reduce((s, r) => s + (+r[key] || 0), 0) / list.length; }
+    function paintReviews(){
+      document.querySelectorAll(".reviews").forEach(box => {
+        const list = REVIEWS[box.dataset.eid] || [];
+        if (!list.length){ box.innerHTML = ""; return; }
+        const overall = ["music", "sfeer", "publiek", "setting"].reduce((s, k) => s + avg(list, k), 0) / 4;
+        const dims = RV_DIMS.map(([k, ic]) => `<span class="d">${ic} ${avg(list, k).toFixed(1)}</span>`).join(" · ");
+        const comments = list.filter(r => r.comment)
+          .map(r => `<div class="rv-comment"><b>${esc(r.name || "?")}</b>: ${esc(r.comment)}</div>`).join("");
+        box.innerHTML = `<span class="rv-head">Reviews (${list.length})</span><span class="rv-overall">★ ${overall.toFixed(1)}</span>`
+          + `<div class="rv-dims">${dims}</div>${comments}`;
+      });
+    }
+
+    function setStar(key, v){
+      if (!(key in reviewScores)) return;
+      reviewScores[key] = v;
+      const grp = document.querySelector(`.stars[data-key="${key}"]`);
+      if (grp) grp.querySelectorAll("span").forEach(s => s.classList.toggle("on", (+s.dataset.v) <= v));
+    }
+    function openReview(eid, name){
+      reviewEid = eid;
+      document.getElementById("review-fest").textContent = name ? "· " + name : "";
+      Object.keys(reviewScores).forEach(k => setStar(k, 0));
+      document.getElementById("rv-comment").value = "";
+      document.getElementById("rv-name").value = myName || "";
+      const msg = document.getElementById("reviewMsg"); msg.className = "fmsg"; msg.textContent = "";
+      document.getElementById("review-overlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeReview(){
+      document.getElementById("review-overlay").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    function submitReview(e){
+      e.preventDefault();
+      const msg = document.getElementById("reviewMsg"); msg.className = "fmsg"; msg.textContent = "";
+      if (!CONFIGURED){ msg.textContent = "Database nog niet gekoppeld."; msg.classList.add("err"); return false; }
+      if (Object.values(reviewScores).some(v => !v)){
+        msg.textContent = "Geef alle vier de onderdelen een score."; msg.classList.add("err"); return false;
+      }
+      const name = document.getElementById("rv-name").value.trim().slice(0, 24);
+      if (!name){ msg.textContent = "Vul je naam of initialen in."; msg.classList.add("err"); return false; }
+      myName = name; localStorage.setItem("fr_name", name);
+      const btn = document.getElementById("reviewBtn"); btn.disabled = true;
+      msg.textContent = "Plaatsen…";
+      addDoc(collection(db, "reviews"), {
+        eid: reviewEid, name,
+        music: reviewScores.music, sfeer: reviewScores.sfeer,
+        publiek: reviewScores.publiek, setting: reviewScores.setting,
+        comment: document.getElementById("rv-comment").value.trim(),
+        createdAt: serverTimestamp()
+      }).then(() => {
+        msg.textContent = "✓ Bedankt voor je review!"; msg.classList.add("ok");
+        setTimeout(() => { closeReview(); loadReviews(); }, 800);
+      }).catch(err => {
+        console.error(err);
+        msg.textContent = err.code === "permission-denied"
+          ? "Reviews staan nog uit in Firestore — voeg de 'reviews'-regels toe (zie README)."
+          : "Mislukt: " + err.message;
+        msg.classList.add("err");
+      }).finally(() => { btn.disabled = false; });
+      return false;
+    }
+    window.openReview = openReview;
+    window.closeReview = closeReview;
+    window.submitReview = submitReview;
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeReview(); });
 
     // ---------- filter / zoek ----------
     const filters = { zone: "all", statuses: new Set() };
@@ -1330,6 +1471,7 @@
       enhanceCurated();
       await loadEvents();
       await loadRsvps();
+      await loadReviews();
     })();
   </script>
 

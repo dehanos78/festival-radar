@@ -15,7 +15,8 @@ ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde even
 - **Kalender** — tijdlijn incl. community-tips met datum
 - **Kaart** — alle locaties op een Leaflet/OSM-kaart, gekleurd per zone, met per stip een geverifieerde link naar de officiële festivalsite
 - **+ Evenement / verwijderen** — gedeelde tips via Firestore, met verwijder-knop
-- **🙌 Ik ga** — RSVP per festival (opgeslagen in Firestore, naam in `localStorage`)
+- **🙌 Ik ga** — RSVP per festival, met zichtbare namen/initialen van wie er gaat
+- **★ Review** — score 1–5 per onderdeel (🎵 muziek · ✨ sfeer · 👥 publiek · 📍 setting) + toelichting; kaarten tonen de gemiddelden zodat je leert wat werkt (Firestore `reviews`)
 - **🎤 Line-up** — toont wie er speelt zodra bekend (uit `lineup`), anders "Line-up nog niet bekend"; de scheduler checkt tweewekelijks de officiële site
 - **♫ Spotify / ☁ Live sets** — Spotify-zoeklink (bij bekende artiesten) + SoundCloud-zoeklink voor live DJ-sets, om te luisteren
 - **Deel-preview** — Open-Graph `og.png` voor mooie link-previews (WhatsApp/social)
@@ -83,6 +84,16 @@ service cloud.firestore {
     }
     // "Ik ga"-RSVP's
     match /rsvps/{doc} {
+      allow read: if true;
+      allow create: if request.resource.data.eid is string
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() > 0
+                    && request.resource.data.name.size() < 60;
+      allow delete: if true;
+      allow update: if false;
+    }
+    // reviews met scores (muziek / sfeer / publiek / setting)
+    match /reviews/{doc} {
       allow read: if true;
       allow create: if request.resource.data.eid is string
                     && request.resource.data.name is string
