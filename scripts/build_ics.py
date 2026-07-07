@@ -100,8 +100,11 @@ def fetch_firestore_events():
     return events
 
 
+STAMP = "20260101T000000Z"  # deterministisch tijdstempel (uit festivals.json 'updated'); voorkomt commit-ruis in de auto-sync
+
+
 def vevent(uid, dtstart, dtend, summary, description, all_day=True, alarms=None):
-    now = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    now = STAMP
     lines = ["BEGIN:VEVENT", f"UID:{uid}@festival-radar", f"DTSTAMP:{now}"]
     if all_day:
         lines.append(f"DTSTART;VALUE=DATE:{dtstart:%Y%m%d}")
@@ -125,8 +128,13 @@ def vevent(uid, dtstart, dtend, summary, description, all_day=True, alarms=None)
 
 
 def build():
+    global STAMP
     with open(FESTIVALS_JSON, encoding="utf-8") as f:
-        festivals = json.load(f)["festivals"]
+        data = json.load(f)
+    festivals = data["festivals"]
+    upd = str(data.get("updated", "")).replace("-", "")
+    if len(upd) == 8 and upd.isdigit():
+        STAMP = upd + "T000000Z"
 
     events = list(festivals) + fetch_firestore_events()
 
@@ -177,7 +185,7 @@ def build():
             )
             n_sale += 1
 
-    now = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    now = STAMP
     cal = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
