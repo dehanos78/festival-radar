@@ -16,7 +16,7 @@ ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde even
 - **Kaart** — alle locaties op een dark Leaflet/OSM-kaart, gekleurd per zone
 - **+ Evenement / verwijderen** — gedeelde tips via Firestore, met verwijder-knop
 - **🙌 Ik ga** — RSVP per festival (opgeslagen in Firestore, naam in `localStorage`)
-- **♫ Lineup** — Spotify-zoeklink voor festivals met bekende artiesten
+- **♫ Lineup / ☁ Live sets** — Spotify-zoeklink (bij bekende artiesten) + SoundCloud-zoeklink voor live DJ-sets, op elke kaart
 - **Deel-preview** — Open-Graph `og.png` voor mooie link-previews (WhatsApp/social)
 - **ICS-agenda** — abonneerbaar, met kaartverkoop-meldingen (zie hieronder)
 

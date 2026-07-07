@@ -257,13 +257,14 @@
   /* ---------- spotify + rsvp op kaarten ---------- */
   .cactions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:13px;padding-top:12px;border-top:1px dashed var(--line)}
   .cactions .delbtn{margin-left:auto}
-  .splink,.rsvp{
+  .splink,.sclink,.rsvp{
     display:inline-flex;align-items:center;gap:6px;font-family:"Space Mono",monospace;
     font-size:11px;letter-spacing:.02em;border-radius:999px;padding:6px 12px;cursor:pointer;
     border:1px solid var(--line);background:var(--surface);color:var(--muted);
     transition:all .15s ease;text-decoration:none;
   }
   .splink:hover{color:#1db954;border-color:#1db954}
+  .sclink:hover{color:#ff5500;border-color:#ff5500}
   .rsvp:hover{color:var(--ink);border-color:var(--faint)}
   .rsvp.mine{color:#0b2c20;background:var(--go);border-color:transparent;font-weight:700}
   .rsvp .cnt{opacity:.85}
@@ -961,12 +962,13 @@
       const byline = ev.by ? `<div class="rsvp-names">— getipt door ${esc(ev.by)}</div>` : "";
       const del = ev.id ? `<button class="delbtn" data-id="${esc(ev.id)}" data-name="${esc(ev.name)}" title="Verwijderen">verwijderen</button>` : "";
       const eid = slug(ev.name);
+      const scq = encodeURIComponent(ev.name);
       return `<article class="card" style="--zc:${zone.css}">
         <div class="ctop"><span class="name">${esc(ev.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
         ${byline}
-        <div class="cactions"><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga <span class="cnt"></span></button>${del}</div>
+        <div class="cactions"><a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga <span class="cnt"></span></button>${del}</div>
       </article>`;
     }
 
@@ -1129,11 +1131,13 @@
         if (!nameEl) return;
         const sl = slug(nameEl.textContent);
         const f = FESTBY[sl];
+        const hasLineup = f && f.lineup && f.lineup.length;
+        const listenQ = encodeURIComponent(hasLineup ? f.lineup.join(" ") : nameEl.textContent.trim());
         const parts = [];
-        if (f && f.lineup && f.lineup.length){
-          const q = encodeURIComponent(f.lineup.join(" "));
-          parts.push(`<a class="splink" href="https://open.spotify.com/search/${q}" target="_blank" rel="noopener">♫ Lineup</a>`);
+        if (hasLineup){
+          parts.push(`<a class="splink" href="https://open.spotify.com/search/${listenQ}" target="_blank" rel="noopener">♫ Lineup</a>`);
         }
+        parts.push(`<a class="sclink" href="https://soundcloud.com/search?q=${listenQ}" target="_blank" rel="noopener">☁ Live sets</a>`);
         parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga <span class="cnt"></span></button>`);
         const div = document.createElement("div");
         div.className = "cactions";
