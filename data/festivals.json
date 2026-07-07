@@ -1,5 +1,5 @@
 {
-  "_comment": "Master-lijst met Viktor's curated festivals. Bron voor de ICS-agenda, de kaart en de scheduler. Datums in YYYY-MM-DD. 'end' is de laatste festivaldag (inclusief). ticketSaleStart wordt door de scheduler ingevuld zodra bekend. lat/lng voor de kaart-tab; lineup voor de Spotify-links.",
+  "_comment": "Master-lijst met Viktor's curated festivals. Bron voor de ICS-agenda, de kaart en de scheduler. Datums in YYYY-MM-DD. 'end' is de laatste festivaldag (inclusief). ticketSaleStart wordt door de scheduler ingevuld zodra bekend. lat/lng voor de kaart-tab; lineup voor de Spotify-links. 'parking' = geverifieerde parkeerinfo (scheduler vult aan).",
   "updated": "2026-07-07",
   "festivals": [
     {
@@ -28,7 +28,8 @@
         "status": "0 aangeboden · 272 gezocht op TicketSwap",
         "price": "officiële resale (Paylogic): 80–100% van €330",
         "url": "https://www.ticketswap.com/wildeburg-festival"
-      }
+      },
+      "parking": ""
     },
     {
       "id": "thuishaven-mees-salome",
@@ -55,7 +56,8 @@
         "Dennis Quin"
       ],
       "lineupUrl": "",
-      "url": "https://thuishaven.nl"
+      "url": "https://thuishaven.nl",
+      "parking": ""
     },
     {
       "id": "geheime-liefde",
@@ -84,7 +86,8 @@
         "status": "uitverkocht · aanbod wisselt",
         "price": "richtprijs ~€90 (tweedehands)",
         "url": "https://www.ticketswap.com/festival-tickets/a/geheime-liefde"
-      }
+      },
+      "parking": ""
     },
     {
       "id": "flow-in-the-park",
@@ -113,7 +116,8 @@
         "Chelina Manuhutu"
       ],
       "lineupUrl": "",
-      "url": "https://listentoflow.com"
+      "url": "https://listentoflow.com",
+      "parking": "Geen parkeren bij het park — fiets/OV aangeraden (5 min lopen van Arnhem CS), anders parkeergarage in de stad."
     },
     {
       "id": "het-systeem",
@@ -142,7 +146,8 @@
         "Joep Beving"
       ],
       "lineupUrl": "",
-      "url": "https://nachtparlement.nl"
+      "url": "https://nachtparlement.nl",
+      "parking": ""
     },
     {
       "id": "lief",
@@ -171,7 +176,8 @@
         "status": "officiële resale-partner: TicketSwap",
         "price": null,
         "url": "https://www.ticketswap.com/lief-festival"
-      }
+      },
+      "parking": ""
     },
     {
       "id": "nataraj-beach-party",
@@ -194,7 +200,8 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://www.nataraj.info"
+      "url": "https://www.nataraj.info",
+      "parking": ""
     },
     {
       "id": "draaimolen",
@@ -216,7 +223,8 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://www.draaimolen.nu"
+      "url": "https://www.draaimolen.nu",
+      "parking": ""
     },
     {
       "id": "into-the-woods",
@@ -244,7 +252,8 @@
         "status": "uitverkocht · resale via TicketSwap",
         "price": "za-tickets ~€120 (tweedehands)",
         "url": "https://www.ticketswap.com/festival-tickets/a/into-the-woods-festival"
-      }
+      },
+      "parking": ""
     },
     {
       "id": "antaris-project",
@@ -266,7 +275,8 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://antaris-project.de"
+      "url": "https://antaris-project.de",
+      "parking": ""
     },
     {
       "id": "voov-experience",
@@ -288,7 +298,8 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://www.voov-festival.de"
+      "url": "https://www.voov-festival.de",
+      "parking": ""
     },
     {
       "id": "ozora",
@@ -310,7 +321,8 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://ozorafestival.eu"
+      "url": "https://ozorafestival.eu",
+      "parking": ""
     },
     {
       "id": "modem",
@@ -332,7 +344,8 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://modemfestival.com"
+      "url": "https://modemfestival.com",
+      "parking": ""
     },
     {
       "id": "boom-festival",
@@ -362,7 +375,8 @@
         "status": "uitverkocht · alléén officiële resale (pas op scalpers)",
         "price": null,
         "url": "https://www.boomfestival.org"
-      }
+      },
+      "parking": ""
     },
     {
       "id": "las-festival",
@@ -385,7 +399,8 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": ""
+      "url": "",
+      "parking": ""
     }
   ]
 }

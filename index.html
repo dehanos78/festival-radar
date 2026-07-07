@@ -1377,6 +1377,14 @@
           card.appendChild(rs);
         }
 
+        // parkeerinfo (geverifieerd; scheduler vult aan)
+        if (f && f.parking){
+          const pk = document.createElement("div");
+          pk.className = "resale-line";
+          pk.innerHTML = `<span class="lineup-tag">🅿️ Parkeren</span>${esc(f.parking)}`;
+          card.appendChild(pk);
+        }
+
         const goers = document.createElement("div");
         goers.className = "goers";
         goers.dataset.eid = sl;
@@ -1729,20 +1737,77 @@
           radius: 9, color: "#ffffff", weight: 2.5, fillColor: zc[f.zone] || "#333", fillOpacity: 1
         }).addTo(mapObj);
         const site = f.url ? `<br><a href="${f.url}" target="_blank" rel="noopener" class="popup-link">Website &amp; line-up →</a>` : "";
-        m.bindPopup(`<b>${f.name}</b><br>${f.when || ""}<br>${f.where || ""}${f.travel ? " · " + f.travel : ""}${site}`);
+        const trv = travelText(f);
+        m.bindPopup(`<b>${f.name}</b><br>${f.when || ""}<br>${f.where || ""}${trv ? " · " + trv : ""}${site}`);
         pts.push([f.lat, f.lng]);
       });
       if (pts.length) mapObj.fitBounds(pts, { padding: [40, 40] });
       setTimeout(() => mapObj.invalidateSize(), 60);
     };
 
+    // ---------- thuislocatie (reistijden per gebruiker) ----------
+    const DEFAULT_HOME = { name: "Apeldoorn", lat: 52.211, lng: 5.970, custom: false };
+    let HOME = JSON.parse(localStorage.getItem("fr_home") || "null") || DEFAULT_HOME;
+    function haversineKm(la1, lo1, la2, lo2){
+      const R = 6371, r = Math.PI / 180;
+      const dLa = (la2 - la1) * r, dLo = (lo2 - lo1) * r;
+      const a = Math.sin(dLa/2)**2 + Math.cos(la1*r) * Math.cos(la2*r) * Math.sin(dLo/2)**2;
+      return 2 * R * Math.asin(Math.sqrt(a));
+    }
+    function travelText(f){
+      if (!HOME.custom || !f || !f.lat || !f.lng) return (f && f.travel) || "";
+      const km = Math.round(haversineKm(HOME.lat, HOME.lng, f.lat, f.lng) * 1.25); // wegfactor
+      if (km > 900) return f.travel || "";            // vliegafstand — hou originele tekst
+      const min = Math.max(5, Math.round(km / 85 * 60 / 5) * 5);
+      const t = min < 60 ? `~${min} min` : `~${Math.floor(min/60)}u${min % 60 ? String(min % 60).padStart(2, "0") : ""}`;
+      return `${t} · ${km} km`;
+    }
+    function updateTravel(){
+      document.querySelectorAll("#view-list .card").forEach(card => {
+        const nameEl = card.querySelector(".name");
+        if (!nameEl) return;
+        const f = FESTBY[slug(nameEl.textContent)];
+        if (!f || !HOME.custom) return;
+        const t = travelText(f);
+        if (!t) return;
+        const waarRow = [...card.querySelectorAll(".row")].find(r =>
+          (r.querySelector(".k") || {}).textContent && r.querySelector(".k").textContent.trim().toLowerCase() === "waar");
+        if (!waarRow) return;
+        const mono = waarRow.querySelector(".mono");
+        if (mono) mono.textContent = t;
+        else { const v = waarRow.querySelector(".v"); if (v) v.insertAdjacentHTML("beforeend", ` · <span class="mono">${esc(t)}</span>`); }
+      });
+      const zm = document.querySelector('#view-list section[data-zone="near"] .zmeta');
+      if (zm) zm.textContent = `NL · eerstvolgende 3 mnd vanuit ${HOME.name}`;
+    }
+    window.setHome = async function(){
+      const q = prompt("Jouw woonplaats (voor reistijden), bv. 'Zwolle':", HOME.custom ? HOME.name : "");
+      if (q === null) return;
+      const name = q.trim();
+      if (!name){
+        localStorage.removeItem("fr_home"); HOME = DEFAULT_HOME;
+        renderWhoami(); location.reload(); return;
+      }
+      try {
+        const r = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(name)}`);
+        const j = await r.json();
+        if (!j.length){ alert("Plaats niet gevonden — probeer specifieker (bv. 'Zwolle, Nederland')."); return; }
+        HOME = { name: j[0].display_name.split(",")[0], lat: +j[0].lat, lng: +j[0].lon, custom: true };
+        localStorage.setItem("fr_home", JSON.stringify(HOME));
+        renderWhoami(); updateTravel();
+        if (mapObj){ mapObj.remove(); mapObj = null; mapInited = false; }  // popups verversen bij volgende kaart-view
+      } catch (e){ alert("Kon locatie niet opzoeken: " + e.message); }
+    };
+
     // ---------- wie ben jij (naam instellen/wijzigen) ----------
     function renderWhoami(){
       const el = document.getElementById("whoami");
       if (!el) return;
-      el.innerHTML = myName
+      const who = myName
         ? `👤 Je plaatst als <b>${esc(myName)}</b> · <button class="linklike" onclick="setMyName()">wijzig</button>`
         : `👤 <button class="linklike" onclick="setMyName()">Stel je naam in</button> — voor 'Ik ga' &amp; reviews`;
+      const home = ` &nbsp;·&nbsp; 📍 Reistijden vanuit <b>${esc(HOME.name)}</b> · <button class="linklike" onclick="setHome()">wijzig</button>`;
+      el.innerHTML = who + home;
     }
     window.setMyName = function(){
       const v = prompt("Je naam of initialen (voor 'Ik ga' en reviews):", myName || "");
@@ -1760,6 +1825,7 @@
       await loadFest();
       renderPromoted();
       enhanceCurated();
+      updateTravel();
       await loadEvents();
       await loadRsvps();
       await loadReviews();
