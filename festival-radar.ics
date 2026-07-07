@@ -89,4 +89,15 @@ DESCRIPTION:Amersfoort — Reistijd ~40 min — Status: uitverkocht / resa
  le — Uitverkocht binnen 1u · TicketSwap/wachtlijst. Fallback: ITW ADE 
  23–24 okt (NDSM). — https://intothewoods.nl
 END:VEVENT
+BEGIN:VEVENT
+UID:boom-festival@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20270718
+DTEND;VALUE=DATE:20270726
+SUMMARY:♪ Boom Festival · Bucketlist
+DESCRIPTION:Boomland\, Idanha-a-Nova (PT) — Reistijd vlucht Lissabon + ~
+ 2\,5u — Status: uitverkocht / resale — 30-jarig jubileum · verkoop g
+ ing okt 2025\, in uren uitverkocht · alleen officiële resale via boomfe
+ stival.org. — https://www.boomfestival.org
+END:VEVENT
 END:VCALENDAR

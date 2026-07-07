@@ -331,6 +331,9 @@
   .field .hint{font-size:12px;color:var(--faint);margin-top:6px}
   .frow{display:flex;gap:12px}
   .frow .field{flex:1}
+  .fdetails{margin-bottom:15px}
+  .fdetails summary{font-size:13px;color:var(--muted);cursor:pointer;padding:9px 0;user-select:none}
+  .fdetails summary:hover{color:var(--ink)}
   .mactions{display:flex;gap:10px;margin-top:22px}
   .btn{font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.03em;font-weight:700;border-radius:11px;padding:12px 16px;cursor:pointer;border:1px solid var(--line)}
   .btn-primary{flex:1;color:#fff;border-color:transparent;background:var(--grad)}
@@ -922,11 +925,11 @@
   <div id="overlay" class="overlay" onclick="if(event.target===this)closeModal()">
     <div class="modal">
       <h2>Evenement toevoegen</h2>
-      <p class="sub">Je tip komt live op de radar te staan — zichtbaar voor iedereen met de link.</p>
+      <p class="sub">Alleen de <b>naam</b> is genoeg — de radar zoekt datum, locatie, tickets en line-up er bij de tweewekelijkse update zelf bij. 🪄</p>
       <form id="eventForm" onsubmit="return submitEvent(event)">
         <div class="field">
           <label for="f-name">Naam *</label>
-          <input id="f-name" type="text" required maxlength="80" placeholder="bv. Boothstock Festival">
+          <input id="f-name" type="text" required maxlength="80" placeholder="bv. Boom Festival">
         </div>
         <div class="frow">
           <div class="field">
@@ -938,13 +941,23 @@
             </select>
           </div>
           <div class="field">
-            <label for="f-status">Status</label>
-            <select id="f-status">
-              <option value="go">Te scoren</option>
-              <option value="watch">In de gaten</option>
-              <option value="gone">Uitverkocht / resale</option>
-            </select>
+            <label for="f-by">Getipt door</label>
+            <input id="f-by" type="text" maxlength="40" placeholder="je naam">
           </div>
+        </div>
+        <div class="field">
+          <label for="f-url">Website (optioneel, helpt de radar)</label>
+          <input id="f-url" type="url" maxlength="200" placeholder="https://…">
+        </div>
+        <details class="fdetails">
+          <summary>Meer details (optioneel — anders zoekt de radar het op)</summary>
+        <div class="field" style="margin-top:12px">
+          <label for="f-status">Status</label>
+          <select id="f-status">
+            <option value="watch">In de gaten</option>
+            <option value="go">Te scoren</option>
+            <option value="gone">Uitverkocht / resale</option>
+          </select>
         </div>
         <div class="field">
           <label for="f-where">Waar</label>
@@ -967,10 +980,7 @@
           <label for="f-tags">Tags</label>
           <input id="f-tags" type="text" maxlength="80" placeholder="techno, bos, 18+ (komma-gescheiden)">
         </div>
-        <div class="field">
-          <label for="f-by">Toegevoegd door</label>
-          <input id="f-by" type="text" maxlength="40" placeholder="je naam">
-        </div>
+        </details>
         <div id="formMsg" class="fmsg"></div>
         <div class="mactions">
           <button type="button" class="btn btn-ghost" onclick="closeModal()">Annuleren</button>
@@ -1101,13 +1111,17 @@
       const del = ev.id ? `<button class="delbtn" data-id="${esc(ev.id)}" data-name="${esc(ev.name)}" title="Verwijderen">verwijderen</button>` : "";
       const eid = slug(ev.name);
       const scq = encodeURIComponent(ev.name);
+      const web = ev.url ? `<a class="weblink" href="${esc(ev.url)}" target="_blank" rel="noopener">↗ Website</a>` : "";
+      const pending = (!ev.where && !ev.when && !ev.date)
+        ? `<div class="rv-note" style="margin-top:10px">🪄 De radar zoekt datum, plek &amp; tickets erbij in de volgende update.</div>` : "";
       return `<article class="card" style="--zc:${zone.css}">
         <div class="cover">${coverSVG(ev.name, ev.zone || "near")}</div>
         <div class="ctop"><span class="name">${esc(ev.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
+        ${pending}
         ${byline}
-        <div class="cactions"><a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga</button><button class="rvbtn" data-eid="${esc(eid)}" data-name="${esc(ev.name)}">★ Review</button>${del}</div>
+        <div class="cactions">${web}<a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga</button><button class="rvbtn" data-eid="${esc(eid)}" data-name="${esc(ev.name)}">★ Review</button>${del}</div>
         <div class="goers" data-eid="${esc(eid)}"></div>
         <div class="reviews" data-eid="${esc(eid)}"></div>
       </article>`;
@@ -1177,6 +1191,8 @@
 
     // ---------- modal + submit (global voor inline onclick) ----------
     window.openModal = function(){
+      const by = document.getElementById("f-by");
+      if (by && !by.value && myName) by.value = myName;
       document.getElementById("overlay").classList.add("open");
       document.body.style.overflow = "hidden";
       setTimeout(()=>document.getElementById("f-name").focus(), 50);
@@ -1202,6 +1218,7 @@
         name:    document.getElementById("f-name").value.trim(),
         zone:    document.getElementById("f-zone").value,
         status:  document.getElementById("f-status").value,
+        url:     document.getElementById("f-url").value.trim(),
         where:   document.getElementById("f-where").value.trim(),
         when:    document.getElementById("f-when").value.trim(),
         date:    document.getElementById("f-date").value,
@@ -1266,6 +1283,35 @@
         FEST.forEach(f => { FESTBY[slug(f.name)] = f; });
       } catch (e){ console.warn("festivals.json niet geladen:", e); }
     }
+    // Festivals uit festivals.json zonder eigen HTML-kaart (bv. gepromoveerde tips)
+    // automatisch in de juiste zone renderen — zo hoeft niemand HTML aan te passen.
+    function renderPromoted(){
+      const existing = new Set([...document.querySelectorAll("#view-list .card .name")]
+        .map(n => slug(n.textContent)));
+      FEST.forEach(f => {
+        const sl = slug(f.name);
+        if (existing.has(sl)) return;
+        const grid = document.querySelector(`#view-list section.zone[data-zone="${f.zone}"] .grid`);
+        if (!grid) return;
+        const st = STATUS[f.status] || STATUS.watch;
+        const tags = (f.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("");
+        const rows = [];
+        if (f.where) rows.push(`<div class="row"><span class="k">Waar</span><span class="v">${esc(f.where)}${f.travel ? ` · <span class="mono">${esc(f.travel)}</span>` : ""}</span></div>`);
+        if (f.when)  rows.push(`<div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">${esc(f.when)}</span></span></div>`);
+        if (f.tickets) rows.push(`<div class="row"><span class="k">Tickets</span><span class="v">${esc(f.tickets)}</span></div>`);
+        const tipped = f.tippedBy ? `<div class="rv-note" style="margin-top:10px">— getipt door ${esc(f.tippedBy)}</div>` : "";
+        const el = document.createElement("article");
+        el.className = "card";
+        el.innerHTML = `
+          <div class="ctop"><span class="name">${esc(f.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
+          ${tags ? `<div class="tags">${tags}</div>` : ""}
+          ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
+          ${tipped}`;
+        grid.appendChild(el);
+        existing.add(sl);
+      });
+    }
+
     function enhanceCurated(){
       document.querySelectorAll("#view-list .card").forEach(card => {
         if (card.querySelector(".cactions")) return;           // community-kaarten hebben er al één
@@ -1680,6 +1726,7 @@
     (async function init(){
       renderWhoami();
       await loadFest();
+      renderPromoted();
       enhanceCurated();
       await loadEvents();
       await loadRsvps();

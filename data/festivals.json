@@ -237,6 +237,24 @@
       "url": "https://modemfestival.com"
     },
     {
+      "id": "boom-festival",
+      "name": "Boom Festival",
+      "zone": "bucket",
+      "status": "gone",
+      "where": "Boomland, Idanha-a-Nova (PT)",
+      "travel": "vlucht Lissabon + ~2,5u",
+      "lat": 39.923, "lng": -7.235,
+      "start": "2027-07-18",
+      "end": "2027-07-25",
+      "when": "18–25 jul 2027",
+      "tickets": "30-jarig jubileum · verkoop ging okt 2025, in uren uitverkocht · alleen officiële resale via boomfestival.org.",
+      "ticketSaleStart": null,
+      "tags": ["psytrance", "transformational", "biennaal", "kunst"],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://www.boomfestival.org"
+    },
+    {
       "id": "las-festival",
       "name": "LAS Festival",
       "zone": "bucket",
