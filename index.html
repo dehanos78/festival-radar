@@ -219,19 +219,31 @@
   /* ---------- card actions (spotify / soundcloud / rsvp / delete) ---------- */
   .cactions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:15px;padding-top:14px;border-top:1px solid var(--line)}
   .cactions .delbtn{margin-left:auto}
-  .splink,.sclink,.rsvp,.delbtn{
+  .splink,.sclink,.weblink,.rsvp,.delbtn{
     display:inline-flex;align-items:center;gap:6px;font-family:"Space Mono",monospace;
     font-size:11px;letter-spacing:.02em;border-radius:999px;padding:6px 12px;cursor:pointer;
     border:1px solid var(--line);background:var(--surface-2);color:var(--muted);
     transition:all .15s ease;text-decoration:none;
   }
+  .weblink:hover{color:var(--near);border-color:var(--near)}
   .splink:hover{color:#1db954;border-color:#1db954}
   .sclink:hover{color:#ff5500;border-color:#ff5500}
   .rsvp:hover{color:var(--ink);border-color:var(--line-2)}
   .rsvp.mine{color:#08301f;background:var(--go);border-color:transparent;font-weight:700}
-  .rsvp .cnt{opacity:.85}
   .delbtn{font-size:10.5px;padding:6px 11px}
   .delbtn:hover{color:var(--gone);border-color:var(--gone)}
+
+  /* ---------- wie gaat er (RSVP) ---------- */
+  .goers{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
+  .goers-label{font-family:"Space Mono",monospace;font-size:11px;color:var(--faint)}
+  .goer{
+    display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
+    color:var(--ink);background:var(--surface-2);border:1px solid var(--line);
+    border-radius:999px;padding:3px 10px;
+  }
+  .goer.me{background:var(--go);color:#08301f;border-color:transparent}
+  .goer-x{cursor:pointer;font-weight:700;opacity:.65;font-size:14px;line-height:1}
+  .goer-x:hover{opacity:1}
 
   /* ---------- map ---------- */
   #map{height:520px;border:1px solid var(--line);border-radius:18px;background:var(--surface);margin-top:4px}
@@ -957,7 +969,8 @@
         ${tags ? `<div class="tags">${tags}</div>` : ""}
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
         ${byline}
-        <div class="cactions"><a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga <span class="cnt"></span></button>${del}</div>
+        <div class="cactions"><a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga</button>${del}</div>
+        <div class="goers" data-eid="${esc(eid)}"></div>
       </article>`;
     }
 
@@ -1123,15 +1136,22 @@
         const hasLineup = f && f.lineup && f.lineup.length;
         const listenQ = encodeURIComponent(hasLineup ? f.lineup.join(" ") : nameEl.textContent.trim());
         const parts = [];
+        if (f && f.url){
+          parts.push(`<a class="weblink" href="${f.url}" target="_blank" rel="noopener">↗ Website</a>`);
+        }
         if (hasLineup){
           parts.push(`<a class="splink" href="https://open.spotify.com/search/${listenQ}" target="_blank" rel="noopener">♫ Lineup</a>`);
         }
         parts.push(`<a class="sclink" href="https://soundcloud.com/search?q=${listenQ}" target="_blank" rel="noopener">☁ Live sets</a>`);
-        parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga <span class="cnt"></span></button>`);
+        parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga</button>`);
         const div = document.createElement("div");
         div.className = "cactions";
         div.innerHTML = parts.join("");
         card.appendChild(div);
+        const goers = document.createElement("div");
+        goers.className = "goers";
+        goers.dataset.eid = sl;
+        card.appendChild(goers);
       });
     }
 
@@ -1153,41 +1173,60 @@
     }
     function paintRsvps(){
       document.querySelectorAll(".rsvp").forEach(btn => {
-        const list = RSVP[btn.dataset.eid] || [];
-        const cnt = btn.querySelector(".cnt");
-        if (cnt) cnt.textContent = list.length ? `· ${list.length}` : "";
-        btn.classList.toggle("mine", !!myRsvps[btn.dataset.eid]);
-        btn.title = list.length ? list.map(r => r.name).join(", ") : "Wees de eerste!";
+        const mine = !!myRsvps[btn.dataset.eid];
+        btn.classList.toggle("mine", mine);
+        btn.textContent = mine ? "✓ Je gaat" : "🙌 Ik ga";
+      });
+      document.querySelectorAll(".goers").forEach(box => {
+        const eid = box.dataset.eid;
+        const list = RSVP[eid] || [];
+        if (!list.length){ box.innerHTML = ""; return; }
+        const chips = list.map(r => {
+          const mine = myRsvps[eid] === r.id;
+          return `<span class="goer${mine ? " me" : ""}" data-rid="${esc(r.id)}" data-eid="${esc(eid)}">`
+            + `${esc(r.name)}${mine ? ' <span class="goer-x" title="Verwijder jezelf">×</span>' : ""}</span>`;
+        }).join("");
+        box.innerHTML = `<span class="goers-label">Gaan (${list.length}):</span> ${chips}`;
       });
     }
-    document.addEventListener("click", async function(e){
-      const btn = e.target.closest(".rsvp");
-      if (!btn) return;
-      const eid = btn.dataset.eid;
+
+    function rsvpError(err){
+      console.error(err);
+      if (err && err.code === "permission-denied"){
+        alert("Aanmelden staat nog uit in Firestore.\n\nVoeg de 'rsvps'-regels toe (zie README) om 'Ik ga' te activeren.");
+      } else { alert("Aanmelden mislukt: " + ((err && err.message) || err)); }
+    }
+
+    async function rsvpAdd(eid){
       if (!CONFIGURED){ alert("Database nog niet gekoppeld."); return; }
-      btn.disabled = true;
+      if (myRsvps[eid]) return;                    // al aangemeld — verwijderen kan via het kruisje
+      if (!myName){
+        myName = (prompt("Wie ben je? Vul je naam of initialen in (bv. VDH):") || "").trim().slice(0, 24);
+        if (!myName) return;
+        localStorage.setItem("fr_name", myName);
+      }
       try {
-        if (myRsvps[eid]){
-          await deleteDoc(doc(db, "rsvps", myRsvps[eid]));
-          delete myRsvps[eid];
-          localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
-        } else {
-          if (!myName){
-            myName = (prompt("Je naam (verschijnt bij 'ik ga'):") || "").trim();
-            if (!myName){ btn.disabled = false; return; }
-            localStorage.setItem("fr_name", myName);
-          }
-          const ref = await addDoc(collection(db, "rsvps"), { eid, name: myName, createdAt: serverTimestamp() });
-          myRsvps[eid] = ref.id;
-          localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
-        }
+        const ref = await addDoc(collection(db, "rsvps"), { eid, name: myName, createdAt: serverTimestamp() });
+        myRsvps[eid] = ref.id;
+        localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
         await loadRsvps();
-      } catch (err){
-        console.error(err);
-        if (err.code === "permission-denied"){
-          alert("RSVP staat nog uit in Firestore.\n\nVoeg de 'rsvps'-regels toe (zie README).");
-        } else { alert("Mislukt: " + err.message); }
-      } finally { btn.disabled = false; }
+      } catch (err){ rsvpError(err); }
+    }
+
+    async function rsvpRemove(eid, rid){
+      if (!CONFIGURED) return;
+      try {
+        await deleteDoc(doc(db, "rsvps", rid));
+        if (myRsvps[eid] === rid){ delete myRsvps[eid]; localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps)); }
+        await loadRsvps();
+      } catch (err){ rsvpError(err); }
+    }
+
+    document.addEventListener("click", function(e){
+      const x = e.target.closest(".goer-x");
+      if (x){ const chip = x.closest(".goer"); if (chip) rsvpRemove(chip.dataset.eid, chip.dataset.rid); return; }
+      const btn = e.target.closest(".rsvp");
+      if (btn) rsvpAdd(btn.dataset.eid);
     });
 
     // ---------- filter / zoek ----------
