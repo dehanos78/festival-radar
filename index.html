@@ -733,6 +733,8 @@
 
       </div>
 
+      <div id="cal-community"></div>
+
     </div>
 
   </div>
@@ -770,8 +772,13 @@
           <input id="f-where" type="text" maxlength="120" placeholder="bv. Kraggenburg · ~40 min">
         </div>
         <div class="field">
-          <label for="f-when">Wanneer</label>
+          <label for="f-when">Wanneer (tekst)</label>
           <input id="f-when" type="text" maxlength="80" placeholder="bv. 9–12 jul 2026">
+        </div>
+        <div class="field">
+          <label for="f-date">Datum (voor kalender)</label>
+          <input id="f-date" type="date">
+          <div class="hint">Optioneel — hiermee komt 'ie op de juiste plek in de kalender-tab en agenda.</div>
         </div>
         <div class="field">
           <label for="f-tickets">Tickets / info</label>
@@ -841,6 +848,12 @@
         .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
     }
 
+    const MONTHS = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+    function fmtDate(iso){
+      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+      return m ? (parseInt(m[3],10) + " " + MONTHS[parseInt(m[2],10)-1]) : "";
+    }
+
     function cardHTML(ev){
       const zone = ZONES[ev.zone] || ZONES.near;
       const st = STATUS[ev.status] || STATUS.watch;
@@ -848,7 +861,7 @@
         .map(t=>`<span class="tag">${esc(t)}</span>`).join("");
       const rows = [];
       if (ev.where)   rows.push(`<div class="row"><span class="k">Waar</span><span class="v">${esc(ev.where)}</span></div>`);
-      if (ev.when)    rows.push(`<div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">${esc(ev.when)}</span></span></div>`);
+      if (ev.when || ev.date) rows.push(`<div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">${esc(ev.when || fmtDate(ev.date))}</span></span></div>`);
       if (ev.tickets) rows.push(`<div class="row"><span class="k">Tickets</span><span class="v">${esc(ev.tickets)}</span></div>`);
       const by = ev.by ? `<div class="byline">— getipt door ${esc(ev.by)}</div>` : "";
       return `<article class="card" style="--zc:${zone.css}">
@@ -857,6 +870,36 @@
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
         ${by}
       </article>`;
+    }
+
+    function calItemHTML(ev){
+      const zone = ZONES[ev.zone] || ZONES.near;
+      const st = STATUS[ev.status] || STATUS.watch;
+      const date = fmtDate(ev.date) || (ev.when || "tbc");
+      const meta = [ev.where, ev.by ? "getipt door " + ev.by : ""].filter(Boolean).join(" · ");
+      return `<div class="titem" style="--zc:${zone.css}">
+        <span class="zdot"></span>
+        <span class="tdate">${esc(date)}</span>
+        <div class="tbody">
+          <div class="tname">${esc(ev.name)} <span class="mini-badge ${st.cls}">${st.label}</span></div>
+          <div class="tmeta">${esc(meta)}</div>
+        </div>
+      </div>`;
+    }
+
+    function renderCalendarCommunity(list){
+      const el = document.getElementById("cal-community");
+      if (!el) return;
+      if (!list.length){ el.innerHTML = ""; return; }
+      const dated = list.filter(e => fmtDate(e.date)).sort((a,b) => a.date < b.date ? -1 : 1);
+      const undated = list.filter(e => !fmtDate(e.date));
+      const ordered = dated.concat(undated);
+      el.innerHTML =
+        `<div class="tbc-section">
+          <div class="tmonth-label">Toegevoegd door vrienden <span class="count">— ${list.length} tip${list.length===1?"":"s"}</span></div>
+          <p class="tbc-note">Community-tips uit de gedeelde database. Voeg 'n datum toe voor exacte plek.</p>
+          ${ordered.map(calItemHTML).join("")}
+        </div>`;
     }
 
     async function loadEvents(){
@@ -870,13 +913,17 @@
       try {
         const q = query(collection(db, "events"), orderBy("createdAt", "desc"));
         const snap = await getDocs(q);
-        if (snap.empty){
+        const events = snap.docs.map(d => d.data());
+        if (!events.length){
+          status.style.display = "";
           status.textContent = "Nog geen tips — voeg als eerste een evenement toe.";
           grid.innerHTML = "";
+          renderCalendarCommunity([]);
           return;
         }
         status.style.display = "none";
-        grid.innerHTML = snap.docs.map(d => cardHTML(d.data())).join("");
+        grid.innerHTML = events.map(cardHTML).join("");
+        renderCalendarCommunity(events);
       } catch (err){
         console.error(err);
         status.textContent = "Kon evenementen niet laden: " + err.message;
@@ -913,6 +960,7 @@
         status:  document.getElementById("f-status").value,
         where:   document.getElementById("f-where").value.trim(),
         when:    document.getElementById("f-when").value.trim(),
+        date:    document.getElementById("f-date").value,
         tickets: document.getElementById("f-tickets").value.trim(),
         tags:    document.getElementById("f-tags").value.trim(),
         by:      document.getElementById("f-by").value.trim(),

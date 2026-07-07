@@ -4,8 +4,30 @@ Vik's shortlist van intieme/underground festivals — gesorteerd op reisafstand,
 ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde events-database
 (Firebase Firestore) waar vrienden zelf evenementen aan kunnen toevoegen.
 
-- **Live site:** zie GitHub Pages URL (Settings → Pages)
+- **Live site:** <https://dehanos78.github.io/festival-radar/>
 - **Toevoegen:** knop **+ Evenement** rechtsboven → verschijnt live voor iedereen
+- **Agenda (ICS):** abonneer op <https://dehanos78.github.io/festival-radar/festival-radar.ics>
+
+---
+
+## Agenda in je telefoon/laptop (ICS-abonnement)
+
+Er wordt een `festival-radar.ics` gegenereerd met alle festivals mét datum + losse
+kaartverkoop-meldingen. **Abonneer** je erop (niet importeren — dan blijft 'ie automatisch
+bijwerken):
+
+- **iPhone/iPad:** Instellingen → Agenda → Accounts → Voeg account toe → Andere →
+  Agenda-abonnement → plak de ICS-URL.
+- **macOS Agenda:** Archief → Nieuw agenda-abonnement → plak de URL → interval "elke dag".
+- **Google Calendar:** Andere agenda's → Via URL → plak de URL.
+
+De agenda ververst dagelijks. Als de scheduler een kaartverkoop-datum vindt, verschijnt er
+automatisch een **🎟️ Kaartverkoop start**-item met melding (1 dag + 1 uur ervoor).
+
+Handmatig opnieuw genereren:
+```bash
+python3 scripts/build_ics.py
+```
 
 ---
 
