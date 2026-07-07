@@ -254,13 +254,20 @@
   .lineup-more:hover{text-decoration:underline}
 
   /* ---------- reviews ---------- */
-  .reviews{margin-top:11px;font-size:13px;color:var(--muted);line-height:1.55}
-  .reviews .rv-head{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin-right:8px}
-  .reviews .rv-overall{color:var(--ink);font-weight:700}
-  .reviews .rv-dims{margin-top:3px;color:var(--ink)}
+  .reviews{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.5}
+  .reviews .rv-top{display:flex;align-items:baseline;gap:8px}
+  .reviews .rv-head{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
+  .reviews .rv-overall{color:var(--ink);font-weight:700;margin-left:auto}
+  .reviews .rv-dims{margin-top:3px;color:var(--muted)}
   .reviews .rv-dims .d{white-space:nowrap;margin-right:4px}
-  .reviews .rv-comment{color:var(--muted);margin-top:5px;padding-left:2px;border-left:2px solid var(--line);padding-left:9px}
-  .reviews .rv-comment b{color:var(--ink);font-weight:600}
+  .reviews .rv-people{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);display:grid;gap:8px}
+  .rv-person{font-size:12.5px;line-height:1.45}
+  .rv-person .who{font-weight:700;color:var(--ink);margin-right:8px}
+  .rv-person.me .who{color:#08301f;background:var(--go);border-radius:999px;padding:1px 9px}
+  .rv-person .sc{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap}
+  .rv-person .rvx{cursor:pointer;color:var(--faint);margin-left:7px;font-weight:700}
+  .rv-person .rvx:hover{color:var(--gone)}
+  .rv-person .rv-note{color:var(--muted);margin-top:2px}
   /* sterren in de review-modal */
   .stars{display:flex;gap:5px;font-size:26px;line-height:1}
   .stars span{color:var(--line-2);cursor:pointer;transition:color .12s ease}
@@ -872,7 +879,11 @@
   </div>
 
   <div id="view-top" class="view">
-    <p class="zdesc" style="margin-top:18px">Festivals gerangschikt op jullie reviews. Sorteer op totaal of op één onderdeel — zo zie je in één oogopslag wat werkt.</p>
+    <p class="zdesc" style="margin-top:18px">Festivals gerangschikt op reviews. Wissel tussen ieders gemiddelde en alléén jouw scores — smaak verschilt.</p>
+    <div class="chips" style="margin:0 0 12px">
+      <button class="chip active" data-scope="all" onclick="setTopScope('all',this)">Iedereen</button>
+      <button class="chip" data-scope="me" onclick="setTopScope('me',this)">Alleen ik</button>
+    </div>
     <div class="chips" style="margin:0 0 20px">
       <button class="chip active" data-sort="overall" onclick="setTopSort('overall',this)">Totaal</button>
       <button class="chip" data-sort="music" onclick="setTopSort('music',this)">🎵 Muziek</button>
@@ -1325,6 +1336,8 @@
       if (star){ const grp = star.closest(".stars"); setStar(grp.dataset.key, +star.dataset.v); return; }
       const rvb = e.target.closest(".rvbtn");
       if (rvb){ openReview(rvb.dataset.eid, rvb.dataset.name); return; }
+      const rvx = e.target.closest(".rvx");
+      if (rvx){ rvDelete(rvx.dataset.id); return; }
       const x = e.target.closest(".goer-x");
       if (x){ const chip = x.closest(".goer"); if (chip) rsvpRemove(chip.dataset.eid, chip.dataset.rid); return; }
       const btn = e.target.closest(".rsvp");
@@ -1333,7 +1346,8 @@
 
     // ---------- reviews (score per onderdeel) ----------
     let REVIEWS = {};
-    let reviewEid = null, reviewFest = null, topSort = "overall";
+    let reviewEid = null, reviewFest = null, topSort = "overall", topScope = "all";
+    const myReviews = new Set(JSON.parse(localStorage.getItem("fr_reviews") || "[]"));
     const reviewScores = { music: 0, sfeer: 0, publiek: 0, setting: 0 };
     const RV_DIMS = [["music", "🎵"], ["sfeer", "✨"], ["publiek", "👥"], ["setting", "📍"]];
 
@@ -1349,6 +1363,21 @@
       } catch (e){ console.warn("reviews niet geladen:", e); }
       paintReviews();
     }
+    async function rvDelete(id){
+      if (!CONFIGURED || !id) return;
+      if (!confirm("Je eigen review verwijderen?")) return;
+      try {
+        await deleteDoc(doc(db, "reviews", id));
+        myReviews.delete(id);
+        localStorage.setItem("fr_reviews", JSON.stringify([...myReviews]));
+        await loadReviews();
+      } catch (err){
+        console.error(err);
+        alert(err.code === "permission-denied"
+          ? "Verwijderen staat nog uit — voeg de 'reviews'-regels toe (zie README)."
+          : "Verwijderen mislukt: " + err.message);
+      }
+    }
     function avg(list, key){ return list.reduce((s, r) => s + (+r[key] || 0), 0) / list.length; }
     function paintReviews(){
       document.querySelectorAll(".reviews").forEach(box => {
@@ -1356,10 +1385,16 @@
         if (!list.length){ box.innerHTML = ""; return; }
         const overall = ["music", "sfeer", "publiek", "setting"].reduce((s, k) => s + avg(list, k), 0) / 4;
         const dims = RV_DIMS.map(([k, ic]) => `<span class="d">${ic} ${avg(list, k).toFixed(1)}</span>`).join(" · ");
-        const comments = list.filter(r => r.comment)
-          .map(r => `<div class="rv-comment"><b>${esc(r.name || "?")}</b>: ${esc(r.comment)}</div>`).join("");
-        box.innerHTML = `<span class="rv-head">Reviews (${list.length})</span><span class="rv-overall">★ ${overall.toFixed(1)}</span>`
-          + `<div class="rv-dims">${dims}</div>${comments}`;
+        const people = list.map(r => {
+          const mine = myReviews.has(r.id);
+          const sc = RV_DIMS.map(([k, ic]) => `${ic}${(+r[k] || 0)}`).join(" ");
+          const note = r.comment ? `<div class="rv-note">“${esc(r.comment)}”</div>` : "";
+          const x = mine ? ` <span class="rvx" data-id="${esc(r.id)}" title="Verwijder je review">×</span>` : "";
+          return `<div class="rv-person${mine ? " me" : ""}"><span class="who">${esc(r.name || "?")}</span><span class="sc">${sc}</span>${x}${note}</div>`;
+        }).join("");
+        box.innerHTML = `<div class="rv-top"><span class="rv-head">Reviews (${list.length})</span><span class="rv-overall">★ ${overall.toFixed(1)} gem.</span></div>`
+          + `<div class="rv-dims">${dims}</div>`
+          + `<div class="rv-people">${people}</div>`;
       });
       renderTop();
     }
@@ -1369,15 +1404,20 @@
     function renderTop(){
       const box = document.getElementById("top-list");
       if (!box) return;
-      const rows = Object.keys(REVIEWS).map(eid => {
-        const list = REVIEWS[eid];
+      const rows = [];
+      Object.keys(REVIEWS).forEach(eid => {
+        let list = REVIEWS[eid];
+        if (topScope === "me") list = list.filter(r => myReviews.has(r.id));
+        if (!list.length) return;
         const dims = { music: avg(list, "music"), sfeer: avg(list, "sfeer"), publiek: avg(list, "publiek"), setting: avg(list, "setting") };
         const overall = (dims.music + dims.sfeer + dims.publiek + dims.setting) / 4;
-        const name = (list.find(r => r.fest) || {}).fest || eid;
-        return { eid, name, dims, overall, count: list.length, zone: (FESTBY[eid] || {}).zone };
+        const name = (list.find(r => r.fest) || REVIEWS[eid].find(r => r.fest) || {}).fest || eid;
+        rows.push({ eid, name, dims, overall, count: list.length, zone: (FESTBY[eid] || {}).zone });
       });
       if (!rows.length){
-        box.innerHTML = `<p class="top-empty">Nog geen reviews. Scoor een festival via <b>★ Review</b> op het Overzicht — dan verschijnt hier de ranglijst.</p>`;
+        box.innerHTML = `<p class="top-empty">${topScope === "me"
+          ? "Je hebt zelf nog geen reviews geplaatst. Scoor een festival via <b>★ Review</b> op het Overzicht."
+          : "Nog geen reviews. Scoor een festival via <b>★ Review</b> op het Overzicht — dan verschijnt hier de ranglijst."}</p>`;
         return;
       }
       rows.sort((a, b) => (topSort === "overall" ? b.overall - a.overall : b.dims[topSort] - a.dims[topSort]));
@@ -1386,11 +1426,12 @@
         const color = ZC_MAP[r.zone] || "var(--go)";
         const rank = ["🥇", "🥈", "🥉"][i] || (i + 1);
         const dims = RV_DIMS.map(([k, ic]) => `<span class="d">${ic} ${r.dims[k].toFixed(1)}</span>`).join(" · ");
+        const cnt = topScope === "me" ? "jouw score" : `${r.count} review${r.count === 1 ? "" : "s"}`;
         return `<div class="toprow">
           <div class="toprank">${rank}</div>
           <div class="topbody">
             <div class="topname"><span class="tdot" style="background:${color}"></span>${esc(r.name)}</div>
-            <div class="topdims">${dims} · <span class="topcount">${r.count} review${r.count === 1 ? "" : "s"}</span></div>
+            <div class="topdims">${dims} · <span class="topcount">${cnt}</span></div>
             <div class="topbar"><span style="width:${(score / 5 * 100).toFixed(0)}%;background:${color}"></span></div>
           </div>
           <div class="topscore">★ ${score.toFixed(1)}</div>
@@ -1399,7 +1440,12 @@
     }
     window.setTopSort = function(key, btn){
       topSort = key;
-      document.querySelectorAll('#view-top .chip').forEach(c => c.classList.toggle("active", c === btn));
+      document.querySelectorAll('#view-top .chip[data-sort]').forEach(c => c.classList.toggle("active", c === btn));
+      renderTop();
+    };
+    window.setTopScope = function(key, btn){
+      topScope = key;
+      document.querySelectorAll('#view-top .chip[data-scope]').forEach(c => c.classList.toggle("active", c === btn));
       renderTop();
     };
 
@@ -1442,7 +1488,9 @@
         publiek: reviewScores.publiek, setting: reviewScores.setting,
         comment: document.getElementById("rv-comment").value.trim(),
         createdAt: serverTimestamp()
-      }).then(() => {
+      }).then((ref) => {
+        myReviews.add(ref.id);
+        localStorage.setItem("fr_reviews", JSON.stringify([...myReviews]));
         msg.textContent = "✓ Bedankt voor je review!"; msg.classList.add("ok");
         setTimeout(() => { closeReview(); loadReviews(); }, 800);
       }).catch(err => {
