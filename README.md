@@ -45,8 +45,15 @@ bijwerken):
 - **macOS Agenda:** Archief → Nieuw agenda-abonnement → plak de URL → interval "elke dag".
 - **Google Calendar:** Andere agenda's → Via URL → plak de URL.
 
-De agenda ververst dagelijks. Als de scheduler een kaartverkoop-datum vindt, verschijnt er
-automatisch een **🎟️ Kaartverkoop start**-item met melding (1 dag + 1 uur ervoor).
+In de **Kalender-tab** staan knoppen: **🔔 Abonneer** (auto-update, Apple/Google) en
+**⬇ Download .ics** (eenmalig importeren — handig voor Windows Agenda / Outlook). Deelbaar
+met vrienden.
+
+**Automatische sync:** een GitHub Action (`.github/workflows/build-ics.yml`) regenereert
+`festival-radar.ics` elke 6 uur én bij elke wijziging aan `data/festivals.json`, uit de
+curated lijst + de live Firestore-events. Zo blijft de agenda vanzelf actueel; nieuw
+toegevoegde community-events verschijnen automatisch. Als de scheduler een kaartverkoop-datum
+vindt, komt er een **🎟️ Kaartverkoop start**-item met melding (1 dag + 1 uur ervoor).
 
 Handmatig opnieuw genereren:
 ```bash

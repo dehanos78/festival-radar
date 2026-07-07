@@ -1,0 +1,42 @@
+name: Sync festival-radar.ics
+
+# Genereert festival-radar.ics opnieuw uit data/festivals.json + de live Firestore-events
+# en commit 'm als er iets veranderd is. Zo blijft de abonneerbare agenda vanzelf actueel.
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'        # elke 6 uur (pikt nieuw toegevoegde community-events op)
+  push:
+    paths:
+      - 'data/festivals.json'
+      - 'scripts/build_ics.py'
+  workflow_dispatch:              # handmatig te starten via de Actions-tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-ics
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Genereer ICS
+        run: python3 scripts/build_ics.py
+      - name: Commit als er iets veranderd is
+        run: |
+          if [ -n "$(git status --porcelain festival-radar.ics)" ]; then
+            git config user.name "festival-radar-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add festival-radar.ics
+            git commit -m "Auto-sync agenda (ICS) [skip ci]"
+            git push
+          else
+            echo "Geen wijziging in de agenda."
+          fi
