@@ -265,6 +265,12 @@
   .lineup-more{color:var(--near);font-weight:600;text-decoration:none;white-space:nowrap;font-style:normal}
   .lineup-more:hover{text-decoration:underline}
 
+  /* ---------- mini-agenda (losse feesten van een venue) ---------- */
+  .subevents{margin-top:11px;font-size:13px;color:var(--ink);line-height:1.6}
+  .subev{padding-left:2px}
+  .subev .mono{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);display:inline-block;width:52px}
+  .subev-note{color:var(--gone);font-size:12px}
+
   /* ---------- resale-info (TicketSwap e.d.) ---------- */
   .resale-line{margin-top:9px;font-size:13px;color:var(--ink);line-height:1.5}
   .resale-line .lineup-tag{margin-right:7px}
@@ -1386,6 +1392,21 @@
           const checked = f.resale.checked ? ` <span class="rs-checked">(check ${esc(fmtDate(f.resale.checked) || f.resale.checked)})</span>` : "";
           rs.innerHTML = `<span class="lineup-tag">🎟️ Resale</span>${parts.join(" · ")}${link}${checked}`;
           card.appendChild(rs);
+        }
+
+        // losse feesten van een venue (bv. Woodstock69) — mini-agenda op de kaart
+        if (f && f.subEvents && f.subEvents.length){
+          const today = new Date().toISOString().slice(0, 10);
+          const upcoming = f.subEvents.filter(s => s.date && s.date >= today)
+            .sort((a, b) => a.date < b.date ? -1 : 1).slice(0, 6);
+          if (upcoming.length){
+            const ag = document.createElement("div");
+            ag.className = "subevents";
+            ag.innerHTML = `<span class="lineup-tag">📅 Agenda</span>` + upcoming.map(s =>
+              `<div class="subev"><span class="mono">${esc(fmtDate(s.date))}</span> ${esc(s.name)}${s.note ? ` <span class="subev-note">· ${esc(s.note)}</span>` : ""}</div>`
+            ).join("");
+            card.appendChild(ag);
+          }
         }
 
         // parkeerinfo (geverifieerd; scheduler vult aan)

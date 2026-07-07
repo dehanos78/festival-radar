@@ -476,7 +476,34 @@
       "lineup": [],
       "lineupUrl": "https://woodstock69.nl/events/",
       "url": "https://woodstock69.nl",
-      "parking": ""
+      "parking": "",
+      "subEvents": [
+        {
+          "name": "Hernan Cattaneo b2b Patrice Bäumel",
+          "date": "2026-07-11",
+          "note": ""
+        },
+        {
+          "name": "Hernan Cattaneo at the beach",
+          "date": "2026-07-12",
+          "note": ""
+        },
+        {
+          "name": "Benwal (All Day Long)",
+          "date": "2026-07-19",
+          "note": ""
+        },
+        {
+          "name": "Chris Stussy at the beach",
+          "date": "2026-08-02",
+          "note": "uitverkocht · resale via TicketSwap"
+        },
+        {
+          "name": "Brighter Days: Palms Trax, Kamma & Masalo, Eileen",
+          "date": "2026-08-30",
+          "note": ""
+        }
+      ]
     }
   ]
 }

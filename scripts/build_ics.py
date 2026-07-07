@@ -170,6 +170,22 @@ def build():
             )
             n_fest += 1
 
+        # losse feesten van een venue (bv. Woodstock69) — elk een eigen agenda-item
+        for i, sub in enumerate(ev.get("subEvents") or []):
+            sdate = d(sub.get("date"))
+            if not sdate:
+                continue
+            sub_desc = " — ".join(p for p in [
+                ev.get("where"), sub.get("note"), ev.get("url")] if p)
+            body += vevent(
+                f"{ev['id']}-sub{i}-{sdate:%Y%m%d}",
+                sdate,
+                sdate + timedelta(days=1),
+                f"♪ {ev['name']} · {sub.get('name', '')}",
+                sub_desc,
+            )
+            n_fest += 1
+
         # kaartverkoop-event (met melding) zodra bekend
         sale = d(ev.get("ticketSaleStart"))
         if sale:

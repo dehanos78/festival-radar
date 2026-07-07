@@ -152,4 +152,46 @@ DESCRIPTION:Suikerunie-terrein\, Groningen — Reistijd ~1u15 — Status:
  · ticketstatus checken via paradigmfestival.com. — https://www.paradig
  mfestival.com
 END:VEVENT
+BEGIN:VEVENT
+UID:woodstock69-sub0-20260711@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260711
+DTEND;VALUE=DATE:20260712
+SUMMARY:♪ Woodstock69 · Hernan Cattaneo b2b Patrice Bäumel
+DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
+END:VEVENT
+BEGIN:VEVENT
+UID:woodstock69-sub1-20260712@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260712
+DTEND;VALUE=DATE:20260713
+SUMMARY:♪ Woodstock69 · Hernan Cattaneo at the beach
+DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
+END:VEVENT
+BEGIN:VEVENT
+UID:woodstock69-sub2-20260719@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260719
+DTEND;VALUE=DATE:20260720
+SUMMARY:♪ Woodstock69 · Benwal (All Day Long)
+DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
+END:VEVENT
+BEGIN:VEVENT
+UID:woodstock69-sub3-20260802@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260802
+DTEND;VALUE=DATE:20260803
+SUMMARY:♪ Woodstock69 · Chris Stussy at the beach
+DESCRIPTION:strand Bloemendaal aan Zee — uitverkocht · resale via Ticke
+ tSwap — https://woodstock69.nl
+END:VEVENT
+BEGIN:VEVENT
+UID:woodstock69-sub4-20260830@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+SUMMARY:♪ Woodstock69 · Brighter Days: Palms Trax\, Kamma & Masalo\, Ei
+ leen
+DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
+END:VEVENT
 END:VCALENDAR
