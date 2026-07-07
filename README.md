@@ -59,13 +59,17 @@ service cloud.firestore {
       allow create: if request.resource.data.name is string
                     && request.resource.data.name.size() > 0
                     && request.resource.data.name.size() < 100;
-      allow update, delete: if false;
+      allow delete: if true;
+      allow update: if false;
     }
   }
 }
 ```
 
-> Verwijderen/bewerken kan altijd handmatig via de Firestore-console (tab **Data**).
+> `allow delete: if true;` zet de **verwijder-knop** op elke community-kaart aan (iedereen
+> mag events weghalen — trust-based, prima voor vrienden). Wil je dat alleen jij kunt
+> wissen, zet 'm op `if false;` en verwijder events via de Firestore-console (tab **Data**).
+> Bewerken blijft altijd uit.
 
 ### 4. Web-app registreren en config kopiëren
 1. **Project settings** (tandwiel linksboven) → tab **General** → onderaan **Your apps**.

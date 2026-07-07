@@ -174,7 +174,14 @@
   /* ---------- community zone status ---------- */
   .cstatus{font-size:13px;color:var(--faint);padding:14px 0;font-family:"Space Mono",monospace}
   .cstatus.err{color:var(--gone)}
-  .card .byline{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--faint);margin-top:10px}
+  .card .cfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:11px}
+  .card .byline{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--faint)}
+  .delbtn{
+    font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--faint);background:transparent;border:1px solid var(--line);border-radius:6px;
+    padding:4px 9px;cursor:pointer;transition:all .15s ease;flex:none;
+  }
+  .delbtn:hover{color:var(--gone);border-color:var(--gone)}
 
   /* ---------- modal ---------- */
   .overlay{
@@ -812,7 +819,7 @@
        ============================================================ -->
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js';
-    import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp }
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, serverTimestamp }
       from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
 
     const firebaseConfig = {
@@ -863,12 +870,13 @@
       if (ev.where)   rows.push(`<div class="row"><span class="k">Waar</span><span class="v">${esc(ev.where)}</span></div>`);
       if (ev.when || ev.date) rows.push(`<div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">${esc(ev.when || fmtDate(ev.date))}</span></span></div>`);
       if (ev.tickets) rows.push(`<div class="row"><span class="k">Tickets</span><span class="v">${esc(ev.tickets)}</span></div>`);
-      const by = ev.by ? `<div class="byline">— getipt door ${esc(ev.by)}</div>` : "";
+      const byline = ev.by ? `<span class="byline">— getipt door ${esc(ev.by)}</span>` : `<span></span>`;
+      const del = ev.id ? `<button class="delbtn" data-id="${esc(ev.id)}" data-name="${esc(ev.name)}" title="Verwijderen">verwijderen</button>` : "";
       return `<article class="card" style="--zc:${zone.css}">
         <div class="ctop"><span class="name">${esc(ev.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
-        ${by}
+        <div class="cfoot">${byline}${del}</div>
       </article>`;
     }
 
@@ -913,7 +921,7 @@
       try {
         const q = query(collection(db, "events"), orderBy("createdAt", "desc"));
         const snap = await getDocs(q);
-        const events = snap.docs.map(d => d.data());
+        const events = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
         if (!events.length){
           status.style.display = "";
           status.textContent = "Nog geen tips — voeg als eerste een evenement toe.";
@@ -985,6 +993,26 @@
         .finally(()=>{ btn.disabled = false; });
       return false;
     };
+
+    // ---------- verwijderen ----------
+    window.deleteEvent = function(id, name){
+      if (!CONFIGURED || !id) return;
+      if (!confirm(`"${name}" verwijderen?\n\nDit haalt het evenement voor iedereen weg en kan niet ongedaan gemaakt worden.`)) return;
+      deleteDoc(doc(db, "events", id))
+        .then(() => loadEvents())
+        .catch(err => {
+          console.error(err);
+          if (err.code === "permission-denied"){
+            alert("Verwijderen staat nog uit in Firestore.\n\nZet in de Firestore-rules 'allow delete: if true;' aan (zie README).");
+          } else {
+            alert("Verwijderen mislukt: " + err.message);
+          }
+        });
+    };
+    document.getElementById("community-grid").addEventListener("click", function(e){
+      const btn = e.target.closest(".delbtn");
+      if (btn) window.deleteEvent(btn.dataset.id, btn.dataset.name);
+    });
 
     loadEvents();
   </script>
