@@ -141,4 +141,15 @@ DESCRIPTION:Boomland\, Idanha-a-Nova (PT) — Reistijd vlucht Lissabon + ~
  ing okt 2025\, in uren uitverkocht · alleen officiële resale via boomfe
  stival.org. — https://www.boomfestival.org
 END:VEVENT
+BEGIN:VEVENT
+UID:paradigm-festival@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260808
+DTEND;VALUE=DATE:20260810
+SUMMARY:♪ Paradigm Festival · Voor de deur
+DESCRIPTION:Suikerunie-terrein\, Groningen — Reistijd ~1u15 — Status: 
+ in de gaten — 65+ artiesten\, 9 stages op het oude Suikerunie-terrein 
+ · ticketstatus checken via paradigmfestival.com. — https://www.paradig
+ mfestival.com
+END:VEVENT
 END:VCALENDAR

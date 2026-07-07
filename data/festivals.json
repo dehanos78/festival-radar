@@ -428,6 +428,55 @@
       "lineupUrl": "",
       "url": "",
       "parking": ""
+    },
+    {
+      "id": "paradigm-festival",
+      "name": "Paradigm Festival",
+      "zone": "near",
+      "status": "watch",
+      "where": "Suikerunie-terrein, Groningen",
+      "travel": "~1u15",
+      "lat": 53.211,
+      "lng": 6.534,
+      "start": "2026-08-08",
+      "end": "2026-08-09",
+      "when": "8–9 aug 2026 · za 13:00 → zo 23:00",
+      "tickets": "65+ artiesten, 9 stages op het oude Suikerunie-terrein · ticketstatus checken via paradigmfestival.com.",
+      "ticketSaleStart": null,
+      "tags": [
+        "underground",
+        "industrieel",
+        "kunst"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://www.paradigmfestival.com",
+      "parking": ""
+    },
+    {
+      "id": "woodstock69",
+      "name": "Woodstock69",
+      "zone": "near",
+      "status": "watch",
+      "where": "strand Bloemendaal aan Zee",
+      "travel": "~1u25",
+      "lat": 52.404,
+      "lng": 4.583,
+      "start": null,
+      "end": null,
+      "when": "hele zomer · wekelijkse strandfeesten",
+      "tickets": "Iconisch strandpaviljoen (~1500) · o.a. Benwal all-day (19 jul), Chris Stussy, Palms Trax · programma via woodstock69.nl/events.",
+      "ticketSaleStart": null,
+      "tags": [
+        "house",
+        "strand",
+        "beachclub",
+        "zonsondergang"
+      ],
+      "lineup": [],
+      "lineupUrl": "https://woodstock69.nl/events/",
+      "url": "https://woodstock69.nl",
+      "parking": ""
     }
   ]
 }
