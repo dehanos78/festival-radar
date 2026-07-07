@@ -245,6 +245,13 @@
   .goer-x{cursor:pointer;font-weight:700;opacity:.65;font-size:14px;line-height:1}
   .goer-x:hover{opacity:1}
 
+  /* ---------- line-up (wie speelt er) ---------- */
+  .lineup-line{margin-top:11px;font-size:13px;color:var(--ink);line-height:1.5}
+  .lineup-line.unknown{color:var(--faint);font-style:italic}
+  .lineup-tag{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.05em;color:var(--faint);text-transform:uppercase;margin-right:7px;font-style:normal}
+  .lineup-more{color:var(--near);font-weight:600;text-decoration:none;white-space:nowrap;font-style:normal}
+  .lineup-more:hover{text-decoration:underline}
+
   /* ---------- map ---------- */
   #map{height:520px;border:1px solid var(--line);border-radius:18px;background:var(--surface);margin-top:4px}
   .map-note{color:var(--faint);font-size:13px;margin-top:12px}
@@ -1133,14 +1140,15 @@
         if (!nameEl) return;
         const sl = slug(nameEl.textContent);
         const f = FESTBY[sl];
-        const hasLineup = f && f.lineup && f.lineup.length;
-        const listenQ = encodeURIComponent(hasLineup ? f.lineup.join(" ") : nameEl.textContent.trim());
+        const lineup = (f && f.lineup) || [];
+        const hasLineup = lineup.length > 0;
+        const listenQ = encodeURIComponent(hasLineup ? lineup.join(" ") : nameEl.textContent.trim());
         const parts = [];
         if (f && f.url){
           parts.push(`<a class="weblink" href="${f.url}" target="_blank" rel="noopener">↗ Website</a>`);
         }
         if (hasLineup){
-          parts.push(`<a class="splink" href="https://open.spotify.com/search/${listenQ}" target="_blank" rel="noopener">♫ Lineup</a>`);
+          parts.push(`<a class="splink" href="https://open.spotify.com/search/${listenQ}" target="_blank" rel="noopener">♫ Spotify</a>`);
         }
         parts.push(`<a class="sclink" href="https://soundcloud.com/search?q=${listenQ}" target="_blank" rel="noopener">☁ Live sets</a>`);
         parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga</button>`);
@@ -1148,6 +1156,19 @@
         div.className = "cactions";
         div.innerHTML = parts.join("");
         card.appendChild(div);
+
+        // line-up (wie speelt er) — toon namen als bekend, anders "nog niet bekend"
+        const ll = document.createElement("div");
+        if (hasLineup){
+          ll.className = "lineup-line";
+          const more = (f && f.lineupUrl) ? ` <a href="${f.lineupUrl}" target="_blank" rel="noopener" class="lineup-more">volledige line-up →</a>` : "";
+          ll.innerHTML = `<span class="lineup-tag">🎤 Line-up</span> ${lineup.map(esc).join(" · ")}${more}`;
+        } else {
+          ll.className = "lineup-line unknown";
+          ll.innerHTML = `<span class="lineup-tag">🎤 Line-up</span> nog niet bekend`;
+        }
+        card.appendChild(ll);
+
         const goers = document.createElement("div");
         goers.className = "goers";
         goers.dataset.eid = sl;

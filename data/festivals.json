@@ -17,6 +17,7 @@
       "ticketSaleStart": null,
       "tags": ["eigenwijs", "techno"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://wildeburg.nl"
     },
     {
@@ -34,6 +35,7 @@
       "ticketSaleStart": null,
       "tags": ["melodic house", "techno", "18+"],
       "lineup": ["Mees Salomé", "Kerri Chandler", "Dennis Quin"],
+      "lineupUrl": "",
       "url": "https://thuishaven.nl"
     },
     {
@@ -51,6 +53,7 @@
       "ticketSaleStart": null,
       "tags": ["techno", "house", "disco"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://geheimeliefde.nl"
     },
     {
@@ -68,6 +71,7 @@
       "ticketSaleStart": null,
       "tags": ["house", "weekender", "park", "18+"],
       "lineup": ["Franky Rizardo", "Toman", "Prunk", "Chelina Manuhutu"],
+      "lineupUrl": "",
       "url": "https://listentoflow.com"
     },
     {
@@ -85,6 +89,7 @@
       "ticketSaleStart": null,
       "tags": ["techno", "kunst"],
       "lineup": ["Sterac", "Sandrien", "Mama Snake", "Pariah", "upsammy", "Joep Beving"],
+      "lineupUrl": "",
       "url": "https://nachtparlement.nl"
     },
     {
@@ -102,6 +107,7 @@
       "ticketSaleStart": null,
       "tags": ["techno", "house", "disco"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://www.lieffestival.nl"
     },
     {
@@ -119,6 +125,7 @@
       "ticketSaleStart": null,
       "tags": ["psy/organic", "strand", "yoga"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://www.nataraj.info"
     },
     {
@@ -136,6 +143,7 @@
       "ticketSaleStart": null,
       "tags": ["melodic techno", "bos/kunst"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://www.draaimolen.nu"
     },
     {
@@ -153,6 +161,7 @@
       "ticketSaleStart": null,
       "tags": ["sprookjesbos", "electronic"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://intothewoods.nl"
     },
     {
@@ -170,6 +179,7 @@
       "ticketSaleStart": null,
       "tags": ["psytrance", "goa"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://antaris-project.de"
     },
     {
@@ -187,6 +197,7 @@
       "ticketSaleStart": null,
       "tags": ["psytrance", "goa"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://www.voov-festival.de"
     },
     {
@@ -204,6 +215,7 @@
       "ticketSaleStart": null,
       "tags": ["psytrance", "7 dagen"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://ozorafestival.eu"
     },
     {
@@ -221,6 +233,7 @@
       "ticketSaleStart": null,
       "tags": ["underground psy", "natuur"],
       "lineup": [],
+      "lineupUrl": "",
       "url": "https://modemfestival.com"
     },
     {
@@ -238,6 +251,7 @@
       "ticketSaleStart": null,
       "tags": ["progressive", "psy-chill", "forest"],
       "lineup": [],
+      "lineupUrl": "",
       "url": ""
     }
   ]
