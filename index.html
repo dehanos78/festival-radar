@@ -4,9 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Festival Radar — Vik's shortlist</title>
+<meta name="description" content="Vik's shortlist van intieme & underground festivals — met live ticket-tracking en gedeelde tips van vrienden.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Festival Radar — Vik's shortlist">
+<meta property="og:description" content="Intieme & underground festivals, gesorteerd op hoe ver rijden. Live ticket-tracking + tips toevoegen.">
+<meta property="og:url" content="https://dehanos78.github.io/festival-radar/">
+<meta property="og:image" content="https://dehanos78.github.io/festival-radar/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Festival Radar — Vik's shortlist">
+<meta name="twitter:description" content="Intieme & underground festivals, gesorteerd op hoe ver rijden. Live ticket-tracking + tips toevoegen.">
+<meta name="twitter:image" content="https://dehanos78.github.io/festival-radar/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
   :root{
     --bg:#15101f;
@@ -14,9 +27,9 @@
     --surface:#221a33;
     --surface-2:#2a2040;
     --line:#372b52;
-    --ink:#f3eef9;
-    --muted:#a193bf;
-    --faint:#766a92;
+    --ink:#f5f1fb;
+    --muted:#bcafd8;
+    --faint:#948ab0;
     /* zone accents — kleur = functie */
     --near:#5fd3c4;      /* voor de deur */
     --road:#f0915e;      /* roadtrip */
@@ -36,9 +49,10 @@
       var(--bg);
     color:var(--ink);
     font-family:"DM Sans",system-ui,sans-serif;
-    line-height:1.5;
-    padding:22px 16px 64px;
-    max-width:760px;margin:0 auto;
+    font-size:15.5px;
+    line-height:1.58;
+    padding:26px 18px 72px;
+    max-width:720px;margin:0 auto;
     -webkit-font-smoothing:antialiased;
   }
 
@@ -55,7 +69,7 @@
     background:linear-gradient(96deg,#fff 10%,#cdb6ff 55%,#7fe6d8 100%);
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .lede{color:var(--muted);font-size:15px;max-width:54ch}
+  .lede{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:56ch}
   .lede b{color:var(--ink);font-weight:600}
 
   /* ---------- legend ---------- */
@@ -67,18 +81,18 @@
   .dot{width:9px;height:9px;border-radius:3px;flex:none}
 
   /* ---------- zone ---------- */
-  .zone{margin-top:34px}
+  .zone{margin-top:40px}
   .zhead{display:flex;align-items:baseline;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:16px}
   .znum{font-family:"Space Mono",monospace;font-size:12px;color:var(--zc);opacity:.8}
-  .ztitle{font-family:"Syne",sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
+  .ztitle{font-family:"Syne",sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em}
   .zmeta{font-family:"Space Mono",monospace;font-size:11px;color:var(--faint);margin-left:auto;text-align:right}
-  .zdesc{color:var(--muted);font-size:13.5px;margin:-6px 0 18px}
+  .zdesc{color:var(--muted);font-size:14px;line-height:1.55;margin:-4px 0 20px}
 
   /* ---------- card ---------- */
-  .grid{display:grid;gap:12px}
+  .grid{display:grid;gap:14px}
   .card{
     position:relative;background:linear-gradient(180deg,var(--surface) 0%,var(--bg-2) 100%);
-    border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px 18px;overflow:hidden;
+    border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px 20px;overflow:hidden;
     opacity:0;transform:translateY(8px);animation:rise .5s ease forwards;
   }
   @keyframes rise{to{opacity:1;transform:none}}
@@ -86,8 +100,8 @@
   .card.dim{opacity:.62}
   .card.dim::before{background:var(--past)}
 
-  .ctop{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
-  .name{font-family:"Syne",sans-serif;font-weight:700;font-size:18.5px;letter-spacing:-.01em;line-height:1.1}
+  .ctop{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px}
+  .name{font-family:"Syne",sans-serif;font-weight:700;font-size:19.5px;letter-spacing:-.01em;line-height:1.18}
   .badge{
     margin-left:auto;flex:none;font-family:"Space Mono",monospace;font-size:10.5px;font-weight:700;
     letter-spacing:.04em;text-transform:uppercase;padding:5px 9px;border-radius:8px;white-space:nowrap;
@@ -98,16 +112,16 @@
   .b-gone{color:#3a0014;background:var(--gone)}
   .b-past{color:var(--muted);background:transparent;border-color:var(--line)}
 
-  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-  .tag{font-size:11px;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+  .tag{font-size:11.5px;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:3px 9px}
   .tag.hot{color:#1a1027;background:var(--bucket);border-color:transparent;font-weight:600}
 
-  .rows{display:grid;gap:5px;font-size:13px}
-  .row{display:flex;gap:9px;align-items:flex-start}
-  .row .k{font-family:"Space Mono",monospace;font-size:11px;color:var(--faint);flex:none;width:74px;padding-top:1px;text-transform:uppercase;letter-spacing:.04em}
-  .row .v{color:var(--ink)}
-  .row .v .mono{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--muted)}
-  .note{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--muted)}
+  .rows{display:grid;gap:8px;font-size:14px}
+  .row{display:flex;gap:11px;align-items:flex-start}
+  .row .k{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--faint);flex:none;width:80px;padding-top:2px;text-transform:uppercase;letter-spacing:.03em}
+  .row .v{color:var(--ink);line-height:1.5}
+  .row .v .mono{font-family:"Space Mono",monospace;font-size:13px;color:var(--muted)}
+  .note{margin-top:13px;padding-top:11px;border-top:1px dashed var(--line);font-size:13px;line-height:1.55;color:var(--muted)}
   .note b{color:var(--zc);font-weight:600}
 
   footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint)}
@@ -218,6 +232,52 @@
   .fmsg{font-size:12.5px;margin-top:12px;color:var(--watch);min-height:16px}
   .fmsg.ok{color:var(--go)}
   .fmsg.err{color:var(--gone)}
+
+  /* ---------- filterbar ---------- */
+  .filterbar{margin:20px 0 8px}
+  .search{
+    width:100%;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    color:var(--ink);font-family:"DM Sans",sans-serif;font-size:15px;padding:12px 15px;margin-bottom:11px;
+  }
+  .search::placeholder{color:var(--faint)}
+  .search:focus{outline:none;border-color:var(--near)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .chip{
+    font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.02em;
+    color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:6px 13px;cursor:pointer;transition:all .15s ease;
+  }
+  .chip:hover{color:var(--ink);border-color:var(--faint)}
+  .chip.active{color:#15101f;font-weight:700;border-color:transparent;background:var(--ink)}
+  .chip-sep{width:1px;height:20px;background:var(--line);margin:0 3px}
+  .filter-empty{color:var(--muted);font-size:13.5px;padding:20px 2px}
+  .linklike{background:none;border:none;color:var(--near);font:inherit;cursor:pointer;text-decoration:underline;padding:0}
+  .card.hide,.zone.hide,.titem.hide{display:none}
+
+  /* ---------- spotify + rsvp op kaarten ---------- */
+  .cactions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:13px;padding-top:12px;border-top:1px dashed var(--line)}
+  .cactions .delbtn{margin-left:auto}
+  .splink,.rsvp{
+    display:inline-flex;align-items:center;gap:6px;font-family:"Space Mono",monospace;
+    font-size:11px;letter-spacing:.02em;border-radius:999px;padding:6px 12px;cursor:pointer;
+    border:1px solid var(--line);background:var(--surface);color:var(--muted);
+    transition:all .15s ease;text-decoration:none;
+  }
+  .splink:hover{color:#1db954;border-color:#1db954}
+  .rsvp:hover{color:var(--ink);border-color:var(--faint)}
+  .rsvp.mine{color:#0b2c20;background:var(--go);border-color:transparent;font-weight:700}
+  .rsvp .cnt{opacity:.85}
+  .rsvp-names{font-size:11px;color:var(--faint);margin-top:7px;font-family:"Space Mono",monospace}
+
+  /* ---------- map ---------- */
+  #map{height:460px;border:1px solid var(--line);border-radius:16px;background:var(--surface);margin-top:6px}
+  .map-note{color:var(--faint);font-size:12.5px;margin-top:10px}
+  .leaflet-popup-content-wrapper{background:var(--surface-2);color:var(--ink);border-radius:12px}
+  .leaflet-popup-tip{background:var(--surface-2)}
+  .leaflet-popup-content{font-family:"DM Sans",sans-serif;margin:12px 14px}
+  .leaflet-popup-content b{font-family:"Syne",sans-serif}
+  .leaflet-container{font-family:"DM Sans",sans-serif}
+  .mk{width:20px;height:20px;border-radius:50%;border:2.5px solid #15101f;box-shadow:0 1px 6px rgba(0,0,0,.5)}
 </style>
 </head>
 <body>
@@ -230,11 +290,27 @@
     <div class="tabs">
       <button class="tab active" data-view="list" onclick="switchView('list')">Overzicht</button>
       <button class="tab" data-view="calendar" onclick="switchView('calendar')">Kalender</button>
+      <button class="tab" data-view="map" onclick="switchView('map')">Kaart</button>
       <button class="addbtn" onclick="openModal()">+ Evenement</button>
     </div>
   </header>
 
   <div id="view-list" class="view active">
+
+    <div class="filterbar">
+      <input id="search" class="search" type="search" placeholder="Zoek op naam, plaats of genre…" autocomplete="off" oninput="applyFilter()">
+      <div class="chips">
+        <button class="chip active" data-kind="zone" data-val="all" onclick="setZone('all',this)">Alle zones</button>
+        <button class="chip" data-kind="zone" data-val="near" onclick="setZone('near',this)">Voor de deur</button>
+        <button class="chip" data-kind="zone" data-val="road" onclick="setZone('road',this)">Roadtrip</button>
+        <button class="chip" data-kind="zone" data-val="bucket" onclick="setZone('bucket',this)">Bucketlist</button>
+        <span class="chip-sep"></span>
+        <button class="chip" data-kind="status" data-val="go" onclick="toggleStatus('go',this)">Te scoren</button>
+        <button class="chip" data-kind="status" data-val="watch" onclick="toggleStatus('watch',this)">In gaten</button>
+        <button class="chip" data-kind="status" data-val="gone" onclick="toggleStatus('gone',this)">Resale</button>
+      </div>
+    </div>
+    <div id="filterEmpty" class="filter-empty" hidden>Niks gevonden — <button class="linklike" onclick="clearFilters()">reset filters</button></div>
 
     <div class="legend">
       <span class="lg"><span class="dot" style="background:var(--go)"></span>actie / binnenkort</span>
@@ -244,7 +320,7 @@
     </div>
 
   <!-- ZONE 1 -->
-  <section class="zone" style="--zc:var(--near)">
+  <section class="zone" data-zone="near" style="--zc:var(--near)">
     <div class="zhead">
       <span class="znum">01</span>
       <span class="ztitle">Binnenkort voor de deur</span>
@@ -428,7 +504,7 @@
   </section>
 
   <!-- ZONE 2 -->
-  <section class="zone" style="--zc:var(--road)">
+  <section class="zone" data-zone="road" style="--zc:var(--road)">
     <div class="zhead">
       <span class="znum">02</span>
       <span class="ztitle">Roadtrip</span>
@@ -463,7 +539,7 @@
   </section>
 
   <!-- ZONE 3 -->
-  <section class="zone single" style="--zc:var(--bucket)">
+  <section class="zone single" data-zone="bucket" style="--zc:var(--bucket)">
     <div class="zhead">
       <span class="znum">03</span>
       <span class="ztitle">Bucketlist</span>
@@ -509,7 +585,7 @@
   </section>
 
   <!-- ZONE 4 — community / toegevoegd door vrienden -->
-  <section class="zone" style="--zc:var(--go)">
+  <section class="zone" data-zone="community" style="--zc:var(--go)">
     <div class="zhead">
       <span class="znum">04</span>
       <span class="ztitle">Toegevoegd door vrienden</span>
@@ -746,6 +822,16 @@
 
   </div>
 
+  <div id="view-map" class="view">
+    <div class="zlegend">
+      <span class="lg"><span class="dot" style="background:var(--near)"></span>voor de deur</span>
+      <span class="lg"><span class="dot" style="background:var(--road)"></span>roadtrip</span>
+      <span class="lg"><span class="dot" style="background:var(--bucket)"></span>bucketlist</span>
+    </div>
+    <div id="map"></div>
+    <p class="map-note">Locaties bij benadering — klik een stip voor naam, datum en reisafstand.</p>
+  </div>
+
   <!-- ADD-EVENT MODAL -->
   <div id="overlay" class="overlay" onclick="if(event.target===this)closeModal()">
     <div class="modal">
@@ -812,6 +898,8 @@
     <b>Hoe ik dit inzet:</b> deze lijst is de bron. Per festival check ik wanneer de verkoop opent en geef ik je een seintje vóór de drukte — extra scherp op de "voor de deur"-kleintjes die in januari al weg zijn. Zeg welke je sowieso wilt en ik zet die op scherp.
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <!-- ============================================================
        FIREBASE CONFIG — plak hier je eigen config uit de Firebase
        console (Project settings → Your apps → SDK setup, "Config").
@@ -870,13 +958,15 @@
       if (ev.where)   rows.push(`<div class="row"><span class="k">Waar</span><span class="v">${esc(ev.where)}</span></div>`);
       if (ev.when || ev.date) rows.push(`<div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">${esc(ev.when || fmtDate(ev.date))}</span></span></div>`);
       if (ev.tickets) rows.push(`<div class="row"><span class="k">Tickets</span><span class="v">${esc(ev.tickets)}</span></div>`);
-      const byline = ev.by ? `<span class="byline">— getipt door ${esc(ev.by)}</span>` : `<span></span>`;
+      const byline = ev.by ? `<div class="rsvp-names">— getipt door ${esc(ev.by)}</div>` : "";
       const del = ev.id ? `<button class="delbtn" data-id="${esc(ev.id)}" data-name="${esc(ev.name)}" title="Verwijderen">verwijderen</button>` : "";
+      const eid = slug(ev.name);
       return `<article class="card" style="--zc:${zone.css}">
         <div class="ctop"><span class="name">${esc(ev.name)}</span><span class="badge ${st.cls}">${st.label}</span></div>
         ${tags ? `<div class="tags">${tags}</div>` : ""}
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
-        <div class="cfoot">${byline}${del}</div>
+        ${byline}
+        <div class="cactions"><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga <span class="cnt"></span></button>${del}</div>
       </article>`;
     }
 
@@ -932,6 +1022,8 @@
         status.style.display = "none";
         grid.innerHTML = events.map(cardHTML).join("");
         renderCalendarCommunity(events);
+        doFilter();
+        paintRsvps();
       } catch (err){
         console.error(err);
         status.textContent = "Kon evenementen niet laden: " + err.message;
@@ -1014,7 +1106,177 @@
       if (btn) window.deleteEvent(btn.dataset.id, btn.dataset.name);
     });
 
-    loadEvents();
+    // ---------- slug ----------
+    function slug(s){
+      return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    }
+
+    // ---------- festivals.json (voor kaart + Spotify-lineups) ----------
+    let FEST = [], FESTBY = {};
+    async function loadFest(){
+      try {
+        const r = await fetch("data/festivals.json", { cache: "no-store" });
+        const j = await r.json();
+        FEST = j.festivals || [];
+        FEST.forEach(f => { FESTBY[slug(f.name)] = f; });
+      } catch (e){ console.warn("festivals.json niet geladen:", e); }
+    }
+    function enhanceCurated(){
+      document.querySelectorAll("#view-list .card").forEach(card => {
+        if (card.querySelector(".cactions")) return;           // community-kaarten hebben er al één
+        const nameEl = card.querySelector(".name");
+        if (!nameEl) return;
+        const sl = slug(nameEl.textContent);
+        const f = FESTBY[sl];
+        const parts = [];
+        if (f && f.lineup && f.lineup.length){
+          const q = encodeURIComponent(f.lineup.join(" "));
+          parts.push(`<a class="splink" href="https://open.spotify.com/search/${q}" target="_blank" rel="noopener">♫ Lineup</a>`);
+        }
+        parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga <span class="cnt"></span></button>`);
+        const div = document.createElement("div");
+        div.className = "cactions";
+        div.innerHTML = parts.join("");
+        card.appendChild(div);
+      });
+    }
+
+    // ---------- RSVP ("wie gaat er?") ----------
+    let RSVP = {};
+    const myRsvps = JSON.parse(localStorage.getItem("fr_rsvps") || "{}");
+    let myName = localStorage.getItem("fr_name") || "";
+    async function loadRsvps(){
+      if (!CONFIGURED) return;
+      try {
+        const snap = await getDocs(collection(db, "rsvps"));
+        RSVP = {};
+        snap.docs.forEach(d => {
+          const x = d.data(); const e = x.eid || "";
+          (RSVP[e] = RSVP[e] || []).push({ id: d.id, name: x.name || "?" });
+        });
+      } catch (e){ console.warn("rsvps niet geladen:", e); }
+      paintRsvps();
+    }
+    function paintRsvps(){
+      document.querySelectorAll(".rsvp").forEach(btn => {
+        const list = RSVP[btn.dataset.eid] || [];
+        const cnt = btn.querySelector(".cnt");
+        if (cnt) cnt.textContent = list.length ? `· ${list.length}` : "";
+        btn.classList.toggle("mine", !!myRsvps[btn.dataset.eid]);
+        btn.title = list.length ? list.map(r => r.name).join(", ") : "Wees de eerste!";
+      });
+    }
+    document.addEventListener("click", async function(e){
+      const btn = e.target.closest(".rsvp");
+      if (!btn) return;
+      const eid = btn.dataset.eid;
+      if (!CONFIGURED){ alert("Database nog niet gekoppeld."); return; }
+      btn.disabled = true;
+      try {
+        if (myRsvps[eid]){
+          await deleteDoc(doc(db, "rsvps", myRsvps[eid]));
+          delete myRsvps[eid];
+          localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
+        } else {
+          if (!myName){
+            myName = (prompt("Je naam (verschijnt bij 'ik ga'):") || "").trim();
+            if (!myName){ btn.disabled = false; return; }
+            localStorage.setItem("fr_name", myName);
+          }
+          const ref = await addDoc(collection(db, "rsvps"), { eid, name: myName, createdAt: serverTimestamp() });
+          myRsvps[eid] = ref.id;
+          localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
+        }
+        await loadRsvps();
+      } catch (err){
+        console.error(err);
+        if (err.code === "permission-denied"){
+          alert("RSVP staat nog uit in Firestore.\n\nVoeg de 'rsvps'-regels toe (zie README).");
+        } else { alert("Mislukt: " + err.message); }
+      } finally { btn.disabled = false; }
+    });
+
+    // ---------- filter / zoek ----------
+    const filters = { zone: "all", statuses: new Set() };
+    function cardZone(card){ const s = card.closest("section.zone"); return s ? s.dataset.zone : ""; }
+    function cardStatus(card){
+      const b = card.querySelector(".badge"); if (!b) return "";
+      if (b.classList.contains("b-go")) return "go";
+      if (b.classList.contains("b-watch")) return "watch";
+      if (b.classList.contains("b-gone")) return "gone";
+      if (b.classList.contains("b-past")) return "past";
+      return "";
+    }
+    function doFilter(){
+      const box = document.getElementById("search");
+      const q = (box ? box.value : "").toLowerCase().trim();
+      let anyVisible = false;
+      document.querySelectorAll("#view-list .card").forEach(card => {
+        const z = cardZone(card), st = cardStatus(card);
+        let ok = true;
+        if (filters.zone !== "all" && z !== filters.zone) ok = false;
+        if (filters.statuses.size && !filters.statuses.has(st)) ok = false;
+        if (q && !card.textContent.toLowerCase().includes(q)) ok = false;
+        card.classList.toggle("hide", !ok);
+        if (ok) anyVisible = true;
+      });
+      document.querySelectorAll("#view-list section.zone").forEach(sec => {
+        sec.classList.toggle("hide", sec.querySelectorAll(".card:not(.hide)").length === 0);
+      });
+      const empty = document.getElementById("filterEmpty");
+      if (empty) empty.hidden = anyVisible;
+    }
+    window.applyFilter = doFilter;
+    window.setZone = function(val, btn){
+      filters.zone = val;
+      document.querySelectorAll('.chip[data-kind="zone"]').forEach(c => c.classList.toggle("active", c === btn));
+      doFilter();
+    };
+    window.toggleStatus = function(val, btn){
+      if (filters.statuses.has(val)){ filters.statuses.delete(val); btn.classList.remove("active"); }
+      else { filters.statuses.add(val); btn.classList.add("active"); }
+      doFilter();
+    };
+    window.clearFilters = function(){
+      filters.zone = "all"; filters.statuses.clear();
+      const box = document.getElementById("search"); if (box) box.value = "";
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove("active"));
+      const all = document.querySelector('.chip[data-kind="zone"][data-val="all"]');
+      if (all) all.classList.add("active");
+      doFilter();
+    };
+
+    // ---------- kaart (Leaflet, lazy) ----------
+    let mapInited = false, mapObj = null;
+    window.initMapOnce = function(){
+      if (mapInited){ if (mapObj) setTimeout(() => mapObj.invalidateSize(), 50); return; }
+      if (typeof L === "undefined"){ return; }
+      mapInited = true;
+      mapObj = L.map("map", { scrollWheelZoom: false }).setView([50.5, 8], 5);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        attribution: '&copy; OpenStreetMap, &copy; CARTO', maxZoom: 19
+      }).addTo(mapObj);
+      const zc = { near: "#5fd3c4", road: "#f0915e", bucket: "#c06bff" };
+      const pts = [];
+      FEST.filter(f => f.lat && f.lng).forEach(f => {
+        const m = L.circleMarker([f.lat, f.lng], {
+          radius: 9, color: "#15101f", weight: 2, fillColor: zc[f.zone] || "#fff", fillOpacity: 1
+        }).addTo(mapObj);
+        m.bindPopup(`<b>${f.name}</b><br>${f.when || ""}<br>${f.where || ""}${f.travel ? " · " + f.travel : ""}`);
+        pts.push([f.lat, f.lng]);
+      });
+      if (pts.length) mapObj.fitBounds(pts, { padding: [40, 40] });
+      setTimeout(() => mapObj.invalidateSize(), 60);
+    };
+
+    // ---------- init ----------
+    (async function init(){
+      await loadFest();
+      enhanceCurated();
+      await loadEvents();
+      await loadRsvps();
+    })();
   </script>
 
   <script>
@@ -1025,6 +1287,7 @@
       document.querySelectorAll('.tab').forEach(function(el){
         el.classList.toggle('active', el.dataset.view === view);
       });
+      if (view === 'map' && window.initMapOnce) window.initMapOnce();
     }
   </script>
 

@@ -8,6 +8,24 @@ ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde even
 - **Toevoegen:** knop **+ Evenement** rechtsboven → verschijnt live voor iedereen
 - **Agenda (ICS):** abonneer op <https://dehanos78.github.io/festival-radar/festival-radar.ics>
 
+## Functies
+
+- **Overzicht** — curated shortlist per zone (voor de deur / roadtrip / bucketlist)
+- **Zoeken & filteren** — zoekbalk + chips op zone en status
+- **Kalender** — tijdlijn incl. community-tips met datum
+- **Kaart** — alle locaties op een dark Leaflet/OSM-kaart, gekleurd per zone
+- **+ Evenement / verwijderen** — gedeelde tips via Firestore, met verwijder-knop
+- **🙌 Ik ga** — RSVP per festival (opgeslagen in Firestore, naam in `localStorage`)
+- **♫ Lineup** — Spotify-zoeklink voor festivals met bekende artiesten
+- **Deel-preview** — Open-Graph `og.png` voor mooie link-previews (WhatsApp/social)
+- **ICS-agenda** — abonneerbaar, met kaartverkoop-meldingen (zie hieronder)
+
+De deel-afbeelding regenereren (na een tekstwijziging in `scripts/og.html`):
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+  --window-size=1200,630 --screenshot="og.png" "file://$(pwd)/scripts/og.html"
+```
+
 ---
 
 ## Agenda in je telefoon/laptop (ICS-abonnement)
@@ -59,6 +77,16 @@ service cloud.firestore {
       allow create: if request.resource.data.name is string
                     && request.resource.data.name.size() > 0
                     && request.resource.data.name.size() < 100;
+      allow delete: if true;
+      allow update: if false;
+    }
+    // "Ik ga"-RSVP's
+    match /rsvps/{doc} {
+      allow read: if true;
+      allow create: if request.resource.data.eid is string
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() > 0
+                    && request.resource.data.name.size() < 60;
       allow delete: if true;
       allow update: if false;
     }

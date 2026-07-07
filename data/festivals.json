@@ -1,5 +1,5 @@
 {
-  "_comment": "Master-lijst met Viktor's curated festivals. Bron voor de ICS-agenda en de 2-wekelijkse scheduler. Datums in YYYY-MM-DD. 'end' is de laatste festivaldag (inclusief). ticketSaleStart wordt door de scheduler ingevuld zodra bekend.",
+  "_comment": "Master-lijst met Viktor's curated festivals. Bron voor de ICS-agenda, de kaart en de scheduler. Datums in YYYY-MM-DD. 'end' is de laatste festivaldag (inclusief). ticketSaleStart wordt door de scheduler ingevuld zodra bekend. lat/lng voor de kaart-tab; lineup voor de Spotify-links.",
   "updated": "2026-07-07",
   "festivals": [
     {
@@ -9,12 +9,14 @@
       "status": "gone",
       "where": "Kraggenburg",
       "travel": "~40 min",
+      "lat": 52.665, "lng": 5.883,
       "start": "2026-07-09",
       "end": "2026-07-12",
       "when": "9–12 jul 2026",
       "tickets": "Weekend uitverkocht · verkoop ging 28 jan. Resale via TicketSwap.",
       "ticketSaleStart": null,
       "tags": ["eigenwijs", "techno"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -24,12 +26,14 @@
       "status": "go",
       "where": "Contactweg, Amsterdam",
       "travel": "~1u15",
+      "lat": 52.401, "lng": 4.836,
       "start": "2026-07-11",
       "end": "2026-07-11",
       "when": "11 jul 2026 · 13:00–23:00",
       "tickets": "Te koop via Weeztix/RA · €31,50 · Mees Salomé 10u, Kerri Chandler, Dennis Quin.",
       "ticketSaleStart": null,
       "tags": ["melodic house", "techno", "18+"],
+      "lineup": ["Mees Salomé", "Kerri Chandler", "Dennis Quin"],
       "url": ""
     },
     {
@@ -39,12 +43,14 @@
       "status": "gone",
       "where": "De Middengaarde, Nieuwegein",
       "travel": "~55 min",
+      "lat": 52.029, "lng": 5.083,
       "start": "2026-07-25",
       "end": "2026-07-25",
       "when": "25 jul 2026 · 14:00–23:00",
       "tickets": "Uitverkocht · TicketSwap voor resale.",
       "ticketSaleStart": null,
       "tags": ["techno", "house", "disco"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -54,12 +60,14 @@
       "status": "go",
       "where": "Park Sonsbeek, Arnhem",
       "travel": "~25 min",
+      "lat": 52.001, "lng": 5.907,
       "start": "2026-08-01",
       "end": "2026-08-02",
       "when": "1–2 aug 2026",
       "tickets": "Vanaf €42,50 via listentoflow.com · Franky Rizardo, Toman, Prunk.",
       "ticketSaleStart": null,
       "tags": ["house", "weekender", "park", "18+"],
+      "lineup": ["Franky Rizardo", "Toman", "Prunk", "Chelina Manuhutu"],
       "url": "https://listentoflow.com"
     },
     {
@@ -69,12 +77,14 @@
       "status": "go",
       "where": "Ter Hunnepe, Deventer",
       "travel": "~20 min",
+      "lat": 52.239, "lng": 6.163,
       "start": "2026-08-07",
       "end": "2026-08-08",
       "when": "7–8 aug 2026",
       "tickets": "Verkoop open · los of combi via nachtparlement.nl · Sterac, Sandrien, Mama Snake.",
       "ticketSaleStart": null,
       "tags": ["techno", "kunst"],
+      "lineup": ["Sterac", "Sandrien", "Mama Snake", "Pariah", "upsammy", "Joep Beving"],
       "url": "https://nachtparlement.nl"
     },
     {
@@ -84,12 +94,14 @@
       "status": "watch",
       "where": "Utrecht",
       "travel": "~50 min",
+      "lat": 52.091, "lng": 5.118,
       "start": null,
       "end": null,
       "when": "eind aug / begin sept 2026",
       "tickets": "Verkoopt consequent uit · datum 2026 nog checken.",
       "ticketSaleStart": null,
       "tags": ["techno", "house", "disco"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -99,12 +111,14 @@
       "status": "watch",
       "where": "Zuiderstrand, Zandvoort",
       "travel": "~1u25",
+      "lat": 52.372, "lng": 4.529,
       "start": "2026-08-30",
       "end": "2026-08-30",
       "when": "30 aug 2026",
       "tickets": "Kaartverkoop via Hipsy · beschikbaarheid per editie checken.",
       "ticketSaleStart": null,
       "tags": ["psy/organic", "strand", "yoga"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -114,12 +128,14 @@
       "status": "watch",
       "where": "MOB Complex, Tilburg",
       "travel": "~1u20",
+      "lat": 51.582, "lng": 5.034,
       "start": "2026-09-04",
       "end": "2026-09-05",
       "when": "4–5 sept 2026",
       "tickets": "Deep/melodic, kunstzinnige stages · status 2026 checken.",
       "ticketSaleStart": null,
       "tags": ["melodic techno", "bos/kunst"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -129,12 +145,14 @@
       "status": "gone",
       "where": "Amersfoort",
       "travel": "~40 min",
+      "lat": 52.156, "lng": 5.388,
       "start": "2026-09-18",
       "end": "2026-09-19",
       "when": "18–19 sept 2026",
       "tickets": "Uitverkocht binnen 1u · TicketSwap/wachtlijst. Fallback: ITW ADE 23–24 okt (NDSM).",
       "ticketSaleStart": null,
       "tags": ["sprookjesbos", "electronic"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -144,12 +162,14 @@
       "status": "watch",
       "where": "bij Berlijn (DE)",
       "travel": "~5,5u",
+      "lat": 52.771, "lng": 12.353,
       "start": null,
       "end": null,
       "when": "datum 2026 TBC",
       "tickets": "Keert terug na pauze · datum + verkoop nog niet bevestigd.",
       "ticketSaleStart": null,
       "tags": ["psytrance", "goa"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -159,12 +179,14 @@
       "status": "watch",
       "where": "Putlitz (DE)",
       "travel": "~5u",
+      "lat": 53.248, "lng": 12.033,
       "start": null,
       "end": null,
       "when": "juli 2026",
       "tickets": "'Mother of all Goa festivals' · editie + verkoopdatum checken.",
       "ticketSaleStart": null,
       "tags": ["psytrance", "goa"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -174,12 +196,14 @@
       "status": "watch",
       "where": "Dádpuszta, Hongarije",
       "travel": "vlucht Boedapest",
+      "lat": 46.762, "lng": 18.286,
       "start": null,
       "end": null,
       "when": "eerste week augustus",
       "tickets": "Verkoop opent meestal najaar/winter ervoor.",
       "ticketSaleStart": null,
       "tags": ["psytrance", "7 dagen"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -189,12 +213,14 @@
       "status": "watch",
       "where": "Primišlje, Kroatië",
       "travel": "vlucht Zagreb",
+      "lat": 45.259, "lng": 15.548,
       "start": null,
       "end": null,
       "when": "zomer",
       "tickets": "Diep underground · editie + verkoop opzoeken.",
       "ticketSaleStart": null,
       "tags": ["underground psy", "natuur"],
+      "lineup": [],
       "url": ""
     },
     {
@@ -204,12 +230,14 @@
       "status": "watch",
       "where": "nog uitzoeken",
       "travel": "",
+      "lat": null, "lng": null,
       "start": null,
       "end": null,
       "when": "zomer",
       "tickets": "Progressive → full on → forest · land + datum verifiëren.",
       "ticketSaleStart": null,
       "tags": ["progressive", "psy-chill", "forest"],
+      "lineup": [],
       "url": ""
     }
   ]
