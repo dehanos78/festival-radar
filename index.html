@@ -72,6 +72,8 @@
   }
   .lede{color:var(--muted);font-size:16px;line-height:1.6;max-width:60ch}
   .lede b{color:var(--ink);font-weight:600}
+  .whoami{margin-top:12px;font-size:13.5px;color:var(--muted)}
+  .whoami b{color:var(--ink);font-weight:600}
 
   /* ---------- sticky toolbar: tabs + add ---------- */
   .tabs{
@@ -271,10 +273,15 @@
   .rv-person .rvx{cursor:pointer;color:var(--faint);margin-left:7px;font-weight:700}
   .rv-person .rvx:hover{color:var(--gone)}
   .rv-person .rv-note{color:var(--muted);margin-top:2px}
+  .rv-person .rv-high{margin-top:2px}
+  .rv-person .rv-high a{color:#ff5500;font-weight:600;text-decoration:none}
+  .rv-person .rv-high a:hover{text-decoration:underline}
   /* sterren in de review-modal */
   .stars{display:flex;gap:5px;font-size:26px;line-height:1}
   .stars span{color:var(--line-2);cursor:pointer;transition:color .12s ease}
   .stars span.on{color:var(--watch)}
+  .stars span.half{background:linear-gradient(90deg,var(--watch) 50%,var(--line-2) 50%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stars-hint{font-size:11px;color:var(--faint);margin-top:5px}
   .rv-scalehint{font-size:11px;color:var(--faint);margin-left:2px;align-self:center}
 
   /* ---------- top / ranglijst ---------- */
@@ -334,6 +341,7 @@
     <div class="eyebrow"><span class="ping"></span> live ticket-tracker · +Nataraj Beach Party · 6 jul 2026</div>
     <h1>Festival Radar</h1>
     <p class="lede">Jouw shortlist intieme/underground festivals — gesorteerd op <b>hoe ver rijden</b>. De kern: ik bewaak <b>wanneer de kaartverkoop opent</b>, want de leukste kleintjes zijn vaak in januari al weg.</p>
+    <div class="whoami" id="whoami"></div>
 
     <div class="tabs">
       <button class="tab active" data-view="list" onclick="switchView('list')">Overzicht</button>
@@ -963,7 +971,7 @@
   <div id="review-overlay" class="overlay" onclick="if(event.target===this)closeReview()">
     <div class="modal">
       <h2>Review <span id="review-fest"></span></h2>
-      <p class="sub">Scoor 1–5 sterren per onderdeel — zo leren we samen wat werkt.</p>
+      <p class="sub">Scoor per onderdeel — klik <b>links</b> op een ster voor een halve. Zo leren we samen wat werkt.</p>
       <form id="reviewForm" onsubmit="return submitReview(event)">
         <div class="field"><label>🎵 Goede muziek</label>
           <div class="stars" data-key="music"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div></div>
@@ -973,6 +981,8 @@
           <div class="stars" data-key="publiek"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div></div>
         <div class="field"><label>📍 Setting / plek</label>
           <div class="stars" data-key="setting"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div></div>
+        <div class="field"><label for="rv-highlight">🎯 Hoogtepunt — beste set / DJ (optioneel)</label>
+          <input id="rv-highlight" type="text" maxlength="80" placeholder="bv. Job Jobse @ sunrise"></div>
         <div class="field"><label for="rv-comment">Toelichting (optioneel)</label>
           <textarea id="rv-comment" maxlength="240" placeholder="Wat maakte het wel/niet leuk?"></textarea></div>
         <div class="field"><label for="rv-name">Je naam of initialen</label>
@@ -1347,6 +1357,7 @@
         myName = (prompt("Wie ben je? Vul je naam of initialen in (bv. VDH):") || "").trim().slice(0, 24);
         if (!myName) return;
         localStorage.setItem("fr_name", myName);
+        renderWhoami();
       }
       try {
         const ref = await addDoc(collection(db, "rsvps"), { eid, name: myName, createdAt: serverTimestamp() });
@@ -1367,7 +1378,14 @@
 
     document.addEventListener("click", function(e){
       const star = e.target.closest(".stars span");
-      if (star){ const grp = star.closest(".stars"); setStar(grp.dataset.key, +star.dataset.v); return; }
+      if (star){
+        const grp = star.closest(".stars");
+        const rect = star.getBoundingClientRect();
+        const v = +star.dataset.v;
+        const half = (e.clientX - rect.left) < rect.width / 2;
+        setStar(grp.dataset.key, half ? v - 0.5 : v);
+        return;
+      }
       const rvb = e.target.closest(".rvbtn");
       if (rvb){ openReview(rvb.dataset.eid, rvb.dataset.name); return; }
       const rvx = e.target.closest(".rvx");
@@ -1427,8 +1445,10 @@
           const mine = myReviews.has(r.id);
           const sc = RV_DIMS.map(([k, ic]) => `${ic}${(+r[k] || 0)}`).join(" ");
           const note = r.comment ? `<div class="rv-note">“${esc(r.comment)}”</div>` : "";
+          const high = r.highlight
+            ? `<div class="rv-high">🎯 <a href="https://soundcloud.com/search?q=${encodeURIComponent(r.highlight)}" target="_blank" rel="noopener">${esc(r.highlight)}</a></div>` : "";
           const x = mine ? ` <span class="rvx" data-id="${esc(r.id)}" title="Verwijder je review">×</span>` : "";
-          return `<div class="rv-person${mine ? " me" : ""}"><span class="who">${esc(r.name || "?")}</span><span class="sc">${sc}</span>${x}${note}</div>`;
+          return `<div class="rv-person${mine ? " me" : ""}"><span class="who">${esc(r.name || "?")}</span><span class="sc">${sc}</span>${x}${high}${note}</div>`;
         }).join("");
         box.innerHTML = `<div class="rv-top"><span class="rv-head">Reviews (${list.length})</span>${split}<span class="rv-overall">★ ${overall.toFixed(1)} gem.</span></div>`
           + `<div class="rv-dims">${dims}</div>`
@@ -1491,13 +1511,18 @@
       if (!(key in reviewScores)) return;
       reviewScores[key] = v;
       const grp = document.querySelector(`.stars[data-key="${key}"]`);
-      if (grp) grp.querySelectorAll("span").forEach(s => s.classList.toggle("on", (+s.dataset.v) <= v));
+      if (grp) grp.querySelectorAll("span").forEach(s => {
+        const sv = +s.dataset.v;
+        s.classList.toggle("on", v >= sv);
+        s.classList.toggle("half", v >= sv - 0.5 && v < sv);
+      });
     }
     function openReview(eid, name){
       reviewEid = eid;
       reviewFest = name || "";
       document.getElementById("review-fest").textContent = name ? "· " + name : "";
       Object.keys(reviewScores).forEach(k => setStar(k, 0));
+      document.getElementById("rv-highlight").value = "";
       document.getElementById("rv-comment").value = "";
       document.getElementById("rv-name").value = myName || "";
       const msg = document.getElementById("reviewMsg"); msg.className = "fmsg"; msg.textContent = "";
@@ -1517,13 +1542,14 @@
       }
       const name = document.getElementById("rv-name").value.trim().slice(0, 24);
       if (!name){ msg.textContent = "Vul je naam of initialen in."; msg.classList.add("err"); return false; }
-      myName = name; localStorage.setItem("fr_name", name);
+      myName = name; localStorage.setItem("fr_name", name); renderWhoami();
       const btn = document.getElementById("reviewBtn"); btn.disabled = true;
       msg.textContent = "Plaatsen…";
       addDoc(collection(db, "reviews"), {
         eid: reviewEid, fest: reviewFest || "", name,
         music: reviewScores.music, sfeer: reviewScores.sfeer,
         publiek: reviewScores.publiek, setting: reviewScores.setting,
+        highlight: document.getElementById("rv-highlight").value.trim(),
         comment: document.getElementById("rv-comment").value.trim(),
         createdAt: serverTimestamp()
       }).then((ref) => {
@@ -1619,8 +1645,27 @@
       setTimeout(() => mapObj.invalidateSize(), 60);
     };
 
+    // ---------- wie ben jij (naam instellen/wijzigen) ----------
+    function renderWhoami(){
+      const el = document.getElementById("whoami");
+      if (!el) return;
+      el.innerHTML = myName
+        ? `👤 Je plaatst als <b>${esc(myName)}</b> · <button class="linklike" onclick="setMyName()">wijzig</button>`
+        : `👤 <button class="linklike" onclick="setMyName()">Stel je naam in</button> — voor 'Ik ga' &amp; reviews`;
+    }
+    window.setMyName = function(){
+      const v = prompt("Je naam of initialen (voor 'Ik ga' en reviews):", myName || "");
+      if (v === null) return;
+      const name = v.trim().slice(0, 24);
+      if (!name) return;
+      myName = name;
+      localStorage.setItem("fr_name", myName);
+      renderWhoami();
+    };
+
     // ---------- init ----------
     (async function init(){
+      renderWhoami();
       await loadFest();
       enhanceCurated();
       await loadEvents();

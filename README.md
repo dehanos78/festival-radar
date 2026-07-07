@@ -16,7 +16,8 @@ ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde even
 - **Kaart** — alle locaties op een Leaflet/OSM-kaart, gekleurd per zone, met per stip een geverifieerde link naar de officiële festivalsite
 - **+ Evenement / verwijderen** — gedeelde tips via Firestore, met verwijder-knop
 - **🙌 Ik ga** — RSVP per festival, met zichtbare namen/initialen van wie er gaat
-- **★ Review** — score 1–5 per onderdeel (🎵 muziek · ✨ sfeer · 👥 publiek · 📍 setting) + toelichting; kaarten tonen het gemiddelde **én per persoon wie welke score gaf** (smaak verschilt). Je eigen review kun je verwijderen (Firestore `reviews`)
+- **★ Review** — score per onderdeel (🎵 muziek · ✨ sfeer · 👥 publiek · 📍 setting) met **halve sterren** (klik links op een ster), een **🎯 hoogtepunt** (beste set/DJ, met SoundCloud-zoeklink) en toelichting; kaarten tonen het gemiddelde **én per persoon wie welke score gaf** (smaak verschilt). Je eigen review kun je verwijderen (Firestore `reviews`)
+- **👤 Wie ben jij** — stel je naam/initialen in of wijzig 'm bovenaan; wordt onthouden voor 'Ik ga' en reviews
 - **⚡ Verdeeld** — festivals waar de meningen sterk uiteenlopen (spreiding ≥ 1,5 in overall-score) krijgen een badge, zodat smaakverschil opvalt
 - **Top (ranglijst)** — beoordeelde festivals gerangschikt op totaal- of onderdeelscore, met medailles; schakel tussen **Iedereen** (groepsgemiddelde) en **Alleen ik** (jouw eigen ranglijst)
 - **Cover-art** — per festival een uniek, rechtenvrij gegenereerd SVG-kunstwerkje (gradient + vormen, afgeleid van de naam + zonekleur) als kaart-cover; geen externe afbeeldingen/auteursrecht
