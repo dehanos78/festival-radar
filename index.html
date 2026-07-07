@@ -239,7 +239,9 @@
   .leaflet-popup-content-wrapper{background:var(--surface-2);color:var(--ink);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
   .leaflet-popup-tip{background:var(--surface-2)}
   .leaflet-popup-content{font-family:"DM Sans",sans-serif;margin:12px 14px;line-height:1.5}
-  .leaflet-popup-content b{font-family:"Syne",sans-serif}
+  .leaflet-popup-content b{font-family:"Syne",sans-serif;font-size:15px}
+  .popup-link{display:inline-block;margin-top:7px;color:var(--near);font-weight:600;text-decoration:none;font-family:"Space Mono",monospace;font-size:12px}
+  .popup-link:hover{text-decoration:underline}
   .leaflet-container{font-family:"DM Sans",sans-serif}
   .mk{width:20px;height:20px;border-radius:50%;border:2.5px solid #0c0b12;box-shadow:0 1px 6px rgba(0,0,0,.5)}
 
@@ -1254,7 +1256,8 @@
         const m = L.circleMarker([f.lat, f.lng], {
           radius: 9, color: "#ffffff", weight: 2.5, fillColor: zc[f.zone] || "#333", fillOpacity: 1
         }).addTo(mapObj);
-        m.bindPopup(`<b>${f.name}</b><br>${f.when || ""}<br>${f.where || ""}${f.travel ? " · " + f.travel : ""}`);
+        const site = f.url ? `<br><a href="${f.url}" target="_blank" rel="noopener" class="popup-link">Website &amp; line-up →</a>` : "";
+        m.bindPopup(`<b>${f.name}</b><br>${f.when || ""}<br>${f.where || ""}${f.travel ? " · " + f.travel : ""}${site}`);
         pts.push([f.lat, f.lng]);
       });
       if (pts.length) mapObj.fitBounds(pts, { padding: [40, 40] });

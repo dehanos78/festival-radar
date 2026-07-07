@@ -8,39 +8,40 @@ X-WR-TIMEZONE:Europe/Amsterdam
 X-WR-CALDESC:Vik's shortlist festivals + kaartverkoop-meldingen
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
-X-BUILT:20260707T094335Z
+X-BUILT:20260707T112100Z
 BEGIN:VEVENT
 UID:wildeburg@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260709
 DTEND;VALUE=DATE:20260713
 SUMMARY:♪ Wildeburg · Voor de deur
 DESCRIPTION:Kraggenburg — Reistijd ~40 min — Status: uitverkocht / res
  ale — Weekend uitverkocht · verkoop ging 28 jan. Resale via TicketSwap
- .
+ . — https://wildeburg.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:thuishaven-mees-salome@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260711
 DTEND;VALUE=DATE:20260712
 SUMMARY:♪ Thuishaven x Mees Salomé · Voor de deur
 DESCRIPTION:Contactweg\, Amsterdam — Reistijd ~1u15 — Status: te score
  n — Te koop via Weeztix/RA · €31\,50 · Mees Salomé 10u\, Kerri Cha
- ndler\, Dennis Quin.
+ ndler\, Dennis Quin. — https://thuishaven.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260725
 DTEND;VALUE=DATE:20260726
 SUMMARY:♪ Geheime Liefde · Voor de deur
 DESCRIPTION:De Middengaarde\, Nieuwegein — Reistijd ~55 min — Status: 
- uitverkocht / resale — Uitverkocht · TicketSwap voor resale.
+ uitverkocht / resale — Uitverkocht · TicketSwap voor resale. — https
+ ://geheimeliefde.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:flow-in-the-park@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260801
 DTEND;VALUE=DATE:20260803
 SUMMARY:♪ Flow in the Park · Voor de deur
@@ -50,7 +51,7 @@ DESCRIPTION:Park Sonsbeek\, Arnhem — Reistijd ~25 min — Status: te sco
 END:VEVENT
 BEGIN:VEVENT
 UID:het-systeem@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260807
 DTEND;VALUE=DATE:20260809
 SUMMARY:♪ Het Systeem · Voor de deur
@@ -60,30 +61,32 @@ DESCRIPTION:Ter Hunnepe\, Deventer — Reistijd ~20 min — Status: te sco
 END:VEVENT
 BEGIN:VEVENT
 UID:nataraj-beach-party@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:♪ Nataraj Beach Party · Voor de deur
 DESCRIPTION:Zuiderstrand\, Zandvoort — Reistijd ~1u25 — Status: in de 
- gaten — Kaartverkoop via Hipsy · beschikbaarheid per editie checken.
+ gaten — Kaartverkoop via Hipsy · beschikbaarheid per editie checken. 
+ — https://www.nataraj.info
 END:VEVENT
 BEGIN:VEVENT
 UID:draaimolen@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260904
 DTEND;VALUE=DATE:20260906
 SUMMARY:♪ Draaimolen · Voor de deur
 DESCRIPTION:MOB Complex\, Tilburg — Reistijd ~1u20 — Status: in de gat
- en — Deep/melodic\, kunstzinnige stages · status 2026 checken.
+ en — Deep/melodic\, kunstzinnige stages · status 2026 checken. — htt
+ ps://www.draaimolen.nu
 END:VEVENT
 BEGIN:VEVENT
 UID:into-the-woods@festival-radar
-DTSTAMP:20260707T094335Z
+DTSTAMP:20260707T112100Z
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20260920
 SUMMARY:♪ Into the Woods · Voor de deur
 DESCRIPTION:Amersfoort — Reistijd ~40 min — Status: uitverkocht / resa
  le — Uitverkocht binnen 1u · TicketSwap/wachtlijst. Fallback: ITW ADE 
- 23–24 okt (NDSM).
+ 23–24 okt (NDSM). — https://intothewoods.nl
 END:VEVENT
 END:VCALENDAR

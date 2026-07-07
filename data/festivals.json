@@ -17,7 +17,7 @@
       "ticketSaleStart": null,
       "tags": ["eigenwijs", "techno"],
       "lineup": [],
-      "url": ""
+      "url": "https://wildeburg.nl"
     },
     {
       "id": "thuishaven-mees-salome",
@@ -34,7 +34,7 @@
       "ticketSaleStart": null,
       "tags": ["melodic house", "techno", "18+"],
       "lineup": ["Mees Salomé", "Kerri Chandler", "Dennis Quin"],
-      "url": ""
+      "url": "https://thuishaven.nl"
     },
     {
       "id": "geheime-liefde",
@@ -51,7 +51,7 @@
       "ticketSaleStart": null,
       "tags": ["techno", "house", "disco"],
       "lineup": [],
-      "url": ""
+      "url": "https://geheimeliefde.nl"
     },
     {
       "id": "flow-in-the-park",
@@ -102,7 +102,7 @@
       "ticketSaleStart": null,
       "tags": ["techno", "house", "disco"],
       "lineup": [],
-      "url": ""
+      "url": "https://www.lieffestival.nl"
     },
     {
       "id": "nataraj-beach-party",
@@ -119,7 +119,7 @@
       "ticketSaleStart": null,
       "tags": ["psy/organic", "strand", "yoga"],
       "lineup": [],
-      "url": ""
+      "url": "https://www.nataraj.info"
     },
     {
       "id": "draaimolen",
@@ -136,7 +136,7 @@
       "ticketSaleStart": null,
       "tags": ["melodic techno", "bos/kunst"],
       "lineup": [],
-      "url": ""
+      "url": "https://www.draaimolen.nu"
     },
     {
       "id": "into-the-woods",
@@ -153,7 +153,7 @@
       "ticketSaleStart": null,
       "tags": ["sprookjesbos", "electronic"],
       "lineup": [],
-      "url": ""
+      "url": "https://intothewoods.nl"
     },
     {
       "id": "antaris-project",
@@ -170,7 +170,7 @@
       "ticketSaleStart": null,
       "tags": ["psytrance", "goa"],
       "lineup": [],
-      "url": ""
+      "url": "https://antaris-project.de"
     },
     {
       "id": "voov-experience",
@@ -187,7 +187,7 @@
       "ticketSaleStart": null,
       "tags": ["psytrance", "goa"],
       "lineup": [],
-      "url": ""
+      "url": "https://www.voov-festival.de"
     },
     {
       "id": "ozora",
@@ -204,7 +204,7 @@
       "ticketSaleStart": null,
       "tags": ["psytrance", "7 dagen"],
       "lineup": [],
-      "url": ""
+      "url": "https://ozorafestival.eu"
     },
     {
       "id": "modem",
@@ -221,7 +221,7 @@
       "ticketSaleStart": null,
       "tags": ["underground psy", "natuur"],
       "lineup": [],
-      "url": ""
+      "url": "https://modemfestival.com"
     },
     {
       "id": "las-festival",

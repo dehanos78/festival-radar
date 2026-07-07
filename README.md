@@ -13,7 +13,7 @@ ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde even
 - **Overzicht** — curated shortlist per zone (voor de deur / roadtrip / bucketlist)
 - **Zoeken & filteren** — zoekbalk + chips op zone en status
 - **Kalender** — tijdlijn incl. community-tips met datum
-- **Kaart** — alle locaties op een dark Leaflet/OSM-kaart, gekleurd per zone
+- **Kaart** — alle locaties op een Leaflet/OSM-kaart, gekleurd per zone, met per stip een geverifieerde link naar de officiële festivalsite
 - **+ Evenement / verwijderen** — gedeelde tips via Firestore, met verwijder-knop
 - **🙌 Ik ga** — RSVP per festival (opgeslagen in Firestore, naam in `localStorage`)
 - **♫ Lineup / ☁ Live sets** — Spotify-zoeklink (bij bekende artiesten) + SoundCloud-zoeklink voor live DJ-sets, op elke kaart
