@@ -1384,6 +1384,14 @@
       paintRsvps();
     }
     function paintRsvps(){
+      // opruimen: verwijzingen naar RSVP's die niet meer bestaan (bv. elders verwijderd)
+      const liveIds = new Set(Object.values(RSVP).flat().map(r => r.id));
+      let stale = false;
+      Object.keys(myRsvps).forEach(eid => {
+        if (!liveIds.has(myRsvps[eid])){ delete myRsvps[eid]; stale = true; }
+      });
+      if (stale) localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
+
       document.querySelectorAll(".rsvp").forEach(btn => {
         const mine = !!myRsvps[btn.dataset.eid];
         btn.classList.toggle("mine", mine);
@@ -1395,8 +1403,8 @@
         if (!list.length){ box.innerHTML = ""; return; }
         const chips = list.map(r => {
           const mine = myRsvps[eid] === r.id;
-          return `<span class="goer${mine ? " me" : ""}" data-rid="${esc(r.id)}" data-eid="${esc(eid)}">`
-            + `${esc(r.name)}${mine ? ' <span class="goer-x" title="Verwijder jezelf">×</span>' : ""}</span>`;
+          return `<span class="goer${mine ? " me" : ""}" data-rid="${esc(r.id)}" data-eid="${esc(eid)}" data-name="${esc(r.name)}">`
+            + `${esc(r.name)} <span class="goer-x" title="${mine ? "Verwijder jezelf" : "Verwijderen"}">×</span></span>`;
         }).join("");
         box.innerHTML = `<span class="goers-label">Gaan (${list.length}):</span> ${chips}`;
       });
@@ -1426,8 +1434,10 @@
       } catch (err){ rsvpError(err); }
     }
 
-    async function rsvpRemove(eid, rid){
+    async function rsvpRemove(eid, rid, name){
       if (!CONFIGURED) return;
+      const mine = myRsvps[eid] === rid;
+      if (!mine && !confirm(`"${name || "?"}" van de lijst halen?`)) return;
       try {
         await deleteDoc(doc(db, "rsvps", rid));
         if (myRsvps[eid] === rid){ delete myRsvps[eid]; localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps)); }
@@ -1450,7 +1460,7 @@
       const rvx = e.target.closest(".rvx");
       if (rvx){ rvDelete(rvx.dataset.id); return; }
       const x = e.target.closest(".goer-x");
-      if (x){ const chip = x.closest(".goer"); if (chip) rsvpRemove(chip.dataset.eid, chip.dataset.rid); return; }
+      if (x){ const chip = x.closest(".goer"); if (chip) rsvpRemove(chip.dataset.eid, chip.dataset.rid, chip.dataset.name); return; }
       const btn = e.target.closest(".rsvp");
       if (btn) rsvpAdd(btn.dataset.eid);
     });
