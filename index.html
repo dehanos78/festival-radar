@@ -264,6 +264,14 @@
   .lineup-more{color:var(--near);font-weight:600;text-decoration:none;white-space:nowrap;font-style:normal}
   .lineup-more:hover{text-decoration:underline}
 
+  /* ---------- resale-info (TicketSwap e.d.) ---------- */
+  .resale-line{margin-top:9px;font-size:13px;color:var(--ink);line-height:1.5}
+  .resale-line .lineup-tag{margin-right:7px}
+  .resale-line .rs-price{color:var(--muted)}
+  .resale-line a{color:#026cdf;font-weight:600;text-decoration:none;white-space:nowrap}
+  .resale-line a:hover{text-decoration:underline}
+  .resale-line .rs-checked{font-size:11px;color:var(--faint)}
+
   /* ---------- reviews ---------- */
   .reviews{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.5}
   .reviews .rv-top{display:flex;align-items:baseline;gap:8px}
@@ -581,14 +589,14 @@
     <div class="grid">
 
       <article class="card">
-        <div class="ctop"><span class="name">Antaris Project</span><span class="badge b-watch">terug in '26</span></div>
+        <div class="ctop"><span class="name">Antaris Project</span><span class="badge b-past">2026 gehad</span></div>
         <div class="tags"><span class="tag hot">psytrance</span><span class="tag">progressive</span><span class="tag">goa</span></div>
         <div class="rows">
-          <div class="row"><span class="k">Waar</span><span class="v">bij Berlijn (DE) · <span class="mono">~5,5u</span></span></div>
-          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">datum 2026 TBC</span></span></div>
-          <div class="row"><span class="k">Tickets</span><span class="v">keert terug na pauze · legendarisch, anti-commercie</span></div>
+          <div class="row"><span class="k">Waar</span><span class="v">Gollenberg/Rhinow (DE) · <span class="mono">~5,5u</span></span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">24–27 jun 2026 (gehad)</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">legendarisch, anti-commercie · editie 2026 is geweest</span></div>
         </div>
-        <div class="note"><b>Next:</b> datum + verkoop nog niet bevestigd — ik hou 'm in de peiling.</div>
+        <div class="note"><b>Next:</b> alarm voor de 2027-editie zodra aangekondigd.</div>
       </article>
 
       <article class="card">
@@ -596,10 +604,10 @@
         <div class="tags"><span class="tag hot">psytrance</span><span class="tag">goa</span></div>
         <div class="rows">
           <div class="row"><span class="k">Waar</span><span class="v">Putlitz (DE) · <span class="mono">~5u</span></span></div>
-          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">juli</span></span></div>
-          <div class="row"><span class="k">Tickets</span><span class="v">"mother of all Goa festivals", al decennia</span></div>
+          <div class="row"><span class="k">Wanneer</span><span class="v"><span class="mono">17–20 jul 2026</span></span></div>
+          <div class="row"><span class="k">Tickets</span><span class="v">"mother of all Goa festivals" · 54u non-stop, 50+ artiesten · tickets via voov-festival.de</span></div>
         </div>
-        <div class="note"><b>Next:</b> editie + verkoopdatum voor je laten checken.</div>
+        <div class="note"><b>Next:</b> bevestigd — over 10 dagen! Tickets nog te koop via de officiële site.</div>
       </article>
 
     </div>
@@ -768,10 +776,10 @@
 
         <div class="titem" style="--zc:var(--road)">
           <span class="zdot"></span>
-          <span class="tdate">juli (tbc)</span>
+          <span class="tdate">17–20 jul</span>
           <div class="tbody">
             <div class="tname">VooV Experience <span class="mini-badge b-watch">in gaten</span></div>
-            <div class="tmeta">Putlitz (DE) · exacte datum nog checken</div>
+            <div class="tmeta">Putlitz (DE) · tickets via voov-festival.de</div>
           </div>
         </div>
       </div>
@@ -851,12 +859,12 @@
         <div class="tmonth-label">Onbevestigd / seizoen <span class="count">— geen harde datum</span></div>
         <p class="tbc-note">Wel op de radar, nog geen datum bekend — check ik zodra bevestigd.</p>
 
-        <div class="titem" style="--zc:var(--road)">
+        <div class="titem dim" style="--zc:var(--road)">
           <span class="zdot"></span>
-          <span class="tdate">2026 tbc</span>
+          <span class="tdate">24–27 jun</span>
           <div class="tbody">
-            <div class="tname">Antaris Project <span class="mini-badge b-watch">terug in '26</span></div>
-            <div class="tmeta">bij Berlijn (DE) · keert terug na pauze</div>
+            <div class="tname">Antaris Project <span class="mini-badge b-past">gehad</span></div>
+            <div class="tmeta">Gollenberg/Rhinow (DE) · alarm voor 2027</div>
           </div>
         </div>
 
@@ -1354,6 +1362,20 @@
           ll.innerHTML = `<span class="lineup-tag">🎤 Line-up</span> nog niet bekend`;
         }
         card.appendChild(ll);
+
+        // resale-info (door de scheduler tweewekelijks ververst)
+        if (f && f.resale && (f.resale.status || f.resale.price)){
+          const rs = document.createElement("div");
+          rs.className = "resale-line";
+          const parts = [];
+          if (f.resale.status) parts.push(esc(f.resale.status));
+          if (f.resale.price) parts.push(`<span class="rs-price">${esc(f.resale.price)}</span>`);
+          const linkLabel = /ticketswap/i.test(f.resale.url || "") ? "TicketSwap →" : "Officiële resale →";
+          const link = f.resale.url ? ` <a href="${esc(f.resale.url)}" target="_blank" rel="noopener">${linkLabel}</a>` : "";
+          const checked = f.resale.checked ? ` <span class="rs-checked">(check ${esc(fmtDate(f.resale.checked) || f.resale.checked)})</span>` : "";
+          rs.innerHTML = `<span class="lineup-tag">🎟️ Resale</span>${parts.join(" · ")}${link}${checked}`;
+          card.appendChild(rs);
+        }
 
         const goers = document.createElement("div");
         goers.className = "goers";

@@ -9,16 +9,26 @@
       "status": "gone",
       "where": "Kraggenburg",
       "travel": "~40 min",
-      "lat": 52.665, "lng": 5.883,
+      "lat": 52.665,
+      "lng": 5.883,
       "start": "2026-07-09",
       "end": "2026-07-12",
       "when": "9–12 jul 2026",
       "tickets": "Weekend uitverkocht · verkoop ging 28 jan. Resale via TicketSwap.",
       "ticketSaleStart": null,
-      "tags": ["eigenwijs", "techno"],
+      "tags": [
+        "eigenwijs",
+        "techno"
+      ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://wildeburg.nl"
+      "url": "https://wildeburg.nl",
+      "resale": {
+        "checked": "2026-07-07",
+        "status": "0 aangeboden · 272 gezocht op TicketSwap",
+        "price": "officiële resale (Paylogic): 80–100% van €330",
+        "url": "https://www.ticketswap.com/wildeburg-festival"
+      }
     },
     {
       "id": "thuishaven-mees-salome",
@@ -27,14 +37,23 @@
       "status": "go",
       "where": "Contactweg, Amsterdam",
       "travel": "~1u15",
-      "lat": 52.401, "lng": 4.836,
+      "lat": 52.401,
+      "lng": 4.836,
       "start": "2026-07-11",
       "end": "2026-07-11",
       "when": "11 jul 2026 · 13:00–23:00",
       "tickets": "Te koop via Weeztix/RA · €31,50 · Mees Salomé 10u, Kerri Chandler, Dennis Quin.",
       "ticketSaleStart": null,
-      "tags": ["melodic house", "techno", "18+"],
-      "lineup": ["Mees Salomé", "Kerri Chandler", "Dennis Quin"],
+      "tags": [
+        "melodic house",
+        "techno",
+        "18+"
+      ],
+      "lineup": [
+        "Mees Salomé",
+        "Kerri Chandler",
+        "Dennis Quin"
+      ],
       "lineupUrl": "",
       "url": "https://thuishaven.nl"
     },
@@ -45,16 +64,27 @@
       "status": "gone",
       "where": "De Middengaarde, Nieuwegein",
       "travel": "~55 min",
-      "lat": 52.029, "lng": 5.083,
+      "lat": 52.029,
+      "lng": 5.083,
       "start": "2026-07-25",
       "end": "2026-07-25",
       "when": "25 jul 2026 · 14:00–23:00",
       "tickets": "Uitverkocht · TicketSwap voor resale.",
       "ticketSaleStart": null,
-      "tags": ["techno", "house", "disco"],
+      "tags": [
+        "techno",
+        "house",
+        "disco"
+      ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://geheimeliefde.nl"
+      "url": "https://geheimeliefde.nl",
+      "resale": {
+        "checked": "2026-07-07",
+        "status": "uitverkocht · aanbod wisselt",
+        "price": "richtprijs ~€90 (tweedehands)",
+        "url": "https://www.ticketswap.com/festival-tickets/a/geheime-liefde"
+      }
     },
     {
       "id": "flow-in-the-park",
@@ -63,14 +93,25 @@
       "status": "go",
       "where": "Park Sonsbeek, Arnhem",
       "travel": "~25 min",
-      "lat": 52.001, "lng": 5.907,
+      "lat": 52.001,
+      "lng": 5.907,
       "start": "2026-08-01",
       "end": "2026-08-02",
       "when": "1–2 aug 2026",
       "tickets": "Vanaf €42,50 via listentoflow.com · Franky Rizardo, Toman, Prunk.",
       "ticketSaleStart": null,
-      "tags": ["house", "weekender", "park", "18+"],
-      "lineup": ["Franky Rizardo", "Toman", "Prunk", "Chelina Manuhutu"],
+      "tags": [
+        "house",
+        "weekender",
+        "park",
+        "18+"
+      ],
+      "lineup": [
+        "Franky Rizardo",
+        "Toman",
+        "Prunk",
+        "Chelina Manuhutu"
+      ],
       "lineupUrl": "",
       "url": "https://listentoflow.com"
     },
@@ -81,14 +122,25 @@
       "status": "go",
       "where": "Ter Hunnepe, Deventer",
       "travel": "~20 min",
-      "lat": 52.239, "lng": 6.163,
+      "lat": 52.239,
+      "lng": 6.163,
       "start": "2026-08-07",
       "end": "2026-08-08",
       "when": "7–8 aug 2026",
       "tickets": "Verkoop open · los of combi via nachtparlement.nl · Sterac, Sandrien, Mama Snake.",
       "ticketSaleStart": null,
-      "tags": ["techno", "kunst"],
-      "lineup": ["Sterac", "Sandrien", "Mama Snake", "Pariah", "upsammy", "Joep Beving"],
+      "tags": [
+        "techno",
+        "kunst"
+      ],
+      "lineup": [
+        "Sterac",
+        "Sandrien",
+        "Mama Snake",
+        "Pariah",
+        "upsammy",
+        "Joep Beving"
+      ],
       "lineupUrl": "",
       "url": "https://nachtparlement.nl"
     },
@@ -97,18 +149,29 @@
       "name": "Lief",
       "zone": "near",
       "status": "watch",
-      "where": "Utrecht",
+      "where": "Strijkviertel, Utrecht",
       "travel": "~50 min",
-      "lat": 52.091, "lng": 5.118,
-      "start": null,
-      "end": null,
-      "when": "eind aug / begin sept 2026",
-      "tickets": "Verkoopt consequent uit · datum 2026 nog checken.",
+      "lat": 52.091,
+      "lng": 5.118,
+      "start": "2026-09-05",
+      "end": "2026-09-05",
+      "when": "5 sept 2026 · 12:00–23:00",
+      "tickets": "Verkoop startte 30 jan via CM.com · officiële resale-partner: TicketSwap.",
       "ticketSaleStart": null,
-      "tags": ["techno", "house", "disco"],
+      "tags": [
+        "techno",
+        "house",
+        "disco"
+      ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://www.lieffestival.nl"
+      "url": "https://www.lieffestival.nl",
+      "resale": {
+        "checked": "2026-07-07",
+        "status": "officiële resale-partner: TicketSwap",
+        "price": null,
+        "url": "https://www.ticketswap.com/lief-festival"
+      }
     },
     {
       "id": "nataraj-beach-party",
@@ -117,13 +180,18 @@
       "status": "watch",
       "where": "Zuiderstrand, Zandvoort",
       "travel": "~1u25",
-      "lat": 52.372, "lng": 4.529,
+      "lat": 52.372,
+      "lng": 4.529,
       "start": "2026-08-30",
       "end": "2026-08-30",
       "when": "30 aug 2026",
       "tickets": "Kaartverkoop via Hipsy · beschikbaarheid per editie checken.",
       "ticketSaleStart": null,
-      "tags": ["psy/organic", "strand", "yoga"],
+      "tags": [
+        "psy/organic",
+        "strand",
+        "yoga"
+      ],
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.nataraj.info"
@@ -135,13 +203,17 @@
       "status": "watch",
       "where": "MOB Complex, Tilburg",
       "travel": "~1u20",
-      "lat": 51.582, "lng": 5.034,
+      "lat": 51.582,
+      "lng": 5.034,
       "start": "2026-09-04",
-      "end": "2026-09-05",
-      "when": "4–5 sept 2026",
-      "tickets": "Deep/melodic, kunstzinnige stages · status 2026 checken.",
+      "end": "2026-09-06",
+      "when": "4–6 sept 2026",
+      "tickets": "Verkoop startte 3 dec · stage hosts: TraTraTrax, Eris Drew & Octo Octa, Timedance · volledige line-up TBA.",
       "ticketSaleStart": null,
-      "tags": ["melodic techno", "bos/kunst"],
+      "tags": [
+        "melodic techno",
+        "bos/kunst"
+      ],
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.draaimolen.nu"
@@ -153,16 +225,26 @@
       "status": "gone",
       "where": "Amersfoort",
       "travel": "~40 min",
-      "lat": 52.156, "lng": 5.388,
+      "lat": 52.156,
+      "lng": 5.388,
       "start": "2026-09-18",
       "end": "2026-09-19",
       "when": "18–19 sept 2026",
-      "tickets": "Uitverkocht binnen 1u · TicketSwap/wachtlijst. Fallback: ITW ADE 23–24 okt (NDSM).",
+      "tickets": "Verkoop startte 25 mrt, uitverkocht · TicketSwap/wachtlijst. Fallback: ITW ADE 23–24 okt (NDSM).",
       "ticketSaleStart": null,
-      "tags": ["sprookjesbos", "electronic"],
+      "tags": [
+        "sprookjesbos",
+        "electronic"
+      ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://intothewoods.nl"
+      "url": "https://intothewoods.nl",
+      "resale": {
+        "checked": "2026-07-07",
+        "status": "uitverkocht · resale via TicketSwap",
+        "price": "za-tickets ~€120 (tweedehands)",
+        "url": "https://www.ticketswap.com/festival-tickets/a/into-the-woods-festival"
+      }
     },
     {
       "id": "antaris-project",
@@ -171,13 +253,17 @@
       "status": "watch",
       "where": "bij Berlijn (DE)",
       "travel": "~5,5u",
-      "lat": 52.771, "lng": 12.353,
-      "start": null,
-      "end": null,
-      "when": "datum 2026 TBC",
-      "tickets": "Keert terug na pauze · datum + verkoop nog niet bevestigd.",
+      "lat": 52.771,
+      "lng": 12.353,
+      "start": "2026-06-24",
+      "end": "2026-06-27",
+      "when": "24–27 jun 2026 (gehad)",
+      "tickets": "Editie 2026 (Gollenberg/Rhinow) is geweest · alarm voor 2027.",
       "ticketSaleStart": null,
-      "tags": ["psytrance", "goa"],
+      "tags": [
+        "psytrance",
+        "goa"
+      ],
       "lineup": [],
       "lineupUrl": "",
       "url": "https://antaris-project.de"
@@ -189,13 +275,17 @@
       "status": "watch",
       "where": "Putlitz (DE)",
       "travel": "~5u",
-      "lat": 53.248, "lng": 12.033,
-      "start": null,
-      "end": null,
-      "when": "juli 2026",
-      "tickets": "'Mother of all Goa festivals' · editie + verkoopdatum checken.",
+      "lat": 53.248,
+      "lng": 12.033,
+      "start": "2026-07-17",
+      "end": "2026-07-20",
+      "when": "17–20 jul 2026",
+      "tickets": "54 uur non-stop, 50+ artiesten · tickets via voov-festival.de.",
       "ticketSaleStart": null,
-      "tags": ["psytrance", "goa"],
+      "tags": [
+        "psytrance",
+        "goa"
+      ],
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.voov-festival.de"
@@ -207,13 +297,17 @@
       "status": "watch",
       "where": "Dádpuszta, Hongarije",
       "travel": "vlucht Boedapest",
-      "lat": 46.762, "lng": 18.286,
+      "lat": 46.762,
+      "lng": 18.286,
       "start": null,
       "end": null,
       "when": "eerste week augustus",
       "tickets": "Verkoop opent meestal najaar/winter ervoor.",
       "ticketSaleStart": null,
-      "tags": ["psytrance", "7 dagen"],
+      "tags": [
+        "psytrance",
+        "7 dagen"
+      ],
       "lineup": [],
       "lineupUrl": "",
       "url": "https://ozorafestival.eu"
@@ -225,13 +319,17 @@
       "status": "watch",
       "where": "Primišlje, Kroatië",
       "travel": "vlucht Zagreb",
-      "lat": 45.259, "lng": 15.548,
+      "lat": 45.259,
+      "lng": 15.548,
       "start": null,
       "end": null,
       "when": "zomer",
       "tickets": "Diep underground · editie + verkoop opzoeken.",
       "ticketSaleStart": null,
-      "tags": ["underground psy", "natuur"],
+      "tags": [
+        "underground psy",
+        "natuur"
+      ],
       "lineup": [],
       "lineupUrl": "",
       "url": "https://modemfestival.com"
@@ -243,16 +341,28 @@
       "status": "gone",
       "where": "Boomland, Idanha-a-Nova (PT)",
       "travel": "vlucht Lissabon + ~2,5u",
-      "lat": 39.923, "lng": -7.235,
+      "lat": 39.923,
+      "lng": -7.235,
       "start": "2027-07-18",
       "end": "2027-07-25",
       "when": "18–25 jul 2027",
       "tickets": "30-jarig jubileum · verkoop ging okt 2025, in uren uitverkocht · alleen officiële resale via boomfestival.org.",
       "ticketSaleStart": null,
-      "tags": ["psytrance", "transformational", "biennaal", "kunst"],
+      "tags": [
+        "psytrance",
+        "transformational",
+        "biennaal",
+        "kunst"
+      ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://www.boomfestival.org"
+      "url": "https://www.boomfestival.org",
+      "resale": {
+        "checked": "2026-07-07",
+        "status": "uitverkocht · alléén officiële resale (pas op scalpers)",
+        "price": null,
+        "url": "https://www.boomfestival.org"
+      }
     },
     {
       "id": "las-festival",
@@ -261,13 +371,18 @@
       "status": "watch",
       "where": "nog uitzoeken",
       "travel": "",
-      "lat": null, "lng": null,
+      "lat": null,
+      "lng": null,
       "start": null,
       "end": null,
       "when": "zomer",
       "tickets": "Progressive → full on → forest · land + datum verifiëren.",
       "ticketSaleStart": null,
-      "tags": ["progressive", "psy-chill", "forest"],
+      "tags": [
+        "progressive",
+        "psy-chill",
+        "forest"
+      ],
       "lineup": [],
       "lineupUrl": "",
       "url": ""

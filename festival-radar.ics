@@ -60,6 +60,16 @@ DESCRIPTION:Ter Hunnepe\, Deventer — Reistijd ~20 min — Status: te sco
  ndrien\, Mama Snake. — https://nachtparlement.nl
 END:VEVENT
 BEGIN:VEVENT
+UID:lief@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260906
+SUMMARY:♪ Lief · Voor de deur
+DESCRIPTION:Strijkviertel\, Utrecht — Reistijd ~50 min — Status: in de
+  gaten — Verkoop startte 30 jan via CM.com · officiële resale-partner
+ : TicketSwap. — https://www.lieffestival.nl
+END:VEVENT
+BEGIN:VEVENT
 UID:nataraj-beach-party@festival-radar
 DTSTAMP:20260707T000000Z
 DTSTART;VALUE=DATE:20260830
@@ -73,11 +83,12 @@ BEGIN:VEVENT
 UID:draaimolen@festival-radar
 DTSTAMP:20260707T000000Z
 DTSTART;VALUE=DATE:20260904
-DTEND;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
 SUMMARY:♪ Draaimolen · Voor de deur
 DESCRIPTION:MOB Complex\, Tilburg — Reistijd ~1u20 — Status: in de gat
- en — Deep/melodic\, kunstzinnige stages · status 2026 checken. — htt
- ps://www.draaimolen.nu
+ en — Verkoop startte 3 dec · stage hosts: TraTraTrax\, Eris Drew & Oct
+ o Octa\, Timedance · volledige line-up TBA. — https://www.draaimolen.n
+ u
 END:VEVENT
 BEGIN:VEVENT
 UID:into-the-woods@festival-radar
@@ -86,8 +97,28 @@ DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20260920
 SUMMARY:♪ Into the Woods · Voor de deur
 DESCRIPTION:Amersfoort — Reistijd ~40 min — Status: uitverkocht / resa
- le — Uitverkocht binnen 1u · TicketSwap/wachtlijst. Fallback: ITW ADE 
- 23–24 okt (NDSM). — https://intothewoods.nl
+ le — Verkoop startte 25 mrt\, uitverkocht · TicketSwap/wachtlijst. Fal
+ lback: ITW ADE 23–24 okt (NDSM). — https://intothewoods.nl
+END:VEVENT
+BEGIN:VEVENT
+UID:antaris-project@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260624
+DTEND;VALUE=DATE:20260628
+SUMMARY:♪ Antaris Project · Roadtrip
+DESCRIPTION:bij Berlijn (DE) — Reistijd ~5\,5u — Status: in de gaten 
+ — Editie 2026 (Gollenberg/Rhinow) is geweest · alarm voor 2027. — ht
+ tps://antaris-project.de
+END:VEVENT
+BEGIN:VEVENT
+UID:voov-experience@festival-radar
+DTSTAMP:20260707T000000Z
+DTSTART;VALUE=DATE:20260717
+DTEND;VALUE=DATE:20260721
+SUMMARY:♪ VooV Experience · Roadtrip
+DESCRIPTION:Putlitz (DE) — Reistijd ~5u — Status: in de gaten — 54 u
+ ur non-stop\, 50+ artiesten · tickets via voov-festival.de. — https://
+ www.voov-festival.de
 END:VEVENT
 BEGIN:VEVENT
 UID:boom-festival@festival-radar
