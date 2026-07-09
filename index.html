@@ -290,6 +290,7 @@
   .reviews .rv-people{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);display:grid;gap:8px}
   .rv-person{font-size:12.5px;line-height:1.45}
   .rv-person .who{font-weight:700;color:var(--ink);margin-right:8px}
+  .rv-person .rv-year{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--faint);margin-right:7px}
   .rv-person.me .who{color:#08301f;background:var(--go);border-radius:999px;padding:1px 9px}
   .rv-person .sc{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap}
   .rv-person .rvx{cursor:pointer;color:var(--faint);margin-left:7px;font-weight:700}
@@ -1137,8 +1138,8 @@
         ${rows.length ? `<div class="rows">${rows.join("")}</div>` : ""}
         ${pending}
         ${byline}
-        <div class="cactions">${web}<a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a><button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga</button><button class="rvbtn" data-eid="${esc(eid)}" data-name="${esc(ev.name)}">★ Review</button>${del}</div>
-        <div class="goers" data-eid="${esc(eid)}"></div>
+        <div class="cactions">${web}<a class="sclink" href="https://soundcloud.com/search?q=${scq}" target="_blank" rel="noopener">☁ Live sets</a>${(ev.date && ev.date < todayISO()) ? "" : `<button class="rsvp" data-eid="${esc(eid)}">🙌 Ik ga</button>`}<button class="rvbtn" data-eid="${esc(eid)}" data-name="${esc(ev.name)}">★ Review</button>${del}</div>
+        <div class="goers" data-eid="${esc(eid)}"${(ev.date && ev.date < todayISO()) ? ' data-past="1"' : ""}></div>
         <div class="reviews" data-eid="${esc(eid)}"></div>
       </article>`;
     }
@@ -1290,6 +1291,9 @@
     }
     // unieke sleutel per festival-editie (naam + editienaam)
     function festKey(f){ return slug(f.name + (f.edition ? " " + f.edition : "")); }
+    function todayISO(){ return new Date().toISOString().slice(0, 10); }
+    // is de (huidige editie van) dit festival al geweest?
+    function isPastFest(f){ return !!(f && f.end && f.end < todayISO()); }
     function cardKey(card){
       const nameEl = card.querySelector(".name");
       const ed = card.querySelector(".edition");
@@ -1361,7 +1365,8 @@
           parts.push(`<a class="splink" href="https://open.spotify.com/search/${listenQ}" target="_blank" rel="noopener">♫ Spotify</a>`);
         }
         parts.push(`<a class="sclink" href="https://soundcloud.com/search?q=${listenQ}" target="_blank" rel="noopener">☁ Live sets</a>`);
-        parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga</button>`);
+        const past = isPastFest(f) || !!card.querySelector(".badge.b-past");
+        if (!past) parts.push(`<button class="rsvp" data-eid="${sl}">🙌 Ik ga</button>`);
         parts.push(`<button class="rvbtn" data-eid="${sl}" data-name="${esc(fullLabel)}">★ Review</button>`);
         const div = document.createElement("div");
         div.className = "cactions";
@@ -1420,6 +1425,7 @@
         const goers = document.createElement("div");
         goers.className = "goers";
         goers.dataset.eid = sl;
+        if (past) goers.dataset.past = "1";
         card.appendChild(goers);
 
         const rv = document.createElement("div");
@@ -1454,21 +1460,30 @@
       });
       if (stale) localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
 
+      // per editie: toon alleen RSVP's die bij de huidige festivaldatum horen
+      function editionList(eid){
+        let list = RSVP[eid] || [];
+        const f = FESTBY[eid];
+        if (f && f.start) list = list.filter(r => !r.fstart || r.fstart === f.start);
+        return list;
+      }
       document.querySelectorAll(".rsvp").forEach(btn => {
-        const mine = !!myRsvps[btn.dataset.eid];
+        const eid = btn.dataset.eid;
+        const mine = !!myRsvps[eid] && editionList(eid).some(r => r.id === myRsvps[eid]);
         btn.classList.toggle("mine", mine);
         btn.textContent = mine ? "✓ Je gaat" : "🙌 Ik ga";
       });
       document.querySelectorAll(".goers").forEach(box => {
         const eid = box.dataset.eid;
-        const list = RSVP[eid] || [];
+        const list = editionList(eid);
         if (!list.length){ box.innerHTML = ""; return; }
+        const past = box.dataset.past === "1";
         const chips = list.map(r => {
           const mine = myRsvps[eid] === r.id;
           return `<span class="goer${mine ? " me" : ""}" data-rid="${esc(r.id)}" data-eid="${esc(eid)}" data-name="${esc(r.name)}">`
             + `${esc(r.name)} <span class="goer-x" title="${mine ? "Verwijder jezelf" : "Verwijderen"}">×</span></span>`;
         }).join("");
-        box.innerHTML = `<span class="goers-label">Gaan (${list.length}):</span> ${chips}`;
+        box.innerHTML = `<span class="goers-label">${past ? "Waren erbij" : "Gaan"} (${list.length}):</span> ${chips}`;
       });
     }
 
@@ -1489,7 +1504,8 @@
         renderWhoami();
       }
       try {
-        const ref = await addDoc(collection(db, "rsvps"), { eid, name: myName, createdAt: serverTimestamp() });
+        const fstart = (FESTBY[eid] || {}).start || "";
+        const ref = await addDoc(collection(db, "rsvps"), { eid, name: myName, fstart, createdAt: serverTimestamp() });
         myRsvps[eid] = ref.id;
         localStorage.setItem("fr_rsvps", JSON.stringify(myRsvps));
         await loadRsvps();
@@ -1579,7 +1595,9 @@
           const high = r.highlight
             ? `<div class="rv-high">🎯 <a href="https://soundcloud.com/search?q=${encodeURIComponent(r.highlight)}" target="_blank" rel="noopener">${esc(r.highlight)}</a></div>` : "";
           const x = mine ? ` <span class="rvx" data-id="${esc(r.id)}" title="Verwijder je review">×</span>` : "";
-          return `<div class="rv-person${mine ? " me" : ""}"><span class="who">${esc(r.name || "?")}</span><span class="sc">${sc}</span>${x}${high}${note}</div>`;
+          const yr = (r.createdAt && r.createdAt.seconds)
+            ? `<span class="rv-year">'${String(new Date(r.createdAt.seconds * 1000).getFullYear()).slice(-2)}</span> ` : "";
+          return `<div class="rv-person${mine ? " me" : ""}"><span class="who">${esc(r.name || "?")}</span>${yr}<span class="sc">${sc}</span>${x}${high}${note}</div>`;
         }).join("");
         box.innerHTML = `<div class="rv-top"><span class="rv-head">Reviews (${list.length})</span>${split}<span class="rv-overall">★ ${overall.toFixed(1)} gem.</span></div>`
           + `<div class="rv-dims">${dims}</div>`
