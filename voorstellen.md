@@ -6,11 +6,13 @@
 
 | # | Festival | Wanneer | Waar + reis vanuit Apeldoorn | Zone | Waarom het past | Info |
 |---|----------|---------|------------------------------|------|-----------------|------|
-| 1 | **Komm Schon Alter — Das Mini Festival** | 22 aug 2026 | Tuinen van West, Amsterdam · ~1u15 | near | Intiem, gecureerd melodic house & techno met een 24+-deur — precies de volwassen, kleine sfeer die Viktor zoekt. | [kommschonalter.de](https://www.kommschonalter.de/) |
-| 2 | **Garbicz Festival** | 30 jul – 3 aug 2026 | Garbicz aan het Wielicko-meer (PL) · roadtrip ~7u of vlucht Berlijn + ~1u | road | Underground meerside-festival van Berlijnse curators, leave-no-trace, ambient→house→techno; diep en klein van sfeer ondanks meerdaags. | [garbiczfestival.com](https://garbiczfestival.com/) |
-| 3 | **Lost Theory Festival** | zomer 2026 (datum via site bevestigen) | Portugal · vlucht Lissabon/Porto | bucket | Underground psytrance met 360°-dome, visuals en yoga-programma — sluit aan bij zijn goa/organic-kant, in de lijn van OZORA en Mo:Dem. | [festivalfinder.eu/lost-theory](https://www.festivalfinder.eu/festivals/lost-theory) |
+| 1 | **Garbicz Festival** | 30 jul – 3 aug 2026 | Garbicz aan het Wielicko-meer (PL) · roadtrip ~7u of vlucht Berlijn + ~1u | road | Underground meerside-festival van Berlijnse curators, leave-no-trace, ambient→house→techno; diep en klein van sfeer ondanks meerdaags. | [garbiczfestival.com](https://garbiczfestival.com/) |
+| 2 | **Lost Theory Festival** | zomer 2026 (datum via site bevestigen) | Portugal · vlucht Lissabon/Porto | bucket | Underground psytrance met 360°-dome, visuals en yoga-programma — sluit aan bij je goa/organic-kant, in de lijn van OZORA en Mo:Dem. | [festivalfinder.eu/lost-theory](https://www.festivalfinder.eu/festivals/lost-theory) |
 
-*Aandachtspunt: van Lost Theory zijn de exacte 2026-datums nog niet hard bevestigd; officiële site stond op moment van checken op "gereserveerd". Bij interesse vul ik datum + lat/lng aan zodra bekend.*
+*Aandachtspunten:*
+- *Van Lost Theory zijn de exacte 2026-datums nog niet hard bevestigd; de officiële site stond op moment van checken op "gereserveerd". Bij interesse vul ik datum + lat/lng aan zodra bekend.*
+- *Ingetrokken voorstel: **Komm Schon Alter** stond al op de radar (als "2026 gehad") — die had ik nooit als nieuw mogen voorstellen. Het kleinere "Das Mini Festival" van 22 aug 2026 staat nu als notitie op de bestaande kaart.*
+- *Geen derde voorstel deze ronde: liever twee die kloppen dan een derde erbij verzinnen. Volgende ronde een verse near-optie.*
 
 ---
 
