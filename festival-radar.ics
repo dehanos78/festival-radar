@@ -8,10 +8,10 @@ X-WR-TIMEZONE:Europe/Amsterdam
 X-WR-CALDESC:Vik's shortlist festivals + kaartverkoop-meldingen
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-X-BUILT:20260716T000000Z
+X-BUILT:20260811T000000Z
 BEGIN:VEVENT
 UID:wildeburg@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20270708
 DTEND;VALUE=DATE:20270712
 SUMMARY:♪ Wildeburg · Voor de deur
@@ -22,7 +22,7 @@ DESCRIPTION:Kraggenburg — Reistijd ~40 min — Status: te scoren — Ver
 END:VEVENT
 BEGIN:VEVENT
 UID:wildeburg-sale@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART:20260715T100000
 DTEND:20260715T101500
 SUMMARY:🎟️ Kaartverkoop start: Wildeburg
@@ -42,75 +42,54 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde@festival-radar
-DTSTAMP:20260716T000000Z
-DTSTART;VALUE=DATE:20260725
-DTEND;VALUE=DATE:20260726
+DTSTAMP:20260811T000000Z
+DTSTART;VALUE=DATE:20270724
+DTEND;VALUE=DATE:20270725
 SUMMARY:♪ Geheime Liefde · Tuinen van Geluk · Voor de deur
 DESCRIPTION:De Middengaarde\, Nieuwegein — Reistijd ~55 min — Status: 
- uitverkocht / resale — Uitverkocht · TicketSwap voor resale. — https
- ://geheimeliefde.nl
+ in de gaten — Editie 2026 (25 jul\, uitverkocht) is geweest · 2027-edi
+ tie aangekondigd voor 24 jul op De Middengaarde · verkoopdatum nog niet 
+ bekend. — https://geheimeliefde.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:flow-in-the-park@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260801
 DTEND;VALUE=DATE:20260803
 SUMMARY:♪ Flow in the Park · Voor de deur
-DESCRIPTION:Park Sonsbeek\, Arnhem — Reistijd ~25 min — Status: te sco
- ren — Vanaf €42\,50 via listentoflow.com · Franky Rizardo\, Toman\, 
- Prunk\, Chelina Manuhutu e.a. — https://listentoflow.com
+DESCRIPTION:Park Sonsbeek\, Arnhem — Reistijd ~25 min — Editie is gewe
+ est · alarm voor volgend jaar. — https://listentoflow.com
 END:VEVENT
 BEGIN:VEVENT
 UID:het-systeem@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260807
 DTEND;VALUE=DATE:20260809
 SUMMARY:♪ Het Systeem · Voor de deur
-DESCRIPTION:Ter Hunnepe\, Deventer — Reistijd ~20 min — Status: te sco
- ren — Verkoop open · los (vr/za) of combi via nachtparlement.nl · Ste
- rac\, Sandrien\, Mama Snake\, Pariah\, upsammy. — https://nachtparlemen
- t.nl
+DESCRIPTION:Ter Hunnepe\, Deventer — Reistijd ~20 min — Editie is gewe
+ est · alarm voor volgend jaar. — https://nachtparlement.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:paradigm-festival@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260808
 DTEND;VALUE=DATE:20260810
 SUMMARY:♪ Paradigm Festival · Voor de deur
-DESCRIPTION:Suikerunie-terrein\, Groningen — Reistijd ~1u15 — Status: 
- in de gaten — 65+ artiesten\, 9 stages op het oude Suikerunie-terrein 
- · ticketstatus checken via paradigmfestival.com. — https://www.paradig
- mfestival.com
+DESCRIPTION:Suikerunie-terrein\, Groningen — Reistijd ~1u15 — Editie i
+ s geweest · alarm voor volgend jaar. — https://www.paradigmfestival.co
+ m
 END:VEVENT
 BEGIN:VEVENT
-UID:woodstock69-sub0-20260719@festival-radar
-DTSTAMP:20260716T000000Z
-DTSTART;VALUE=DATE:20260719
-DTEND;VALUE=DATE:20260720
-SUMMARY:♪ Woodstock69 · Benwal (All Day Long)
-DESCRIPTION:strand Bloemendaal aan Zee — uitverkocht · resale via Ticke
- tSwap — https://woodstock69.nl
-END:VEVENT
-BEGIN:VEVENT
-UID:woodstock69-sub1-20260729@festival-radar
-DTSTAMP:20260716T000000Z
-DTSTART;VALUE=DATE:20260729
-DTEND;VALUE=DATE:20260730
-SUMMARY:♪ Woodstock69 · An Asadazo at the beach
+UID:woodstock69-sub0-20260813@festival-radar
+DTSTAMP:20260811T000000Z
+DTSTART;VALUE=DATE:20260813
+DTEND;VALUE=DATE:20260814
+SUMMARY:♪ Woodstock69 · El Encanto del Alebrije (w/ Kus van de Cactus)
 DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
 END:VEVENT
 BEGIN:VEVENT
-UID:woodstock69-sub2-20260802@festival-radar
-DTSTAMP:20260716T000000Z
-DTSTART;VALUE=DATE:20260802
-DTEND;VALUE=DATE:20260803
-SUMMARY:♪ Woodstock69 · Chris Stussy at the beach
-DESCRIPTION:strand Bloemendaal aan Zee — uitverkocht · resale via Ticke
- tSwap — https://woodstock69.nl
-END:VEVENT
-BEGIN:VEVENT
-UID:woodstock69-sub3-20260830@festival-radar
-DTSTAMP:20260716T000000Z
+UID:woodstock69-sub1-20260830@festival-radar
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:♪ Woodstock69 · Brighter Days: Palms Trax\, Kamma & Masalo\, Ei
@@ -119,8 +98,8 @@ DESCRIPTION:strand Bloemendaal aan Zee — uitverkocht · resale via Ticke
  tSwap — https://woodstock69.nl
 END:VEVENT
 BEGIN:VEVENT
-UID:woodstock69-sub4-20260906@festival-radar
-DTSTAMP:20260716T000000Z
+UID:woodstock69-sub2-20260906@festival-radar
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260906
 DTEND;VALUE=DATE:20260907
 SUMMARY:♪ Woodstock69 · Dixon b2b Jimi Jules + Gizem
@@ -128,27 +107,29 @@ DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:nataraj-beach-party@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260830
 DTEND;VALUE=DATE:20260831
 SUMMARY:♪ Nataraj Beach Party · Voor de deur
 DESCRIPTION:Zuiderstrand\, Zandvoort (Manii Beach) — Reistijd ~1u25 — 
- Status: in de gaten — 21e editie · kaartverkoop via Hipsy · cacao-cer
- emonie 11:00\, party vanaf 13:00. — https://www.nataraj.info
+ Status: in de gaten — 21e editie en de laatste beach party van dit jaar
+  met volledig programma · kaarten via Hipsy · deuren 11:00\, cacao-cere
+ monie 11:30\, party vanaf 13:00. — https://www.nataraj.info
 END:VEVENT
 BEGIN:VEVENT
 UID:draaimolen@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260904
 DTEND;VALUE=DATE:20260906
 SUMMARY:♪ Draaimolen · Voor de deur
 DESCRIPTION:MOB Complex\, Tilburg — Reistijd ~1u20 — Status: uitverkoc
- ht / resale — Uitverkocht · volledige line-up bekend · resale via Tic
+ ht / resale — Uitverkocht (alleen nog late-vrijdagtickets in de offici
+ ële verkoop) · volledige line-up van 100+ acts bekend · resale via Tic
  ketSwap. — https://www.draaimolen.nu
 END:VEVENT
 BEGIN:VEVENT
 UID:lief@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260905
 DTEND;VALUE=DATE:20260906
 SUMMARY:♪ Lief · Voor de deur
@@ -159,28 +140,62 @@ DESCRIPTION:Strijkviertel\, Utrecht — Reistijd ~50 min — Status: in de
 END:VEVENT
 BEGIN:VEVENT
 UID:into-the-woods@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20260920
 SUMMARY:♪ Into the Woods · Voor de deur
-DESCRIPTION:Amersfoort — Reistijd ~40 min — Status: uitverkocht / resa
- le — Uitverkocht binnen 1u · TicketSwap/wachtlijst. — https://intoth
- ewoods.nl
+DESCRIPTION:Bosspot Openluchttheater\, Amersfoort — Reistijd ~40 min —
+  Status: uitverkocht / resale — Beide dagen uitverkocht · 100+ artiest
+ en op 9 podia\, 12:00–00:00\, 18+ · resale via TicketSwap. — https:/
+ /intothewoods.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-hrfst@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:♪ Geheime Liefde · HRFST · Voor de deur
-DESCRIPTION:Fort Vechten\, Bunnik (regio Utrecht) — Reistijd ~55 min —
-  Status: in de gaten — Herfst-editie op Fort Vechten · presale uitverk
- ocht · tickets/resale via YourTicketProvider & TicketSwap. — https://g
- eheimeliefde.nl
+DESCRIPTION:Fort bij Vechten\, Marsdijk 2\, Bunnik — Reistijd ~55 min 
+ — Status: in de gaten — Presale was uitverkocht · reguliere verkoop 
+ open sinds 26 jun 2026 via geheimeliefde.nl · 'ticketlock': tickets word
+ en pas 48 uur voor het festival vrijgegeven · officiële resale via Tick
+ etSwap. — https://geheimeliefde.nl
+END:VEVENT
+BEGIN:VEVENT
+UID:geheime-liefde-hrfst-sale@festival-radar
+DTSTAMP:20260811T000000Z
+DTSTART:20260626T100000
+DTEND:20260626T101500
+SUMMARY:🎟️ Kaartverkoop start: Geheime Liefde
+DESCRIPTION:Kaartverkoop opent voor Geheime Liefde (Fort bij Vechten\, Mar
+ sdijk 2\, Bunnik). Presale was uitverkocht · reguliere verkoop open sind
+ s 26 jun 2026 via geheimeliefde.nl · 'ticketlock': tickets worden pas 48
+  uur voor het festival vrijgegeven · officiële resale via TicketSwap.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Geheime Liefde
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Geheime Liefde
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:geheime-liefde-voorjaar@festival-radar
+DTSTAMP:20260811T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:♪ Geheime Liefde · Voorjaar · Voor de deur
+DESCRIPTION:Fort bij Vechten\, Marsdijk 2\, Bunnik — Reistijd ~55 min 
+ — Status: in de gaten — 2027-editie aangekondigd op geheimeliefde.nl 
+ (1 & 8 mei\, Fort bij Vechten) · verkoopdatum nog niet bekend. — https
+ ://geheimeliefde.nl/geheime-liefde
 END:VEVENT
 BEGIN:VEVENT
 UID:thuishaven-mees-salome@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260711
 DTEND;VALUE=DATE:20260712
 SUMMARY:♪ Thuishaven x Mees Salomé · Voor de deur
@@ -189,7 +204,7 @@ DESCRIPTION:Contactweg\, Amsterdam — Reistijd ~1u15 — Editie is gewees
 END:VEVENT
 BEGIN:VEVENT
 UID:komm-schon-alter@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260523
 DTEND;VALUE=DATE:20260524
 SUMMARY:♪ Komm Schon Alter · Voor de deur
@@ -198,7 +213,7 @@ DESCRIPTION:Tuinen van West\, A'dam — Reistijd ~1u15 — "Playground for
 END:VEVENT
 BEGIN:VEVENT
 UID:awakenings-upclose@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260516
 DTEND;VALUE=DATE:20260518
 SUMMARY:♪ Awakenings Upclose · Voor de deur
@@ -207,7 +222,7 @@ DESCRIPTION:Houtrak\, Spaarnwoude — Reistijd ~1u20 — Het kleine\, sche
 END:VEVENT
 BEGIN:VEVENT
 UID:lago-lago@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260626
 DTEND;VALUE=DATE:20260629
 SUMMARY:♪ Lago Lago · Voor de deur
@@ -216,17 +231,16 @@ DESCRIPTION:Stroombroek\, Braamt — Reistijd ~45 min — Job Jobse\, Joy
 END:VEVENT
 BEGIN:VEVENT
 UID:voov-experience@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260717
 DTEND;VALUE=DATE:20260721
 SUMMARY:♪ VooV Experience · Roadtrip
-DESCRIPTION:Putlitz (DE) — Reistijd ~5u — Status: in de gaten — 54 u
- ur non-stop\, 50+ artiesten · tickets via voov.ticket.io. — https://ww
- w.voov-festival.de
+DESCRIPTION:Putlitz (DE) — Reistijd ~5u — Editie is geweest · alarm v
+ oor de 2027-editie. — https://www.voov-festival.de
 END:VEVENT
 BEGIN:VEVENT
 UID:antaris-project@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260624
 DTEND;VALUE=DATE:20260628
 SUMMARY:♪ Antaris Project · Roadtrip
@@ -234,8 +248,18 @@ DESCRIPTION:Gollenberg/Rhinow (DE) — Reistijd ~5\,5u — Legendarisch\,
  anti-commercie · editie 2026 is geweest. — https://antaris-project.de
 END:VEVENT
 BEGIN:VEVENT
+UID:modem@festival-radar
+DTSTAMP:20260811T000000Z
+DTSTART;VALUE=DATE:20260803
+DTEND;VALUE=DATE:20260810
+SUMMARY:♪ Mo:Dem · Bucketlist
+DESCRIPTION:Robinzon Kamp\, Donje Primišlje (Kroatië) — Reistijd vluch
+ t Zagreb — Editie is geweest · alarm voor 2027. — https://modemfesti
+ val.com
+END:VEVENT
+BEGIN:VEVENT
 UID:boom-festival@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20270718
 DTEND;VALUE=DATE:20270726
 SUMMARY:♪ Boom Festival · Bucketlist
@@ -246,7 +270,7 @@ DESCRIPTION:Boomland\, Idanha-a-Nova (PT) — Reistijd vlucht Lissabon + ~
 END:VEVENT
 BEGIN:VEVENT
 UID:las-festival@festival-radar
-DTSTAMP:20260716T000000Z
+DTSTAMP:20260811T000000Z
 DTSTART;VALUE=DATE:20260624
 DTEND;VALUE=DATE:20260630
 SUMMARY:♪ LAS Festival · Bucketlist
