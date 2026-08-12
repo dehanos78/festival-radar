@@ -147,6 +147,7 @@
   .card.dim{opacity:.6}
   .cover{margin:-20px -20px 16px;height:78px;overflow:hidden}
   .cover svg{display:block;width:100%;height:100%}
+  .cover img{display:block;width:100%;height:100%;object-fit:cover}
 
   .edition{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--zc);font-weight:700;margin:-8px 0 12px 20px}
   .ctop{display:flex;align-items:flex-start;gap:11px;margin-bottom:12px}
@@ -662,20 +663,51 @@
       community: ["#12ab6d", "#6fe0ad"]
     };
     function coverSVG(name, zone){
-      const [c1, c2] = COVER_GRAD[zone] || COVER_GRAD.near;
+      let [c1, c2] = COVER_GRAD[zone] || COVER_GRAD.near;
       let h = 2166136261;
       for (let i = 0; i < name.length; i++){ h = (h ^ name.charCodeAt(i)) >>> 0; h = (h * 16777619) >>> 0; }
       const rnd = (n) => { h = (h * 1103515245 + 12345) >>> 0; return (h % 10000) / 10000 * n; };
       const gid = "cg" + h.toString(36);
-      let blobs = "";
-      for (let i = 0; i < 5; i++){
-        const cx = rnd(600).toFixed(0), cy = rnd(180).toFixed(0), r = (34 + rnd(72)).toFixed(0);
-        const o = (0.10 + rnd(0.24)).toFixed(2);
-        blobs += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${i % 2 ? "#ffffff" : c2}" opacity="${o}"/>`;
+      if (rnd(1) < 0.5){ const t = c1; c1 = c2; c2 = t; }          // soms omgekeerde gradient
+      const ang = rnd(Math.PI * 2);                                 // variërende gradient-hoek
+      const gx = (Math.cos(ang) * 0.5 + 0.5).toFixed(2), gy = (Math.sin(ang) * 0.5 + 0.5).toFixed(2);
+      const kind = Math.floor(rnd(6));                              // 6 patroon-archetypes
+      const tone = (o) => rnd(1) < 0.5 ? `#ffffff` : c2;
+      let pat = "";
+      if (kind === 0){        // zachte bubbels
+        for (let i = 0; i < 5; i++)
+          pat += `<circle cx="${rnd(600) | 0}" cy="${rnd(180) | 0}" r="${(30 + rnd(70)) | 0}" fill="${tone()}" opacity="${(0.10 + rnd(0.22)).toFixed(2)}"/>`;
+      } else if (kind === 1){ // golven
+        for (let i = 0; i < 3; i++){
+          const y = 30 + rnd(130), a = 14 + rnd(30);
+          pat += `<path d="M-20,${y | 0} Q150,${(y - a) | 0} 300,${y | 0} T640,${y | 0}" fill="none" stroke="${tone()}" stroke-width="${(8 + rnd(14)) | 0}" opacity="${(0.12 + rnd(0.2)).toFixed(2)}"/>`;
+        }
+      } else if (kind === 2){ // stralen vanuit een punt
+        const cx = 80 + rnd(440), n = 7 + (rnd(4) | 0);
+        for (let i = 0; i < n; i++)
+          pat += `<rect x="${cx | 0}" y="86" width="420" height="${(5 + rnd(12)) | 0}" fill="${tone()}" opacity="${(0.10 + rnd(0.16)).toFixed(2)}" transform="rotate(${(i * 360 / n + rnd(20)) | 0} ${cx | 0} 90)"/>`;
+      } else if (kind === 3){ // concentrische ringen
+        const cx = 80 + rnd(440), cy = rnd(180);
+        for (let i = 1; i <= 4; i++)
+          pat += `<circle cx="${cx | 0}" cy="${cy | 0}" r="${i * (18 + rnd(14)) | 0}" fill="none" stroke="${tone()}" stroke-width="${(4 + rnd(8)) | 0}" opacity="${(0.10 + rnd(0.18)).toFixed(2)}"/>`;
+      } else if (kind === 4){ // ruiten
+        const n = 4 + (rnd(3) | 0);
+        for (let i = 0; i < n; i++){
+          const s = 26 + rnd(46), x = rnd(600), y = rnd(180);
+          pat += `<rect x="${(x - s / 2) | 0}" y="${(y - s / 2) | 0}" width="${s | 0}" height="${s | 0}" fill="${tone()}" opacity="${(0.10 + rnd(0.2)).toFixed(2)}" transform="rotate(45 ${x | 0} ${y | 0})"/>`;
+        }
+      } else {                // stippenraster
+        const ox = rnd(40), oy = rnd(30);
+        for (let i = 0; i < 12; i++) for (let j = 0; j < 4; j++)
+          pat += `<circle cx="${(ox + i * 52) | 0}" cy="${(oy + j * 48) | 0}" r="${(4 + rnd(7)) | 0}" fill="${tone()}" opacity="${(0.10 + rnd(0.18)).toFixed(2)}"/>`;
       }
+      // grote initialen — maakt kaarten in één oogopslag herkenbaar
+      const words = String(name).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+      const initials = words.slice(0, 2).map(w => w[0].toUpperCase()).join("");
+      const mono = initials ? `<text x="578" y="152" text-anchor="end" font-family="Syne,system-ui,sans-serif" font-weight="800" font-size="118" fill="#ffffff" opacity="0.22" letter-spacing="-5">${esc(initials)}</text>` : "";
       return `<svg viewBox="0 0 600 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">`
-        + `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>`
-        + `<rect width="600" height="180" fill="url(#${gid})"/>${blobs}</svg>`;
+        + `<defs><linearGradient id="${gid}" x1="${(1 - gx)}" y1="${(1 - gy)}" x2="${gx}" y2="${gy}"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>`
+        + `<rect width="600" height="180" fill="url(#${gid})"/>${pat}${mono}</svg>`;
     }
 
     function cardHTML(ev){
@@ -996,7 +1028,11 @@
         if (!card.querySelector(".cover")){
           const cov = document.createElement("div");
           cov.className = "cover";
-          cov.innerHTML = coverSVG(fullLabel, (f && f.zone) || cardZone(card) || "near");
+          // eigen afbeelding (veld "image" in festivals.json, bv. "img/wildeburg.jpg");
+          // valt terug op gegenereerde cover-art
+          cov.innerHTML = (f && f.image)
+            ? `<img src="${esc(f.image)}" alt="" loading="lazy" onerror="this.parentNode.innerHTML=this.dataset.fb" data-fb="${esc(coverSVG(fullLabel, (f && f.zone) || "near"))}">`
+            : coverSVG(fullLabel, (f && f.zone) || cardZone(card) || "near");
           card.insertBefore(cov, card.firstChild);
         }
         const lineup = (f && f.lineup) || [];

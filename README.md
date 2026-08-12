@@ -23,7 +23,7 @@ ticket-tracking. Statische single-page site (GitHub Pages) met een gedeelde even
 - **🎟️ Resale** — TicketSwap-aanbod en prijsindicatie op uitverkochte festivals (veld `resale`), tweewekelijks ververst met check-datum
 - **⚡ Verdeeld** — festivals waar de meningen sterk uiteenlopen (spreiding ≥ 1,5 in overall-score) krijgen een badge, zodat smaakverschil opvalt
 - **Top (ranglijst)** — beoordeelde festivals gerangschikt op totaal- of onderdeelscore, met medailles; schakel tussen **Iedereen** (groepsgemiddelde) en **Alleen ik** (jouw eigen ranglijst)
-- **Cover-art** — per festival een uniek, rechtenvrij gegenereerd SVG-kunstwerkje (gradient + vormen, afgeleid van de naam + zonekleur) als kaart-cover; geen externe afbeeldingen/auteursrecht
+- **Cover-art** — per festival een uniek, rechtenvrij gegenereerd SVG-kunstwerkje (6 patroon-archetypes + grote initialen, afgeleid van de naam; kleur = zone). Wil je een échte foto? Zet een bestand in `img/` en vul het veld `image` in festivals.json (bv. `"image": "img/wildeburg.jpg"`) — gebruik alleen eigen/rechtenvrij beeld; de SVG blijft de fallback
 - **🎤 Line-up** — toont wie er speelt zodra bekend (uit `lineup`), anders "Line-up nog niet bekend"; de scheduler checkt tweewekelijks de officiële site
 - **♫ Spotify / ☁ Live sets** — Spotify-zoeklink (bij bekende artiesten) + SoundCloud-zoeklink voor live DJ-sets, om te luisteren
 - **Deel-preview** — Open-Graph `og.png` voor mooie link-previews (WhatsApp/social)
