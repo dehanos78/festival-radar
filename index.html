@@ -882,9 +882,26 @@
     }
     // ALLE festivalkaarten komen uit festivals.json — voeg festivals daar toe, nooit in de HTML.
     // Zone + subzone bepalen in welk grid de kaart landt; status/badge de kleur en het label.
+    // Effectieve sorteerdatum: eigen startdatum, of (voor venues) het eerstvolgende losse feest.
+    function effStart(f){
+      if (f.start) return f.start;
+      const today = todayISO();
+      const subs = (f.subEvents || []).map(s => s.date).filter(d => d && d >= today).sort();
+      return subs[0] || null;
+    }
     function renderCards(){
       const existing = new Set([...document.querySelectorAll("#view-list .card")].map(cardKey));
-      FEST.forEach(f => {
+      // eerstvolgende events eerst; zonder datum onderaan; 'gehad' recentste eerst
+      const sorted = FEST.slice().sort((a, b) => {
+        const pa = a.subzone === "past" || a.status === "past";
+        const pb = b.subzone === "past" || b.status === "past";
+        if (pa !== pb) return pa ? 1 : -1;
+        if (pa) return (a.start || "") > (b.start || "") ? -1 : 1;
+        const ea = effStart(a), eb = effStart(b);
+        if (ea && eb) return ea < eb ? -1 : ea > eb ? 1 : 0;
+        return ea ? -1 : eb ? 1 : 0;
+      });
+      sorted.forEach(f => {
         const sl = festKey(f);
         if (existing.has(sl)) return;
         const zoneEl = document.querySelector(`#view-list section.zone[data-zone="${f.zone}"]`);
