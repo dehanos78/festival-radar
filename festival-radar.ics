@@ -229,4 +229,13 @@ DESCRIPTION:Paczyn\, Lubawka (PL) — Reistijd vlucht Wrocław + ~1\,5u
  — 10e én laatste editie in huidige vorm is geweest. — https://lasfes
  tival.com/en
 END:VEVENT
+BEGIN:VEVENT
+UID:community-xZOLJVdjcXHcqSPDtRul@festival-radar
+DTSTAMP:20260901T000000Z
+DTSTART;VALUE=DATE:20270807
+DTEND;VALUE=DATE:20270808
+SUMMARY:★ Loveland amsterdam 2027 · Voor de deur
+DESCRIPTION:Amsterdam — Status: te scoren — https://loveland.nl/festiv
+ al/ — Getipt door Mark
+END:VEVENT
 END:VCALENDAR
