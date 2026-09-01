@@ -173,11 +173,12 @@ END:VEVENT
 BEGIN:VEVENT
 UID:lago-lago@festival-radar
 DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260626
-DTEND;VALUE=DATE:20260629
+DTSTART;VALUE=DATE:20270625
+DTEND;VALUE=DATE:20270628
 SUMMARY:♪ Lago Lago · Voor de deur
-DESCRIPTION:Stroombroek\, Braamt — Reistijd ~45 min — Job Jobse\, Joy 
- O\, Shanti Celeste\, Call Super. — https://lagolago.nl
+DESCRIPTION:Stroombroek\, Braamt — Reistijd ~45 min — Status: in de ga
+ ten — Editie 2027 bevestigd (25–27 jun\, Stroombroek) · kaartverkoop
+  nog niet aangekondigd — check lagolago.nl. — https://lagolago.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:voov-experience@festival-radar
