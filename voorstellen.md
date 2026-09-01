@@ -29,3 +29,9 @@ Niet opnieuw voorstellen:
 | Wilde Möhre (Drebkau DE, 21–24 aug 2026) | ❌ Laten zitten voor nu | 7 jul 2026 |
 | Garbicz Festival (Garbicz PL, 30 jul – 3 aug 2026) | ⏳ Geen besluit vastgelegd; editie 2026 is inmiddels geweest. Zeg het als je 'm voor 2027 alsnog op de radar wilt. | 15 jul 2026 |
 | Lost Theory Festival (Portugal) | ⏳ Geen besluit vastgelegd; datums bleven onbevestigd. Niet opnieuw voorgesteld tot de organisatie een editie hard aankondigt. | 15 jul 2026 |
+| Draaimolen | 🗑️ Op verzoek van Viktor van de radar verwijderd — niet opnieuw toevoegen of voorstellen | 1 sep 2026 |
+| Nataraj Beach Party | 🗑️ Op verzoek van Viktor van de radar verwijderd — niet opnieuw toevoegen of voorstellen | 1 sep 2026 |
+| Paradigm Festival | 🗑️ Op verzoek van Viktor van de radar verwijderd — niet opnieuw toevoegen of voorstellen | 1 sep 2026 |
+| Het Systeem | 🗑️ Op verzoek van Viktor van de radar verwijderd — niet opnieuw toevoegen of voorstellen | 1 sep 2026 |
+| Flow in the Park | 🗑️ Op verzoek van Viktor van de radar verwijderd — niet opnieuw toevoegen of voorstellen | 1 sep 2026 |
+| Soenda | 🗑️ Op verzoek van Viktor van de radar verwijderd — niet opnieuw toevoegen of voorstellen | 1 sep 2026 |

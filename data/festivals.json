@@ -1,6 +1,6 @@
 {
   "_comment": "MASTER-DATA voor de Festival Radar: de site rendert hier ALLE kaarten uit (lijst + kaart-tab + Spotify-lineups), de ICS-agenda komt er ook uit. Voeg festivals hier toe — nooit meer HTML aanpassen. Velden: zone = near|road|bucket|community; subzone = 'past' zet 'm in het 'dit jaar al gehad'-grid van de near-zone; status = go|watch|gone|past (bepaalt badge-kleur); badge = optionele custom badge-tekst (anders het standaardlabel van de status); hot = de tag die geaccentueerd wordt; note = de 'Next:'-regel onder de kaart; tags in weergavevolgorde. Datums in YYYY-MM-DD, 'end' is de laatste festivaldag (inclusief). Onbekend = null of leeg.",
-  "updated": "2026-08-11",
+  "updated": "2026-09-01",
   "festivals": [
     {
       "id": "wildeburg",
@@ -70,106 +70,6 @@
       "parking": "Navigeer naar Sportpark Galeocop, Nieuwegein; volg 'P BEZOEKERS' · parkeerkaart vooraf online of ter plaatse. Pendelbus vanaf Utrecht CS (heen 13:30–16:30)."
     },
     {
-      "id": "flow-in-the-park",
-      "name": "Flow in the Park",
-      "zone": "near",
-      "status": "past",
-      "where": "Park Sonsbeek, Arnhem",
-      "travel": "~25 min",
-      "lat": 52.001,
-      "lng": 5.907,
-      "start": "2026-08-01",
-      "end": "2026-08-02",
-      "when": "1–2 aug 2026 (gehad)",
-      "tickets": "Editie is geweest · alarm voor volgend jaar.",
-      "ticketSaleStart": null,
-      "tags": [
-        "house",
-        "weekender",
-        "park",
-        "18+"
-      ],
-      "lineup": [
-        "Franky Rizardo",
-        "Toman",
-        "Prunk",
-        "Chelina Manuhutu",
-        "Benny Rodrigues",
-        "Nacho Scoppa",
-        "Jamback",
-        "Easttown"
-      ],
-      "lineupUrl": "https://listentoflow.com/events/flow-in-the-park/",
-      "url": "https://listentoflow.com",
-      "note": "Volgens de organisatie de grootste editie tot nu toe.",
-      "parking": "Geen parkeren bij het park — fiets/OV aangeraden (5 min lopen van Arnhem CS), anders parkeergarage in de stad.",
-      "badge": "2026 gehad",
-      "subzone": "past"
-    },
-    {
-      "id": "het-systeem",
-      "name": "Het Systeem",
-      "zone": "near",
-      "status": "past",
-      "hot": "jouw boog",
-      "where": "Ter Hunnepe, Deventer",
-      "travel": "~20 min",
-      "lat": 52.239,
-      "lng": 6.163,
-      "start": "2026-08-07",
-      "end": "2026-08-08",
-      "when": "7–8 aug 2026 (gehad)",
-      "tickets": "Editie is geweest · alarm voor volgend jaar.",
-      "ticketSaleStart": null,
-      "tags": [
-        "jouw boog",
-        "techno",
-        "kunst",
-        "org: Nachtparlement"
-      ],
-      "lineup": [
-        "Sterac",
-        "Sandrien",
-        "Mama Snake",
-        "Pariah",
-        "upsammy",
-        "Joep Beving"
-      ],
-      "lineupUrl": "https://www.nachtparlement.nl/hetsysteemfestival",
-      "url": "https://nachtparlement.nl",
-      "note": "Derde editie: vr Joep Beving-concert, za ~40 artiesten op 4 podia bij het oude klooster. Alarm voor 2027.",
-      "parking": "Auto: parkeerticket verplicht (vooraf kopen) · pendelbus tussen station Deventer en terrein · fiets bij het terrein.",
-      "badge": "2026 gehad",
-      "subzone": "past"
-    },
-    {
-      "id": "paradigm-festival",
-      "name": "Paradigm Festival",
-      "zone": "near",
-      "status": "past",
-      "where": "Suikerunie-terrein, Groningen",
-      "travel": "~1u15",
-      "lat": 53.211,
-      "lng": 6.534,
-      "start": "2026-08-08",
-      "end": "2026-08-09",
-      "when": "8–9 aug 2026 (gehad)",
-      "tickets": "Editie is geweest · alarm voor volgend jaar.",
-      "ticketSaleStart": null,
-      "tags": [
-        "underground",
-        "industrieel",
-        "kunst"
-      ],
-      "lineup": [],
-      "lineupUrl": "",
-      "url": "https://www.paradigmfestival.com",
-      "note": "Rauw en industrieel op het oude Suikerunie-terrein; line-up nog niet compleet aangekondigd.",
-      "parking": "Fiets aangeraden (grote stalling bij de ingang, ~10 min vanaf de Markt) · vanaf Groningen CS ~15–20 min lopen.",
-      "badge": "2026 gehad",
-      "subzone": "past"
-    },
-    {
       "id": "woodstock69",
       "name": "Woodstock69",
       "zone": "near",
@@ -211,79 +111,6 @@
           "note": ""
         }
       ]
-    },
-    {
-      "id": "nataraj-beach-party",
-      "name": "Nataraj Beach Party",
-      "zone": "near",
-      "status": "watch",
-      "where": "Zuiderstrand, Zandvoort (Manii Beach)",
-      "travel": "~1u25",
-      "lat": 52.372,
-      "lng": 4.529,
-      "start": "2026-08-30",
-      "end": "2026-08-30",
-      "when": "30 aug 2026 · 11:30–23:00",
-      "tickets": "21e editie en de laatste beach party van dit jaar met volledig programma · kaarten via Hipsy · deuren 11:00, cacao-ceremonie 11:30, party vanaf 13:00.",
-      "ticketSaleStart": null,
-      "tags": [
-        "psy/organic",
-        "strand",
-        "yoga & workshops"
-      ],
-      "lineup": [
-        "Shanto",
-        "Iradi",
-        "Yarun Dee",
-        "Ramon",
-        "Qatweazle"
-      ],
-      "lineupUrl": "https://www.nataraj.info/get-tickets",
-      "url": "https://www.nataraj.info",
-      "note": "Hippie market, workshops, live muziek en een tweede podium op Manii Beach. Daarna gaat Nataraj naar binnen: 3 okt Zeeheldentheater Den Haag, 24 okt TivoliVredenburg, 14 nov Amsterdam (24 jaar Nataraj).",
-      "parking": "Manii Beach ligt op het zuidstrand van Zandvoort: parkeren op Parkeerterrein De Zuid / Boulevard Barnaart (betaald, zomertarief ~€2,50/uur, max ~€11,60 per dag) · trein naar Zandvoort aan Zee is doorgaans makkelijker."
-    },
-    {
-      "id": "draaimolen",
-      "name": "Draaimolen",
-      "zone": "near",
-      "status": "gone",
-      "hot": "topkeuze",
-      "where": "MOB Complex, Tilburg",
-      "travel": "~1u20",
-      "lat": 51.582,
-      "lng": 5.034,
-      "start": "2026-09-04",
-      "end": "2026-09-05",
-      "when": "4–5 sept 2026",
-      "tickets": "Uitverkocht (alleen nog late-vrijdagtickets in de officiële verkoop) · volledige line-up van 100+ acts bekend · resale via TicketSwap.",
-      "ticketSaleStart": null,
-      "tags": [
-        "topkeuze",
-        "melodic techno",
-        "bos/kunst"
-      ],
-      "lineup": [
-        "Shygirl",
-        "Eris Drew",
-        "Octo Octa",
-        "Fred P",
-        "Donato Dozzy b2b Job Jobse",
-        "DjRUM",
-        "Objekt",
-        "Carista"
-      ],
-      "lineupUrl": "https://www.draaimolen.nu/",
-      "url": "https://www.draaimolen.nu",
-      "note": "Deep/melodic, kunstzinnige stages, ~18k. Opening Concert do 3 sept in poppodium 013 (Efdemin, Legowelt) is los te boeken. Vergunning loopt nog 3 jaar.",
-      "resale": {
-        "checked": "2026-08-11",
-        "status": "uitverkocht · aanbod op TicketSwap wisselt per dag",
-        "price": null,
-        "url": "https://www.ticketswap.com/festival-tickets/a/draaimolen-festival"
-      },
-      "parking": "MOB-complex aan de noordrand van Tilburg, bereikbaar via de N261 of A58 — volg de bordjes; er is een eigen bezoekersparkeerplaats en een grote gratis fietsenstalling bij de ingang. Pendelbus vanaf Tilburg CS: heen 12:00–19:00, terug 21:00–01:30.",
-      "tippedBy": "Mark"
     },
     {
       "id": "lief",
@@ -442,31 +269,6 @@
       "lineupUrl": "",
       "url": "https://thuishaven.nl",
       "note": "Mees Salomé speelde 10 uur, met Kerri Chandler en Dennis Quin. Alarm voor de 2027-editie.",
-      "parking": ""
-    },
-    {
-      "id": "soenda",
-      "name": "Soenda",
-      "zone": "near",
-      "subzone": "past",
-      "status": "past",
-      "badge": "2026 gehad",
-      "where": "Utrecht",
-      "travel": "~50 min",
-      "lat": 52.09,
-      "lng": 5.12,
-      "start": null,
-      "end": null,
-      "when": "voorjaar (apr/mei)",
-      "tickets": "Venster meestal winter → vroege lente.",
-      "ticketSaleStart": null,
-      "tags": [
-        "underground techno"
-      ],
-      "lineup": [],
-      "lineupUrl": "",
-      "url": "https://www.soenda.com",
-      "note": "Alarm dec/jan voor 2027.",
       "parking": ""
     },
     {
