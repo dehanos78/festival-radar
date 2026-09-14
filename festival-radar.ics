@@ -230,6 +230,22 @@ DESCRIPTION:Paczyn\, Lubawka (PL) — Reistijd vlucht Wrocław + ~1\,5u
  tival.com/en
 END:VEVENT
 BEGIN:VEVENT
+UID:community-DV0FTiKXgHCuyUOeW8J8@festival-radar
+DTSTAMP:20260901T000000Z
+DTSTART;VALUE=DATE:20270904
+DTEND;VALUE=DATE:20270905
+SUMMARY:★ Lief Festival · Voor de deur
+DESCRIPTION:Status: in de gaten — Getipt door Mark
+END:VEVENT
+BEGIN:VEVENT
+UID:community-LdbNS9uXZ0xuqmbd5duK@festival-radar
+DTSTAMP:20260901T000000Z
+DTSTART;VALUE=DATE:20270819
+DTEND;VALUE=DATE:20270820
+SUMMARY:★ Dekmantel Selectors · Bucketlist
+DESCRIPTION:Status: in de gaten — Getipt door Mark
+END:VEVENT
+BEGIN:VEVENT
 UID:community-xZOLJVdjcXHcqSPDtRul@festival-radar
 DTSTAMP:20260901T000000Z
 DTSTART;VALUE=DATE:20270807
@@ -237,5 +253,13 @@ DTEND;VALUE=DATE:20270808
 SUMMARY:★ Loveland amsterdam 2027 · Voor de deur
 DESCRIPTION:Amsterdam — Status: te scoren — https://loveland.nl/festiv
  al/ — Getipt door Mark
+END:VEVENT
+BEGIN:VEVENT
+UID:community-z9TNParLAObDGpb0HZBL@festival-radar
+DTSTAMP:20260901T000000Z
+DTSTART;VALUE=DATE:20270728
+DTEND;VALUE=DATE:20270729
+SUMMARY:★ Dekmantel 2027 · Voor de deur
+DESCRIPTION:Status: in de gaten — Getipt door Mark
 END:VEVENT
 END:VCALENDAR
