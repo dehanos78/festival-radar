@@ -230,6 +230,14 @@ DESCRIPTION:Paczyn\, Lubawka (PL) — Reistijd vlucht Wrocław + ~1\,5u
  tival.com/en
 END:VEVENT
 BEGIN:VEVENT
+UID:community-A08jDUTXCmgnURtF04QK@festival-radar
+DTSTAMP:20260901T000000Z
+DTSTART;VALUE=DATE:20270716
+DTEND;VALUE=DATE:20270717
+SUMMARY:★ Parookville · Voor de deur
+DESCRIPTION:Status: in de gaten — Getipt door Mark
+END:VEVENT
+BEGIN:VEVENT
 UID:community-DV0FTiKXgHCuyUOeW8J8@festival-radar
 DTSTAMP:20260901T000000Z
 DTSTART;VALUE=DATE:20270904
