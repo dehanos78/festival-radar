@@ -246,6 +246,14 @@ SUMMARY:★ Lief Festival · Voor de deur
 DESCRIPTION:Status: in de gaten — Getipt door Mark
 END:VEVENT
 BEGIN:VEVENT
+UID:community-KskGActXPN6gEFnGh3zd@festival-radar
+DTSTAMP:20260901T000000Z
+DTSTART;VALUE=DATE:20270702
+DTEND;VALUE=DATE:20270703
+SUMMARY:★ Kappa Futur 2027 · Bucketlist
+DESCRIPTION:Status: in de gaten — Getipt door Mark
+END:VEVENT
+BEGIN:VEVENT
 UID:community-LdbNS9uXZ0xuqmbd5duK@festival-radar
 DTSTAMP:20260901T000000Z
 DTSTART;VALUE=DATE:20270819
