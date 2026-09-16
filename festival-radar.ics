@@ -8,10 +8,10 @@ X-WR-TIMEZONE:Europe/Amsterdam
 X-WR-CALDESC:Vik's shortlist festivals + kaartverkoop-meldingen
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-X-BUILT:20260901T000000Z
+X-BUILT:20260916T000000Z
 BEGIN:VEVENT
 UID:wildeburg@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270708
 DTEND;VALUE=DATE:20270712
 SUMMARY:♪ Wildeburg · Voor de deur
@@ -22,7 +22,7 @@ DESCRIPTION:Kraggenburg — Reistijd ~40 min — Status: te scoren — Ver
 END:VEVENT
 BEGIN:VEVENT
 UID:wildeburg-sale@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART:20260715T100000
 DTEND:20260715T101500
 SUMMARY:🎟️ Kaartverkoop start: Wildeburg
@@ -42,85 +42,59 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270724
 DTEND;VALUE=DATE:20270725
 SUMMARY:♪ Geheime Liefde · Tuinen van Geluk · Voor de deur
 DESCRIPTION:De Middengaarde\, Nieuwegein — Reistijd ~55 min — Status: 
- in de gaten — Editie 2026 (25 jul\, uitverkocht) is geweest · 2027-edi
- tie aangekondigd voor 24 jul op De Middengaarde · verkoopdatum nog niet 
- bekend. — https://geheimeliefde.nl
-END:VEVENT
-BEGIN:VEVENT
-UID:woodstock69-sub0-20260813@festival-radar
-DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260813
-DTEND;VALUE=DATE:20260814
-SUMMARY:♪ Woodstock69 · El Encanto del Alebrije (w/ Kus van de Cactus)
-DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
-END:VEVENT
-BEGIN:VEVENT
-UID:woodstock69-sub1-20260830@festival-radar
-DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260830
-DTEND;VALUE=DATE:20260831
-SUMMARY:♪ Woodstock69 · Brighter Days: Palms Trax\, Kamma & Masalo\, Ei
- leen
-DESCRIPTION:strand Bloemendaal aan Zee — uitverkocht · resale via Ticke
- tSwap — https://woodstock69.nl
-END:VEVENT
-BEGIN:VEVENT
-UID:woodstock69-sub2-20260906@festival-radar
-DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260906
-DTEND;VALUE=DATE:20260907
-SUMMARY:♪ Woodstock69 · Dixon b2b Jimi Jules + Gizem
-DESCRIPTION:strand Bloemendaal aan Zee — https://woodstock69.nl
+ in de gaten — Editie 2026 (25 jul\, uitverkocht) is geweest · 2027 bev
+ estigd: 24 jul\, 14:00–23:00\, De Middengaarde · alleen pre-registrati
+ e\, verkoopdatum nog niet bekend. — https://geheimeliefde.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:lief@festival-radar
-DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260905
-DTEND;VALUE=DATE:20260906
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270904
+DTEND;VALUE=DATE:20270905
 SUMMARY:♪ Lief · Voor de deur
-DESCRIPTION:Strijkviertel\, Utrecht — Reistijd ~50 min — Status: in de
-  gaten — Tickets te koop via CM.com (verkoop startte 30 jan) · Agents 
- Of Time\, Alan Fitzpatrick\, Anna Reusch e.a. — https://www.lieffestiva
- l.nl
+DESCRIPTION:Strijkviertel\, Utrecht — Reistijd ~50 min — Status: te sc
+ oren — Editie 2027 bevestigd (za 4 sep\, Strijkviertel) · pre-sale sta
+ rtte 11 sep 2026 om 12:00 via lieffestival.nl · prijzen en line-up nog n
+ iet bekend. — https://www.lieffestival.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:into-the-woods@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20260920
 SUMMARY:♪ Into the Woods · Voor de deur
 DESCRIPTION:Bosspot Openluchttheater\, Amersfoort — Reistijd ~40 min —
   Status: uitverkocht / resale — Beide dagen uitverkocht · 100+ artiest
- en op 9 podia\, 12:00–00:00\, 18+ · resale via TicketSwap. — https:/
- /intothewoods.nl
+ en op 9 podia\, 12:00–00:00\, 18+ · resale alleen via de officiële wa
+ chtlijst-loting. — https://intothewoods.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-hrfst@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:♪ Geheime Liefde · HRFST · Voor de deur
 DESCRIPTION:Fort bij Vechten\, Marsdijk 2\, Bunnik — Reistijd ~55 min 
  — Status: in de gaten — Presale was uitverkocht · reguliere verkoop 
- open sinds 26 jun 2026 via geheimeliefde.nl · 'ticketlock': tickets word
- en pas 48 uur voor het festival vrijgegeven · officiële resale via Tick
- etSwap. — https://geheimeliefde.nl
+ sinds 26 jun 2026 nog open via geheimeliefde.nl · 'ticketlock': tickets 
+ pas 48 uur vooraf vrijgegeven · officiële resale via TicketSwap. — ht
+ tps://geheimeliefde.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-hrfst-sale@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART:20260626T100000
 DTEND:20260626T101500
 SUMMARY:🎟️ Kaartverkoop start: Geheime Liefde
 DESCRIPTION:Kaartverkoop opent voor Geheime Liefde (Fort bij Vechten\, Mar
- sdijk 2\, Bunnik). Presale was uitverkocht · reguliere verkoop open sind
- s 26 jun 2026 via geheimeliefde.nl · 'ticketlock': tickets worden pas 48
-  uur voor het festival vrijgegeven · officiële resale via TicketSwap.
+ sdijk 2\, Bunnik). Presale was uitverkocht · reguliere verkoop sinds 26 
+ jun 2026 nog open via geheimeliefde.nl · 'ticketlock': tickets pas 48 uu
+ r vooraf vrijgegeven · officiële resale via TicketSwap.
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🎟️ Kaartverkoop start: Geheime Liefde
@@ -134,18 +108,38 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-voorjaar@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270501
 DTEND;VALUE=DATE:20270502
 SUMMARY:♪ Geheime Liefde · Voorjaar · Voor de deur
 DESCRIPTION:Fort bij Vechten\, Marsdijk 2\, Bunnik — Reistijd ~55 min 
- — Status: in de gaten — 2027-editie aangekondigd op geheimeliefde.nl 
- (1 & 8 mei\, Fort bij Vechten) · verkoopdatum nog niet bekend. — https
- ://geheimeliefde.nl/geheime-liefde
+ — Status: in de gaten — Eerste verkoop was 22 mei 2026 · ticketshop 
+ gaat 26 okt 2026 weer open met de resterende tickets voor 1 mei. — http
+ s://geheimeliefde.nl/geheime-liefde
+END:VEVENT
+BEGIN:VEVENT
+UID:geheime-liefde-voorjaar-sale@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART:20261026T100000
+DTEND:20261026T101500
+SUMMARY:🎟️ Kaartverkoop start: Geheime Liefde
+DESCRIPTION:Kaartverkoop opent voor Geheime Liefde (Fort bij Vechten\, Mar
+ sdijk 2\, Bunnik). Eerste verkoop was 22 mei 2026 · ticketshop gaat 26 o
+ kt 2026 weer open met de resterende tickets voor 1 mei.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Geheime Liefde
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Geheime Liefde
+TRIGGER:-PT1H
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:thuishaven-mees-salome@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20260711
 DTEND;VALUE=DATE:20260712
 SUMMARY:♪ Thuishaven x Mees Salomé · Voor de deur
@@ -154,7 +148,7 @@ DESCRIPTION:Contactweg\, Amsterdam — Reistijd ~1u15 — Editie is gewees
 END:VEVENT
 BEGIN:VEVENT
 UID:komm-schon-alter@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20260523
 DTEND;VALUE=DATE:20260524
 SUMMARY:♪ Komm Schon Alter · Voor de deur
@@ -163,35 +157,49 @@ DESCRIPTION:Tuinen van West\, A'dam — Reistijd ~1u15 — "Playground for
 END:VEVENT
 BEGIN:VEVENT
 UID:awakenings-upclose@festival-radar
-DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260516
-DTEND;VALUE=DATE:20260518
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270517
 SUMMARY:♪ Awakenings Upclose · Voor de deur
-DESCRIPTION:Houtrak\, Spaarnwoude — Reistijd ~1u20 — Het kleine\, sche
- rpe broertje van Awakenings. — https://www.awakenings.com
+DESCRIPTION:Houtrak\, Spaarnwoude — Reistijd ~1u20 — Status: in de gat
+ en — Editie 2027 bevestigd (Houtrak\, Spaarnwoude) · reguliere verkoop
+  start eind 2026. — https://www.awakenings.com
+END:VEVENT
+BEGIN:VEVENT
+UID:lente-kabinet@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270517
+SUMMARY:♪ Lente Kabinet · Voor de deur
+DESCRIPTION:Het Twiske\, Oostzaan — Reistijd ~1u20 — Status: in de gat
+ en — Het kleine zusje van Dekmantel · editie 2027 bevestigd · verkoop
+ datum nog niet bekend. — https://lentekabinet.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:lago-lago@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270625
 DTEND;VALUE=DATE:20270628
 SUMMARY:♪ Lago Lago · Voor de deur
 DESCRIPTION:Stroombroek\, Braamt — Reistijd ~45 min — Status: in de ga
- ten — Editie 2027 bevestigd (25–27 jun\, Stroombroek) · kaartverkoop
-  nog niet aangekondigd — check lagolago.nl. — https://lagolago.nl
+ ten — Editie 2027 bevestigd (25–27 jun\, Stroombroek) · early-bird w
+ eekender (€315) uitverkocht · weekenders\, dagtickets en accommodatie 
+ volgen 'eind dit jaar'. — https://lagolago.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:voov-experience@festival-radar
-DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260717
-DTEND;VALUE=DATE:20260721
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270716
+DTEND;VALUE=DATE:20270720
 SUMMARY:♪ VooV Experience · Roadtrip
-DESCRIPTION:Putlitz (DE) — Reistijd ~5u — Editie is geweest · alarm v
- oor de 2027-editie. — https://www.voov-festival.de
+DESCRIPTION:Putlitz (DE) — Reistijd ~5u — Status: te scoren — VooV 2
+ 027 bevestigd (countdown op de site loopt naar 16 jul 18:00) · early bir
+ d €165 + €5 afvalborg (beperkt) via voov.ticket.io\, camping inbegrep
+ en. — https://www.voov-festival.de
 END:VEVENT
 BEGIN:VEVENT
 UID:antaris-project@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20260624
 DTEND;VALUE=DATE:20260628
 SUMMARY:♪ Antaris Project · Roadtrip
@@ -199,29 +207,85 @@ DESCRIPTION:Gollenberg/Rhinow (DE) — Reistijd ~5\,5u — Legendarisch\,
  anti-commercie · editie 2026 is geweest. — https://antaris-project.de
 END:VEVENT
 BEGIN:VEVENT
+UID:ozora@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270723
+DTEND;VALUE=DATE:20270804
+SUMMARY:♪ OZORA · Bucketlist
+DESCRIPTION:Dádpuszta\, Hongarije — Reistijd vlucht Boedapest — Statu
+ s: te scoren — Autumn Ticket Sale loopt sinds 14 sep 2026: 12.500 ticke
+ ts à €220 (of €120 online + €100 cash aan de poort) · niet restit
+ ueerbaar\, omruilen 20 dec – 1 jul. — https://ozorafestival.eu
+END:VEVENT
+BEGIN:VEVENT
 UID:modem@festival-radar
-DTSTAMP:20260901T000000Z
-DTSTART;VALUE=DATE:20260803
-DTEND;VALUE=DATE:20260810
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270802
+DTEND;VALUE=DATE:20270809
 SUMMARY:♪ Mo:Dem · Bucketlist
 DESCRIPTION:Robinzon Kamp\, Donje Primišlje (Kroatië) — Reistijd vluch
- t Zagreb — Editie is geweest · alarm voor 2027. — https://modemfesti
- val.com
+ t Zagreb — Status: te scoren — Early bird (€230) uitverkocht · vol
+ gende fase start 1 okt 2026 12:00: Phase 1 €260 + €10\, daarna €288
+  · ook betalen in termijnen (€298) · niet overdraagbaar. — https://
+ modemfestival.com
+END:VEVENT
+BEGIN:VEVENT
+UID:modem-sale@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART:20261001T100000
+DTEND:20261001T101500
+SUMMARY:🎟️ Kaartverkoop start: Mo:Dem
+DESCRIPTION:Kaartverkoop opent voor Mo:Dem (Robinzon Kamp\, Donje Primišl
+ je (Kroatië)). Early bird (€230) uitverkocht · volgende fase start 1 
+ okt 2026 12:00: Phase 1 €260 + €10\, daarna €288 · ook betalen in 
+ termijnen (€298) · niet overdraagbaar.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Mo:Dem
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Mo:Dem
+TRIGGER:-PT1H
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:boom-festival@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270718
 DTEND;VALUE=DATE:20270726
 SUMMARY:♪ Boom Festival · Bucketlist
 DESCRIPTION:Boomland\, Idanha-a-Nova (PT) — Reistijd vlucht Lissabon + ~
- 2\,5u — Status: uitverkocht / resale — 30-jarig jubileum · verkoop g
- ing okt 2025\, in uren uitverkocht · alleen officiële resale via boomfe
- stival.org. — https://www.boomfestival.org
+ 2\,5u — Status: in de gaten — Verkoop 2027 nog niet gestart · ambass
+ adors/Friendly Price (€275) vanaf 6 okt 2026 · online verkoop 13 okt 2
+ 026 09:00 (PT-tijd): 1e fase €290\, 2e fase €335. — https://www.boo
+ mfestival.org
+END:VEVENT
+BEGIN:VEVENT
+UID:boom-festival-sale@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART:20261013T100000
+DTEND:20261013T101500
+SUMMARY:🎟️ Kaartverkoop start: Boom Festival
+DESCRIPTION:Kaartverkoop opent voor Boom Festival (Boomland\, Idanha-a-Nov
+ a (PT)). Verkoop 2027 nog niet gestart · ambassadors/Friendly Price (€
+ 275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 09:00 (PT-tijd): 1e f
+ ase €290\, 2e fase €335.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Boom Festival
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: Boom Festival
+TRIGGER:-PT1H
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:las-festival@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20260624
 DTEND;VALUE=DATE:20260630
 SUMMARY:♪ LAS Festival · Bucketlist
@@ -230,8 +294,70 @@ DESCRIPTION:Paczyn\, Lubawka (PL) — Reistijd vlucht Wrocław + ~1\,5u
  tival.com/en
 END:VEVENT
 BEGIN:VEVENT
+UID:loveland-festival@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270807
+DTEND;VALUE=DATE:20270809
+SUMMARY:♪ Loveland Festival · Voor de deur
+DESCRIPTION:Sloterpark\, Amsterdam — Reistijd ~1u15 — Status: in de ga
+ ten — 3.000 Blind Bird-weekendtickets in 1 uur uitverkocht · pre-regis
+ tratie open voor Early Birds (datum/prijs nog niet bekend). — https://l
+ oveland.nl/festival/
+END:VEVENT
+BEGIN:VEVENT
+UID:parookaville@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270716
+DTEND;VALUE=DATE:20270719
+SUMMARY:♪ PAROOKAVILLE · Roadtrip
+DESCRIPTION:Airport Weeze (DE) — Reistijd ~1u30 — Status: te scoren 
+ — Verkoop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping
+  €289) · dagtickets vanaf 4 okt 2026 · populaire categorieën gaan sn
+ el. — https://www.parookaville.com/en/
+END:VEVENT
+BEGIN:VEVENT
+UID:parookaville-sale@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART:20261004T100000
+DTEND:20261004T101500
+SUMMARY:🎟️ Kaartverkoop start: PAROOKAVILLE
+DESCRIPTION:Kaartverkoop opent voor PAROOKAVILLE (Airport Weeze (DE)). Ver
+ koop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping €289
+ ) · dagtickets vanaf 4 okt 2026 · populaire categorieën gaan snel.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: PAROOKAVILLE
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎟️ Kaartverkoop start: PAROOKAVILLE
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kappa-futurfestival@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270702
+DTEND;VALUE=DATE:20270705
+SUMMARY:♪ Kappa FuturFestival · Bucketlist
+DESCRIPTION:Parco Dora\, Turijn (IT) — Reistijd vlucht Turijn + ~20 min 
+ — Status: in de gaten — Early Bird uitverkocht · wachtlijst open voo
+ r de volgende releases. — https://www.kappafuturfestival.it/en
+END:VEVENT
+BEGIN:VEVENT
+UID:dekmantel-selectors@festival-radar
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20270820
+DTEND;VALUE=DATE:20270825
+SUMMARY:♪ Dekmantel Selectors · Bucketlist
+DESCRIPTION:The Garden\, Tisno (HR) — Reistijd vlucht Split + ~1u — St
+ atus: te scoren — Verkoop open · beperkte capaciteit (~2.000) · prijz
+ en niet op de site. — https://dekmantelselectors.com/
+END:VEVENT
+BEGIN:VEVENT
 UID:community-A08jDUTXCmgnURtF04QK@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270716
 DTEND;VALUE=DATE:20270717
 SUMMARY:★ Parookville · Voor de deur
@@ -239,7 +365,7 @@ DESCRIPTION:Status: in de gaten — Getipt door Mark
 END:VEVENT
 BEGIN:VEVENT
 UID:community-DV0FTiKXgHCuyUOeW8J8@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270904
 DTEND;VALUE=DATE:20270905
 SUMMARY:★ Lief Festival · Voor de deur
@@ -247,7 +373,7 @@ DESCRIPTION:Status: in de gaten — Getipt door Mark
 END:VEVENT
 BEGIN:VEVENT
 UID:community-KskGActXPN6gEFnGh3zd@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270702
 DTEND;VALUE=DATE:20270703
 SUMMARY:★ Kappa Futur 2027 · Bucketlist
@@ -255,7 +381,7 @@ DESCRIPTION:Status: in de gaten — Getipt door Mark
 END:VEVENT
 BEGIN:VEVENT
 UID:community-LdbNS9uXZ0xuqmbd5duK@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270819
 DTEND;VALUE=DATE:20270820
 SUMMARY:★ Dekmantel Selectors · Bucketlist
@@ -263,7 +389,7 @@ DESCRIPTION:Status: in de gaten — Getipt door Mark
 END:VEVENT
 BEGIN:VEVENT
 UID:community-xZOLJVdjcXHcqSPDtRul@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270807
 DTEND;VALUE=DATE:20270808
 SUMMARY:★ Loveland amsterdam 2027 · Voor de deur
@@ -272,7 +398,7 @@ DESCRIPTION:Amsterdam — Status: te scoren — https://loveland.nl/festiv
 END:VEVENT
 BEGIN:VEVENT
 UID:community-z9TNParLAObDGpb0HZBL@festival-radar
-DTSTAMP:20260901T000000Z
+DTSTAMP:20260916T000000Z
 DTSTART;VALUE=DATE:20270728
 DTEND;VALUE=DATE:20270729
 SUMMARY:★ Dekmantel 2027 · Voor de deur

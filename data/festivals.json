@@ -1,6 +1,6 @@
 {
   "_comment": "MASTER-DATA voor de Festival Radar: de site rendert hier ALLE kaarten uit (lijst + kaart-tab + Spotify-lineups), de ICS-agenda komt er ook uit. Voeg festivals hier toe — nooit meer HTML aanpassen. Velden: zone = near|road|bucket|community; subzone = 'past' zet 'm in het 'dit jaar al gehad'-grid van de near-zone; status = go|watch|gone|past (bepaalt badge-kleur); badge = optionele custom badge-tekst (anders het standaardlabel van de status); hot = de tag die geaccentueerd wordt; note = de 'Next:'-regel onder de kaart; tags in weergavevolgorde. Datums in YYYY-MM-DD, 'end' is de laatste festivaldag (inclusief). Onbekend = null of leeg.",
-  "updated": "2026-09-01",
+  "updated": "2026-09-16",
   "festivals": [
     {
       "id": "wildeburg",
@@ -29,10 +29,10 @@
       "url": "https://wildeburg.nl",
       "note": "Editie 2026 is geweest. De 2027-verkoop is net open — Wildeburg gaat hard, dus niet te lang wachten.",
       "resale": {
-        "checked": "2026-07-16",
-        "status": "2027-verkoop net geopend · nog geen resale",
+        "checked": "2026-09-16",
+        "status": "TicketSwap niet toegestaan · resale alleen via officiële Wachtlijst + Paylogic Resale (opent later, 80–100% van de originele prijs)",
         "price": null,
-        "url": "https://www.ticketswap.com/wildeburg-festival"
+        "url": "https://wildeburg.nl/info/"
       },
       "parking": "Via de A6 (afrit Emmeloord) of de N50 naar Netl, Leemringweg 19I Kraggenburg; volg 'P bezoekers'. Parkeerkaart vooraf in de Wildeburg-ticketshop (sneller dan aan de deur) · vanaf de parkeerplaats ~20 min lopen naar de ingang."
     },
@@ -49,7 +49,7 @@
       "start": "2027-07-24",
       "end": "2027-07-24",
       "when": "24 jul 2027",
-      "tickets": "Editie 2026 (25 jul, uitverkocht) is geweest · 2027-editie aangekondigd voor 24 jul op De Middengaarde · verkoopdatum nog niet bekend.",
+      "tickets": "Editie 2026 (25 jul, uitverkocht) is geweest · 2027 bevestigd: 24 jul, 14:00–23:00, De Middengaarde · alleen pre-registratie, verkoopdatum nog niet bekend.",
       "ticketSaleStart": null,
       "tags": [
         "techno",
@@ -62,7 +62,7 @@
       "url": "https://geheimeliefde.nl",
       "note": "\"Tuinen van Geluk\"-editie, terug op De Middengaarde. Line-up blijft traditioneel geheim; verkoop gaat hard zodra die opent.",
       "resale": {
-        "checked": "2026-08-11",
+        "checked": "2026-09-16",
         "status": "2026-editie is geweest · nog geen verkoop (en dus geen resale) voor 2027",
         "price": null,
         "url": "https://www.ticketswap.com/festival-tickets/a/geheime-liefde"
@@ -81,7 +81,7 @@
       "start": null,
       "end": null,
       "when": "hele zomer · wekelijkse strandfeesten",
-      "tickets": "Iconisch strandpaviljoen (~1500) · losse feesten de hele zomer · aankomend o.a. El Encanto del Alebrije (13 aug), Brighter Days met Palms Trax (30 aug, uitverkocht) en Dixon b2b Jimi Jules (6 sep) · programma via woodstock69.nl/events.",
+      "tickets": "Iconisch strandpaviljoen (~1500) · losse feesten de hele zomer · zomerseizoen 2026 is voorbij: momenteel geen aankomende feesten of ticketverkoop op woodstock69.nl/events.",
       "ticketSaleStart": null,
       "tags": [
         "house",
@@ -92,61 +92,33 @@
       "lineup": [],
       "lineupUrl": "https://woodstock69.nl/events/",
       "url": "https://woodstock69.nl",
-      "note": "Losse feesten in plaats van één festival — de aankomende data staan hieronder en gaan mee in de agenda.",
+      "note": "Losse feesten in plaats van één festival — nieuwe data verschijnen hier zodra het volgende seizoen wordt aangekondigd.",
       "parking": "Twee grote parkeerterreinen bij het strand (hoogseizoen ~€3,25/uur, dagkaart ~€20,80; pinnen of mobiel parkeren). Bij mooi weer loopt de weg naar Bloemendaal aan Zee vast — fiets of OV via Haarlem/Overveen is dan sneller.",
-      "subEvents": [
-        {
-          "name": "El Encanto del Alebrije (w/ Kus van de Cactus)",
-          "date": "2026-08-13",
-          "note": ""
-        },
-        {
-          "name": "Brighter Days: Palms Trax, Kamma & Masalo, Eileen",
-          "date": "2026-08-30",
-          "note": "uitverkocht · resale via TicketSwap"
-        },
-        {
-          "name": "Dixon b2b Jimi Jules + Gizem",
-          "date": "2026-09-06",
-          "note": ""
-        }
-      ]
+      "subEvents": []
     },
     {
       "id": "lief",
       "name": "Lief",
       "zone": "near",
-      "status": "watch",
+      "status": "go",
       "where": "Strijkviertel, Utrecht",
       "travel": "~50 min",
       "lat": 52.091,
       "lng": 5.118,
-      "start": "2026-09-05",
-      "end": "2026-09-05",
-      "when": "5 sept 2026 · 12:00–23:00",
-      "tickets": "Tickets te koop via CM.com (verkoop startte 30 jan) · Agents Of Time, Alan Fitzpatrick, Anna Reusch e.a.",
+      "start": "2027-09-04",
+      "end": "2027-09-04",
+      "when": "4 sept 2027 · 12:00–23:00",
+      "tickets": "Editie 2027 bevestigd (za 4 sep, Strijkviertel) · pre-sale startte 11 sep 2026 om 12:00 via lieffestival.nl · prijzen en line-up nog niet bekend.",
       "ticketSaleStart": null,
       "tags": [
         "techno",
         "house",
         "disco"
       ],
-      "lineup": [
-        "Agents Of Time",
-        "Alan Fitzpatrick",
-        "Anil Aras",
-        "Anna Reusch",
-        "Collé"
-      ],
-      "lineupUrl": "https://www.lieffestival.nl",
+      "lineup": [],
+      "lineupUrl": "",
       "url": "https://www.lieffestival.nl",
-      "note": "Verkoopt consequent uit — officiële resale-partner is TicketSwap. Deuren dicht 2u voor het einde.",
-      "resale": {
-        "checked": "2026-08-11",
-        "status": "reguliere verkoop loopt nog · officiële resale-partner is TicketSwap",
-        "price": null,
-        "url": "https://www.ticketswap.com/lief-festival"
-      },
+      "note": "Editie 2026 is geweest. Pre-sale voor 2027 is net gestart — Lief verkoopt consequent uit, tickets niet restitueerbaar. Tip van Mark bevestigd.",
       "parking": "Parkeren op P+R Papendorp, volg 'P Bezoekers' — parkeerkaart vooraf in de ticketshop of ter plaatse bij de parkeerwacht (alleen PIN), vol=vol. Pendelbus vanaf Utrecht CS (Mineurslaan), ook via de ticketshop."
     },
     {
@@ -161,7 +133,7 @@
       "start": "2026-09-18",
       "end": "2026-09-19",
       "when": "18–19 sept 2026",
-      "tickets": "Beide dagen uitverkocht · 100+ artiesten op 9 podia, 12:00–00:00, 18+ · resale via TicketSwap.",
+      "tickets": "Beide dagen uitverkocht · 100+ artiesten op 9 podia, 12:00–00:00, 18+ · resale alleen via de officiële wachtlijst-loting.",
       "ticketSaleStart": null,
       "tags": [
         "sprookjesbos",
@@ -172,10 +144,10 @@
       "url": "https://intothewoods.nl",
       "note": "Beste 2026-kans dichtbij, maar volledig uitverkocht. Fallback: ITW ADE (23–24 okt, NDSM). 2027: alarm ~half maart.",
       "resale": {
-        "checked": "2026-08-11",
-        "status": "beide dagen uitverkocht · resale uitsluitend via TicketSwap",
-        "price": null,
-        "url": "https://www.ticketswap.com/festival-tickets/a/into-the-woods-festival"
+        "checked": "2026-09-16",
+        "status": "uitverkocht · TicketSwap niet toegestaan (gepersonaliseerde tickets) · officiële wachtlijst-loting elk kwartier, max 2 tickets",
+        "price": "€97,83 per dag / €195,65 weekend (incl. servicekosten)",
+        "url": "https://tickets.intothewoods.nl/3a3d0b70cd5a47e18d5dea9d0f24b388/waiting-list"
       },
       "parking": "Gratis parkeren op het veld naast parkeerplaats Superfun, ~5 min lopen naar het terrein · bustransfer vanaf Amersfoort CS via de ticketshop · fiets of OV voorkomt het parkeergedoe."
     },
@@ -192,7 +164,7 @@
       "start": "2026-10-03",
       "end": "2026-10-03",
       "when": "3 okt 2026 · 14:00–23:00",
-      "tickets": "Presale was uitverkocht · reguliere verkoop open sinds 26 jun 2026 via geheimeliefde.nl · 'ticketlock': tickets worden pas 48 uur voor het festival vrijgegeven · officiële resale via TicketSwap.",
+      "tickets": "Presale was uitverkocht · reguliere verkoop sinds 26 jun 2026 nog open via geheimeliefde.nl · 'ticketlock': tickets pas 48 uur vooraf vrijgegeven · officiële resale via TicketSwap.",
       "ticketSaleStart": "2026-06-26",
       "tags": [
         "techno",
@@ -206,10 +178,10 @@
       "note": "Herfsteditie van Geheime Liefde op Fort bij Vechten (18+). Line-up blijft geheim tot de dag zelf. Locatie is bevestigd via de officiële site.",
       "parking": "Navigeer naar Achterdijk 12, Bunnik en volg 'P bezoekers' — parkeerkaart via de officiële ticketshop; kiss & ride op dezelfde plek. Pendelbus vanaf Utrecht CS (Jaarbeurszijde, roltrap af en linksaf).",
       "resale": {
-        "checked": "2026-08-11",
-        "status": "reguliere verkoop loopt nog · officiële resale via TicketSwap",
-        "price": null,
-        "url": "https://www.ticketswap.com/festival-tickets/a/geheime-liefde"
+        "checked": "2026-09-16",
+        "status": "reguliere verkoop nog open · 99+ tickets aangeboden op TicketSwap",
+        "price": "~€70,50 per ticket",
+        "url": "https://www.ticketswap.com/geheime-liefde-hrfst"
       }
     },
     {
@@ -225,8 +197,8 @@
       "start": "2027-05-01",
       "end": "2027-05-01",
       "when": "1 & 8 mei 2027 · twee zaterdagen",
-      "tickets": "2027-editie aangekondigd op geheimeliefde.nl (1 & 8 mei, Fort bij Vechten) · verkoopdatum nog niet bekend.",
-      "ticketSaleStart": null,
+      "tickets": "Eerste verkoop was 22 mei 2026 · ticketshop gaat 26 okt 2026 weer open met de resterende tickets voor 1 mei.",
+      "ticketSaleStart": "2026-10-26",
       "tags": [
         "techno",
         "house",
@@ -269,7 +241,7 @@
       "lineupUrl": "",
       "url": "https://thuishaven.nl",
       "note": "Mees Salomé speelde 10 uur, met Kerri Chandler en Dennis Quin. Alarm voor de 2027-editie.",
-      "parking": ""
+      "parking": "Rond Thuishaven (Contactweg) zijn meerdere gratis parkeerplekken zonder toezicht · metro Isolatorweg ligt op 5 min lopen."
     },
     {
       "id": "komm-schon-alter",
@@ -302,17 +274,15 @@
       "id": "awakenings-upclose",
       "name": "Awakenings Upclose",
       "zone": "near",
-      "subzone": "past",
-      "status": "past",
-      "badge": "2026 gehad",
+      "status": "watch",
       "where": "Houtrak, Spaarnwoude",
       "travel": "~1u20",
       "lat": 52.409,
       "lng": 4.722,
-      "start": "2026-05-16",
-      "end": "2026-05-17",
-      "when": "16–17 mei 2026 (gehad)",
-      "tickets": "Het kleine, scherpe broertje van Awakenings.",
+      "start": "2027-05-15",
+      "end": "2027-05-16",
+      "when": "15–16 mei 2027 · 12:00–23:00",
+      "tickets": "Editie 2027 bevestigd (Houtrak, Spaarnwoude) · reguliere verkoop start eind 2026.",
       "ticketSaleStart": null,
       "tags": [
         "intieme techno",
@@ -321,24 +291,22 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.awakenings.com",
-      "note": "Alarm winter voor 2027.",
-      "parking": ""
+      "note": "Zelfde weekend als Lente Kabinet 2027 — kiezen dus. Verkoop-alarm zodra de datum bekend is.",
+      "parking": "Parkeertickets vooraf via de Awakenings-ticketshop · fiets of shuttlebus vanaf Amsterdam Sloterdijk wordt aangeraden."
     },
     {
       "id": "lente-kabinet",
       "name": "Lente Kabinet",
       "zone": "near",
-      "subzone": "past",
-      "status": "past",
-      "badge": "2026 gehad",
+      "status": "watch",
       "where": "Het Twiske, Oostzaan",
       "travel": "~1u20",
       "lat": 52.434,
       "lng": 4.864,
-      "start": null,
-      "end": null,
-      "when": "Pinksteren (mei/jun)",
-      "tickets": "Het kleine zusje van Dekmantel.",
+      "start": "2027-05-15",
+      "end": "2027-05-16",
+      "when": "15–16 mei 2027 (Pinksterweekend)",
+      "tickets": "Het kleine zusje van Dekmantel · editie 2027 bevestigd · verkoopdatum nog niet bekend.",
       "ticketSaleStart": null,
       "tags": [
         "kunstzinnig",
@@ -347,8 +315,8 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://lentekabinet.nl",
-      "note": "Alarm jan/feb voor 2027.",
-      "parking": ""
+      "note": "Zelfde weekend als Awakenings Upclose 2027. Alarm jan/feb voor de verkoop.",
+      "parking": "Parkeren kost €20 per dag met ~20 min lopen · de organisatie raadt fiets of shuttle vanaf metro Noord aan."
     },
     {
       "id": "lago-lago",
@@ -362,7 +330,7 @@
       "start": "2027-06-25",
       "end": "2027-06-27",
       "when": "25–27 jun 2027",
-      "tickets": "Editie 2027 bevestigd (25–27 jun, Stroombroek) · kaartverkoop nog niet aangekondigd — check lagolago.nl.",
+      "tickets": "Editie 2027 bevestigd (25–27 jun, Stroombroek) · early-bird weekender (€315) uitverkocht · weekenders, dagtickets en accommodatie volgen 'eind dit jaar'.",
       "ticketSaleStart": null,
       "tags": [
         "house",
@@ -412,36 +380,26 @@
       "id": "voov-experience",
       "name": "VooV Experience",
       "zone": "road",
-      "status": "past",
+      "status": "go",
       "hot": "psytrance",
       "where": "Putlitz (DE)",
       "travel": "~5u",
       "lat": 53.248,
       "lng": 12.033,
-      "start": "2026-07-17",
-      "end": "2026-07-20",
-      "when": "17–20 jul 2026 (gehad)",
-      "tickets": "Editie is geweest · alarm voor de 2027-editie.",
+      "start": "2027-07-16",
+      "end": "2027-07-19",
+      "when": "16–19 jul 2027",
+      "tickets": "VooV 2027 bevestigd (countdown op de site loopt naar 16 jul 18:00) · early bird €165 + €5 afvalborg (beperkt) via voov.ticket.io, camping inbegrepen.",
       "ticketSaleStart": null,
       "tags": [
         "psytrance",
         "goa"
       ],
-      "lineup": [
-        "Ajja",
-        "Ace Ventura",
-        "Astrix",
-        "Electric Universe",
-        "Liquid Soul",
-        "Tristan",
-        "Sonic Species",
-        "GMS"
-      ],
+      "lineup": [],
       "lineupUrl": "https://www.voov-festival.de",
       "url": "https://www.voov-festival.de",
-      "note": "\"Mother of all Goa festivals\", sinds 2001 in Putlitz. 54 uur non-stop, gratis camping. Alarm zodra 2027 wordt aangekondigd.",
-      "parking": "",
-      "badge": "2026 gehad"
+      "note": "\"Mother of all Goa festivals\", sinds 2001 in Putlitz. Toch al in 2027 terug; einddatum 19 jul volgens psymedia, nog niet letterlijk op de officiële site. Line-up 2027 nog niet bekend.",
+      "parking": "Auto's en campers mogen op de camping, voertuig direct naast je tent · via de A24, afrit Putlitz."
     },
     {
       "id": "antaris-project",
@@ -467,24 +425,23 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://antaris-project.de",
-      "note": "Alarm voor de 2027-editie zodra aangekondigd.",
+      "note": "Let op: volgens een Instagram-post (\"2026 wird es keine Antaris geben\") is de 2026-editie niet doorgegaan; secundaire bronnen noemen een afscheidseditie in 2027 (nog onbevestigd). Alarm zodra 2027 officieel is.",
       "parking": ""
     },
     {
       "id": "ozora",
       "name": "OZORA",
       "zone": "bucket",
-      "status": "past",
-      "badge": "2026 gehad",
+      "status": "go",
       "hot": "psytrance",
       "where": "Dádpuszta, Hongarije",
       "travel": "vlucht Boedapest",
       "lat": 46.762,
       "lng": 18.286,
-      "start": null,
-      "end": null,
-      "when": "eerste week augustus · 2026-editie gehad",
-      "tickets": "2026-editie is geweest · 2027-datums nog niet aangekondigd · verkoop opent meestal najaar/winter ervoor.",
+      "start": "2027-07-23",
+      "end": "2027-08-03",
+      "when": "23 jul – 3 aug 2027 (opening 26 jul)",
+      "tickets": "Autumn Ticket Sale loopt sinds 14 sep 2026: 12.500 tickets à €220 (of €120 online + €100 cash aan de poort) · niet restitueerbaar, omruilen 20 dec – 1 jul.",
       "ticketSaleStart": null,
       "tags": [
         "psytrance",
@@ -494,25 +451,24 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://ozorafestival.eu",
-      "note": "Alarm zodra de 2027-datums en de verkoop bekend zijn (meestal najaar/winter).",
+      "note": "Najaarsverkoop is open en gelimiteerd — niet te lang wachten.",
       "parking": ""
     },
     {
       "id": "modem",
       "name": "Mo:Dem",
       "zone": "bucket",
-      "status": "past",
-      "badge": "2026 gehad",
+      "status": "go",
       "hot": "underground psy",
       "where": "Robinzon Kamp, Donje Primišlje (Kroatië)",
       "travel": "vlucht Zagreb",
       "lat": 45.259,
       "lng": 15.548,
-      "start": "2026-08-03",
-      "end": "2026-08-09",
-      "when": "3–9 aug 2026 (gehad)",
-      "tickets": "Editie is geweest · alarm voor 2027.",
-      "ticketSaleStart": null,
+      "start": "2027-08-02",
+      "end": "2027-08-08",
+      "when": "2–8 aug 2027 (poorten 31 jul – 9 aug)",
+      "tickets": "Early bird (€230) uitverkocht · volgende fase start 1 okt 2026 12:00: Phase 1 €260 + €10, daarna €288 · ook betalen in termijnen (€298) · niet overdraagbaar.",
+      "ticketSaleStart": "2026-10-01",
       "tags": [
         "underground psy",
         "natuur"
@@ -520,14 +476,14 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://modemfestival.com",
-      "note": "Terrassen-canyon aan de Mrežnica-rivier met drie podia (The Hive, The Swamp, The Seed). Poorten gaan 2 dagen eerder open voor early camping. Alarm voor 2027.",
+      "note": "Terrassen-canyon aan de Mrežnica-rivier met drie podia. Volgende verkoopfase 1 okt — alarm staat.",
       "parking": ""
     },
     {
       "id": "boom-festival",
       "name": "Boom Festival",
       "zone": "bucket",
-      "status": "gone",
+      "status": "watch",
       "where": "Boomland, Idanha-a-Nova (PT)",
       "travel": "vlucht Lissabon + ~2,5u",
       "lat": 39.923,
@@ -535,8 +491,8 @@
       "start": "2027-07-18",
       "end": "2027-07-25",
       "when": "18–25 jul 2027",
-      "tickets": "30-jarig jubileum · verkoop ging okt 2025, in uren uitverkocht · alleen officiële resale via boomfestival.org.",
-      "ticketSaleStart": null,
+      "tickets": "Verkoop 2027 nog niet gestart · ambassadors/Friendly Price (€275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 09:00 (PT-tijd): 1e fase €290, 2e fase €335.",
+      "ticketSaleStart": "2026-10-13",
       "tags": [
         "psytrance",
         "transformational",
@@ -546,13 +502,7 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.boomfestival.org",
-      "note": "Biennaal — daarom pas 2027. Verkoop was in uren weg; koop alléén via de officiële resale (pas op scalpers).",
-      "resale": {
-        "checked": "2026-07-16",
-        "status": "uitverkocht · alléén officiële resale (pas op scalpers)",
-        "price": null,
-        "url": "https://www.boomfestival.org"
-      },
+      "note": "Biennaal, 30-jarig jubileum. Verkoop gaat razendsnel — 13 okt om 10:00 NL-tijd klaarzitten.",
       "parking": ""
     },
     {
@@ -581,6 +531,168 @@
       "url": "https://lasfestival.com/en",
       "note": "Geïdentificeerd: Paczyn bij Lubawka (PL). De editie van jun 2026 was de 10e én laatste in deze vorm — alarm mocht er een opvolger komen.",
       "parking": ""
+    },
+    {
+      "id": "loveland-festival",
+      "name": "Loveland Festival",
+      "zone": "near",
+      "status": "watch",
+      "where": "Sloterpark, Amsterdam",
+      "travel": "~1u15",
+      "lat": 52.37,
+      "lng": 4.81,
+      "start": "2027-08-07",
+      "end": "2027-08-08",
+      "when": "7–8 aug 2027",
+      "tickets": "3.000 Blind Bird-weekendtickets in 1 uur uitverkocht · pre-registratie open voor Early Birds (datum/prijs nog niet bekend).",
+      "ticketSaleStart": null,
+      "tags": [
+        "house",
+        "techno",
+        "open air"
+      ],
+      "lineup": [],
+      "lineupUrl": "https://loveland.nl/festival/",
+      "url": "https://loveland.nl/festival/",
+      "note": "Tip van Mark. Blind Birds waren binnen een uur weg — pre-registreren voor de Early Birds.",
+      "parking": "Park & Shuttle op Heining 43, Amsterdam met gratis shuttle (~15 min) naar het festival · Kiss & Ride op de Troelstralaan.",
+      "tippedBy": "Mark"
+    },
+    {
+      "id": "dekmantel-festival",
+      "name": "Dekmantel Festival",
+      "zone": "near",
+      "status": "watch",
+      "where": "Amsterdamse Bos, Amstelveen",
+      "travel": "~1u15",
+      "lat": 52.33,
+      "lng": 4.84,
+      "start": null,
+      "end": null,
+      "when": "eind jul 2027 (datum nog niet officieel)",
+      "tickets": "Ticketshop voor 2027 staat online · datums, prijzen en status nog niet op de officiële site (aggregators noemen 28 jul – 1 aug).",
+      "ticketSaleStart": null,
+      "tags": [
+        "techno",
+        "house",
+        "electronic"
+      ],
+      "lineup": [],
+      "lineupUrl": "https://dekmantelfestival.com/",
+      "url": "https://dekmantelfestival.com/",
+      "note": "Tip van Mark. Datum volgt zodra Dekmantel die officieel bevestigt.",
+      "parking": "",
+      "tippedBy": "Mark"
+    },
+    {
+      "id": "parookaville",
+      "name": "PAROOKAVILLE",
+      "zone": "road",
+      "status": "go",
+      "where": "Airport Weeze (DE)",
+      "travel": "~1u30",
+      "lat": 51.6,
+      "lng": 6.14,
+      "start": "2027-07-16",
+      "end": "2027-07-18",
+      "when": "16–18 jul 2027",
+      "tickets": "Verkoop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping €289) · dagtickets vanaf 4 okt 2026 · populaire categorieën gaan snel.",
+      "ticketSaleStart": "2026-10-04",
+      "tags": [
+        "EDM",
+        "mainstream",
+        "camping"
+      ],
+      "lineup": [
+        "Steve Aoki",
+        "Lost Frequencies",
+        "Don Diablo",
+        "BUNT."
+      ],
+      "lineupUrl": "https://www.parookaville.com/en/",
+      "url": "https://www.parookaville.com/en/",
+      "note": "Tip van Mark. Let op: Duitslands grootste (commerciële EDM-)festival — ander register dan de rest van de radar. ticketSaleStart = start dagtickets.",
+      "parking": "",
+      "tippedBy": "Mark"
+    },
+    {
+      "id": "kappa-futurfestival",
+      "name": "Kappa FuturFestival",
+      "zone": "bucket",
+      "status": "watch",
+      "where": "Parco Dora, Turijn (IT)",
+      "travel": "vlucht Turijn + ~20 min",
+      "lat": 45.09,
+      "lng": 7.67,
+      "start": "2027-07-02",
+      "end": "2027-07-04",
+      "when": "2–4 jul 2027",
+      "tickets": "Early Bird uitverkocht · wachtlijst open voor de volgende releases.",
+      "ticketSaleStart": null,
+      "tags": [
+        "techno",
+        "house",
+        "open air"
+      ],
+      "lineup": [],
+      "lineupUrl": "https://www.kappafuturfestival.it/en",
+      "url": "https://www.kappafuturfestival.it/en",
+      "note": "Tip van Mark. Groot en prijzig techno-festival in een industrieel park.",
+      "parking": "",
+      "tippedBy": "Mark"
+    },
+    {
+      "id": "dekmantel-selectors",
+      "name": "Dekmantel Selectors",
+      "zone": "bucket",
+      "status": "go",
+      "where": "The Garden, Tisno (HR)",
+      "travel": "vlucht Split + ~1u",
+      "lat": 43.8,
+      "lng": 15.64,
+      "start": "2027-08-20",
+      "end": "2027-08-24",
+      "when": "20–24 aug 2027",
+      "tickets": "Verkoop open · beperkte capaciteit (~2.000) · prijzen niet op de site.",
+      "ticketSaleStart": null,
+      "tags": [
+        "selectors",
+        "disco",
+        "house",
+        "boat parties"
+      ],
+      "lineup": [],
+      "lineupUrl": "https://dekmantelselectors.com/lineup",
+      "url": "https://dekmantelselectors.com/",
+      "note": "Tip van Mark (datum gecorrigeerd: 20–24 aug i.p.v. 19 aug).",
+      "parking": "",
+      "tippedBy": "Mark"
+    },
+    {
+      "id": "yard-festival",
+      "name": "YARD Festival",
+      "zone": "bucket",
+      "status": "watch",
+      "where": "The White Sand Mountains, Azeitão bij Lissabon (PT)",
+      "travel": "vlucht Lissabon + ~40 min",
+      "lat": 38.57,
+      "lng": -8.95,
+      "start": null,
+      "end": null,
+      "when": "doorgaans mei · 2027 nog niet aangekondigd",
+      "tickets": "Editie 2026 (21–24 mei) en alle zomerevents uitverkocht · 2027 nog niet in verkoop.",
+      "ticketSaleStart": null,
+      "tags": [
+        "house",
+        "tech house",
+        "open air"
+      ],
+      "lineup": [],
+      "lineupUrl": "https://www.yard-events.com/events/",
+      "url": "https://www.yard-events.com/",
+      "note": "Tip van Mark. Alarm zodra de 2027-datums bekend zijn — verkoopt uit.",
+      "parking": "",
+      "tippedBy": "Mark"
     }
   ]
 }
