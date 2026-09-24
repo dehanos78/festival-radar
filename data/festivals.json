@@ -1,6 +1,6 @@
 {
   "_comment": "MASTER-DATA voor de Festival Radar: de site rendert hier ALLE kaarten uit (lijst + kaart-tab + Spotify-lineups), de ICS-agenda komt er ook uit. Voeg festivals hier toe — nooit meer HTML aanpassen. Velden: zone = near|road|bucket|community; subzone = 'past' zet 'm in het 'dit jaar al gehad'-grid van de near-zone; status = go|watch|gone|past (bepaalt badge-kleur); badge = optionele custom badge-tekst (anders het standaardlabel van de status); hot = de tag die geaccentueerd wordt; note = de 'Next:'-regel onder de kaart; tags in weergavevolgorde. Datums in YYYY-MM-DD, 'end' is de laatste festivaldag (inclusief). Onbekend = null of leeg.",
-  "updated": "2026-09-16",
+  "updated": "2026-09-24",
   "festivals": [
     {
       "id": "wildeburg",
@@ -16,7 +16,7 @@
       "start": "2027-07-08",
       "end": "2027-07-11",
       "when": "8–11 jul 2027",
-      "tickets": "Verkoop 2027 startte 15 jul 2026 om 20:00 · weekend €310 (excl. €15 borg + €10 servicekosten) · max 10 per bestelling.",
+      "tickets": "Eerste kaarten gingen 15 jul 2026 om 20:00 naar pre-registranten · site staat weer op 'Pre-registreer' voor de volgende ronde · prijs 2027 nog niet gepubliceerd (2026: €330 incl. borg).",
       "ticketSaleStart": "2026-07-15",
       "tags": [
         "topkeuze",
@@ -100,7 +100,7 @@
       "id": "lief",
       "name": "Lief",
       "zone": "near",
-      "status": "go",
+      "status": "watch",
       "where": "Strijkviertel, Utrecht",
       "travel": "~50 min",
       "lat": 52.091,
@@ -108,7 +108,7 @@
       "start": "2027-09-04",
       "end": "2027-09-04",
       "when": "4 sept 2027 · 12:00–23:00",
-      "tickets": "Editie 2027 bevestigd (za 4 sep, Strijkviertel) · pre-sale startte 11 sep 2026 om 12:00 via lieffestival.nl · prijzen en line-up nog niet bekend.",
+      "tickets": "Jubileumeditie 'LIEF 20 YRS' · pre-sale is uitverkocht · reguliere verkoop start in 2027 · 12:00–23:00, 18+ · tickets niet restitueerbaar.",
       "ticketSaleStart": null,
       "tags": [
         "techno",
@@ -118,22 +118,22 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.lieffestival.nl",
-      "note": "Editie 2026 is geweest. Pre-sale voor 2027 is net gestart — Lief verkoopt consequent uit, tickets niet restitueerbaar. Tip van Mark bevestigd.",
+      "note": "Pre-sale was binnen no time weg. Alarm voor de reguliere verkoop begin 2027; officiële resale via TicketSwap.",
       "parking": "Parkeren op P+R Papendorp, volg 'P Bezoekers' — parkeerkaart vooraf in de ticketshop of ter plaatse bij de parkeerwacht (alleen PIN), vol=vol. Pendelbus vanaf Utrecht CS (Mineurslaan), ook via de ticketshop."
     },
     {
       "id": "into-the-woods",
       "name": "Into the Woods",
       "zone": "near",
-      "status": "gone",
+      "status": "past",
       "where": "Bosspot Openluchttheater, Amersfoort",
       "travel": "~40 min",
       "lat": 52.156,
       "lng": 5.388,
       "start": "2026-09-18",
       "end": "2026-09-19",
-      "when": "18–19 sept 2026",
-      "tickets": "Beide dagen uitverkocht · 100+ artiesten op 9 podia, 12:00–00:00, 18+ · resale alleen via de officiële wachtlijst-loting.",
+      "when": "18–19 sept 2026 (gehad)",
+      "tickets": "Editie is geweest (beide dagen uitverkocht) · 2027-datums nog niet aangekondigd · alarm ~half maart.",
       "ticketSaleStart": null,
       "tags": [
         "sprookjesbos",
@@ -142,14 +142,10 @@
       "lineup": [],
       "lineupUrl": "https://intothewoods.nl/en/amersfoort/",
       "url": "https://intothewoods.nl",
-      "note": "Beste 2026-kans dichtbij, maar volledig uitverkocht. Fallback: ITW ADE (23–24 okt, NDSM). 2027: alarm ~half maart.",
-      "resale": {
-        "checked": "2026-09-16",
-        "status": "uitverkocht · TicketSwap niet toegestaan (gepersonaliseerde tickets) · officiële wachtlijst-loting elk kwartier, max 2 tickets",
-        "price": "€97,83 per dag / €195,65 weekend (incl. servicekosten)",
-        "url": "https://tickets.intothewoods.nl/3a3d0b70cd5a47e18d5dea9d0f24b388/waiting-list"
-      },
-      "parking": "Gratis parkeren op het veld naast parkeerplaats Superfun, ~5 min lopen naar het terrein · bustransfer vanaf Amersfoort CS via de ticketshop · fiets of OV voorkomt het parkeergedoe."
+      "note": "Was de beste 2026-kans dichtbij. Fallback dit jaar: de ADE-editie op 23–24 okt (aparte kaart).",
+      "parking": "Gratis parkeren op het veld naast parkeerplaats Superfun, ~5 min lopen naar het terrein · bustransfer vanaf Amersfoort CS via de ticketshop · fiets of OV voorkomt het parkeergedoe.",
+      "subzone": "past",
+      "badge": "2026 gehad"
     },
     {
       "id": "geheime-liefde-hrfst",
@@ -164,7 +160,7 @@
       "start": "2026-10-03",
       "end": "2026-10-03",
       "when": "3 okt 2026 · 14:00–23:00",
-      "tickets": "Presale was uitverkocht · reguliere verkoop sinds 26 jun 2026 nog open via geheimeliefde.nl · 'ticketlock': tickets pas 48 uur vooraf vrijgegeven · officiële resale via TicketSwap.",
+      "tickets": "Reguliere verkoop nog open via geheimeliefde.nl (CM.com) · final phase €65,34 · 14:00–23:00, 18+ · 'ticketlock': tickets pas 48 uur vooraf vrijgegeven.",
       "ticketSaleStart": "2026-06-26",
       "tags": [
         "techno",
@@ -178,10 +174,10 @@
       "note": "Herfsteditie van Geheime Liefde op Fort bij Vechten (18+). Line-up blijft geheim tot de dag zelf. Locatie is bevestigd via de officiële site.",
       "parking": "Navigeer naar Achterdijk 12, Bunnik en volg 'P bezoekers' — parkeerkaart via de officiële ticketshop; kiss & ride op dezelfde plek. Pendelbus vanaf Utrecht CS (Jaarbeurszijde, roltrap af en linksaf).",
       "resale": {
-        "checked": "2026-09-16",
-        "status": "reguliere verkoop nog open · 99+ tickets aangeboden op TicketSwap",
-        "price": "~€70,50 per ticket",
-        "url": "https://www.ticketswap.com/geheime-liefde-hrfst"
+        "checked": "2026-09-24",
+        "status": "reguliere verkoop nog open · TicketSwap: 99+ beschikbaar, 127 verkocht, 380 gezocht (ook parkeer- en shuttlebustickets)",
+        "price": "~€65–70 (TicketSwap capt op originele prijs + fee)",
+        "url": "https://www.ticketswap.nl/festival-tickets/a/geheime-liefde-hrfst"
       }
     },
     {
@@ -197,7 +193,7 @@
       "start": "2027-05-01",
       "end": "2027-05-01",
       "when": "1 & 8 mei 2027 · twee zaterdagen",
-      "tickets": "Eerste verkoop was 22 mei 2026 · ticketshop gaat 26 okt 2026 weer open met de resterende tickets voor 1 mei.",
+      "tickets": "Eerste verkoop was 22 mei 2026 · ticketshop heropent ma 26 okt 2026 met de resterende tickets (bevestigd op geheimeliefde.nl).",
       "ticketSaleStart": "2026-10-26",
       "tags": [
         "techno",
@@ -352,18 +348,17 @@
       "id": "gardens-of-babylon",
       "name": "Gardens of Babylon",
       "zone": "near",
-      "subzone": "past",
-      "status": "past",
-      "badge": "2026: Ibiza",
+      "status": "go",
+      "badge": "ADE-editie",
       "hot": "jouw lane",
-      "where": "strandeditie NH",
-      "travel": "n.v.t.",
-      "lat": null,
-      "lng": null,
-      "start": null,
-      "end": null,
-      "when": "geen NL-strand in 2026",
-      "tickets": "Strandeditie zit dit jaar op Ibiza (buiten scope).",
+      "where": "WestWeelde, Amsterdam",
+      "travel": "~1u15",
+      "lat": 52.404,
+      "lng": 4.834,
+      "start": "2026-10-24",
+      "end": "2026-10-25",
+      "when": "24–25 okt 2026 (ADE) · 18+",
+      "tickets": "ADE-editie 'The Seekers of Light' is in verkoop: za 24 okt dag (14:00–22:00, Damian Lazarus, Sinego live) + night (23:00–06:00), zo 25 okt 16:00–04:00.",
       "ticketSaleStart": null,
       "tags": [
         "jouw lane",
@@ -373,8 +368,15 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.gardensofbabylon.com",
-      "note": "Volg 2027 voor de terugkeer van de NL-strandeditie.",
-      "parking": ""
+      "note": "NL-strandeditie 2027 nog niet aangekondigd; laatste was Dunes of Babylon (Zandvoort, 1–2 aug 2026). Winteredities staan wel al gepland.",
+      "parking": "",
+      "subEvents": [
+        {
+          "name": "The Night Sky (winteredititie)",
+          "date": "2026-12-11",
+          "note": "aangekondigd · verkoop nog niet open (Coming Soon)"
+        }
+      ]
     },
     {
       "id": "voov-experience",
@@ -398,7 +400,7 @@
       "lineup": [],
       "lineupUrl": "https://www.voov-festival.de",
       "url": "https://www.voov-festival.de",
-      "note": "\"Mother of all Goa festivals\", sinds 2001 in Putlitz. Toch al in 2027 terug; einddatum 19 jul volgens psymedia, nog niet letterlijk op de officiële site. Line-up 2027 nog niet bekend.",
+      "note": "\"Mother of all Goa festivals\", sinds 2001 in Putlitz. Toch al in 2027 terug: 16–19 jul, 54 uur non-stop (bevestigd via de officiële Facebook-pagina; de site-title staat nog op 2026). Line-up 2027 nog niet bekend.",
       "parking": "Auto's en campers mogen op de camping, voertuig direct naast je tent · via de A24, afrit Putlitz."
     },
     {
@@ -467,7 +469,7 @@
       "start": "2027-08-02",
       "end": "2027-08-08",
       "when": "2–8 aug 2027 (poorten 31 jul – 9 aug)",
-      "tickets": "Early bird (€230) uitverkocht · volgende fase start 1 okt 2026 12:00: Phase 1 €260 + €10, daarna €288 · ook betalen in termijnen (€298) · niet overdraagbaar.",
+      "tickets": "Early bird (€230 + €10) uitverkocht · reguliere verkoop start 1 okt 2026 vanaf €260 + fee, daarna €288 · ook termijnbetaling (€298) · niet overdraagbaar. (Exacte starttijd niet officieel bevestigd.)",
       "ticketSaleStart": "2026-10-01",
       "tags": [
         "underground psy",
@@ -491,7 +493,7 @@
       "start": "2027-07-18",
       "end": "2027-07-25",
       "when": "18–25 jul 2027",
-      "tickets": "Verkoop 2027 nog niet gestart · ambassadors/Friendly Price (€275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 09:00 (PT-tijd): 1e fase €290, 2e fase €335.",
+      "tickets": "Verkoop 2027 nog niet gestart · ambassadors + Friendly Price (€34,38/dag ≈ €275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 om 09:00 Portugese tijd = 10:00 NL · 2e fase €41,88/dag ≈ €335 (excl. fee).",
       "ticketSaleStart": "2026-10-13",
       "tags": [
         "psytrance",
@@ -502,7 +504,7 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://www.boomfestival.org",
-      "note": "Biennaal, 30-jarig jubileum. Verkoop gaat razendsnel — 13 okt om 10:00 NL-tijd klaarzitten.",
+      "note": "Biennaal, 30-jarig jubileum. Verkoopt sinds 2014 elk jaar uit — 13 okt om 10:00 NL-tijd klaarzitten.",
       "parking": ""
     },
     {
@@ -596,7 +598,7 @@
       "start": "2027-07-16",
       "end": "2027-07-18",
       "when": "16–18 jul 2027",
-      "tickets": "Verkoop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping €289) · dagtickets vanaf 4 okt 2026 · populaire categorieën gaan snel.",
+      "tickets": "Weekendshop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping €289) · alle dagtickets komen zo 4 okt 2026 om 12:00 in verkoop (prijs nog niet bekend; 2026 was vanaf €109).",
       "ticketSaleStart": "2026-10-04",
       "tags": [
         "EDM",
@@ -693,6 +695,164 @@
       "note": "Tip van Mark. Alarm zodra de 2027-datums bekend zijn — verkoopt uit.",
       "parking": "",
       "tippedBy": "Mark"
+    },
+    {
+      "id": "psylan",
+      "name": "Psylân Festival",
+      "zone": "near",
+      "status": "watch",
+      "where": "Alien Paradise, Zeewolde",
+      "travel": "~50 min",
+      "lat": 52.333,
+      "lng": 5.542,
+      "start": null,
+      "end": null,
+      "when": "begin sept · editie 2026 was 4–6 sep · 2027 nog niet aangekondigd",
+      "tickets": "Editie 2026 is geweest · datums en verkoop 2027 nog niet aangekondigd.",
+      "ticketSaleStart": null,
+      "tags": [
+        "psytrance",
+        "non-profit",
+        "kleinschalig",
+        "art"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://psylan.frl/",
+      "note": "Klein non-profit psytrance-festival (tot ~2000 bezoekers) met sterke art/community-vibe — het dichtstbijzijnde psyfestival op de radar. Alarm zodra 2027 bekend is.",
+      "parking": ""
+    },
+    {
+      "id": "paradise-city",
+      "name": "Paradise City",
+      "zone": "road",
+      "status": "watch",
+      "where": "Kasteel van Ribaucourt, Steenokkerzeel (BE)",
+      "travel": "~3u",
+      "lat": 50.912,
+      "lng": 4.513,
+      "start": "2027-07-02",
+      "end": "2027-07-04",
+      "when": "2–4 jul 2027",
+      "tickets": "Editie 2027 bevestigd · inschrijven via de site geeft first access op de presale met korting; verkoopdatum nog niet bekend.",
+      "ticketSaleStart": null,
+      "tags": [
+        "house",
+        "techno",
+        "duurzaam",
+        "kasteel"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://www.paradisecity.be/en/",
+      "note": "Duurzaam kasteelfestival in het groen bij Brussel. Schrijf je in voor first access — dan mis je de presale niet.",
+      "parking": ""
+    },
+    {
+      "id": "3000grad",
+      "name": "3000Grad Festival",
+      "zone": "road",
+      "status": "go",
+      "where": "nieuwe locatie in NO-Duitsland (nog niet bekendgemaakt)",
+      "travel": "~6u (o.b.v. oude locatie Feldberg)",
+      "lat": null,
+      "lng": null,
+      "start": "2027-08-06",
+      "end": "2027-08-08",
+      "when": "6–8 aug 2027",
+      "tickets": "Early bird (€139) uitverkocht · reguliere tickets €199 nu in verkoop.",
+      "ticketSaleStart": null,
+      "tags": [
+        "melodic house",
+        "deep house",
+        "DIY",
+        "kleinschalig"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://3000-festival.de/",
+      "note": "Klein (~5000), liefdevol DIY-festival dat snel uitverkoopt. Verhuist in 2027 weg van Feldberg; locatie volgt — dan pas reistijd en kaartpositie definitief.",
+      "parking": ""
+    },
+    {
+      "id": "burning-mountain",
+      "name": "Burning Mountain Festival",
+      "zone": "bucket",
+      "status": "watch",
+      "where": "alpenweide bij Zernez, Engadin (CH)",
+      "travel": "vlucht Zürich + trein · of ~9u rijden",
+      "lat": 46.699,
+      "lng": 10.092,
+      "start": "2027-06-24",
+      "end": "2027-06-27",
+      "when": "24–27 jun 2027",
+      "tickets": "Editie 2027 bevestigd · tickets 'coming soon', ~CHF 159 incl. camping.",
+      "ticketSaleStart": null,
+      "tags": [
+        "psytrance",
+        "progressive",
+        "bergen",
+        "kleinschalig"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://www.burning-mountain.ch/",
+      "note": "Intieme psy/progressive-gathering op 1500 m hoogte. Alarm zodra de verkoop opent.",
+      "parking": ""
+    },
+    {
+      "id": "anjunadeep-explorations",
+      "name": "Anjunadeep Explorations",
+      "zone": "bucket",
+      "status": "watch",
+      "where": "Dhërmi, Albanië",
+      "travel": "vlucht Tirana + ~3u",
+      "lat": 40.148,
+      "lng": 19.643,
+      "start": "2027-06-10",
+      "end": "2027-06-15",
+      "when": "10–15 jun 2027",
+      "tickets": "Super early bird-packages uitverkocht · volgende verkoop 'over een paar maanden', aanmelden via de site.",
+      "ticketSaleStart": null,
+      "tags": [
+        "melodic house",
+        "deep house",
+        "zee",
+        "kleinschalig"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://anjunadeep.com/events/explorations",
+      "note": "Kleinschalig Anjunadeep-festival aan de Albanese kust; verkoopt snel uit. Alarm voor de volgende ticketronde.",
+      "parking": ""
+    },
+    {
+      "id": "into-the-woods-ade",
+      "name": "Into the Woods",
+      "edition": "ADE",
+      "zone": "near",
+      "status": "go",
+      "badge": "verkoop open",
+      "where": "NDSM-Werf, Amsterdam",
+      "travel": "~1u15",
+      "lat": 52.401,
+      "lng": 4.894,
+      "start": "2026-10-23",
+      "end": "2026-10-24",
+      "when": "23–24 okt 2026 · ADE-weekender",
+      "tickets": "In verkoop via Paylogic, nog niet uitverkocht · 7 overdekte stages, 60+ artiesten · vr vanaf €74,50, za vanaf €84,50, weekend vanaf €152,50 (prijs loopt op per fase).",
+      "ticketSaleStart": null,
+      "tags": [
+        "sprookjesbos",
+        "electronic",
+        "ADE",
+        "indoor"
+      ],
+      "lineup": [],
+      "lineupUrl": "https://ade.intothewoods.nl/",
+      "url": "https://intothewoods.nl/en/ade/",
+      "note": "De overdekte ADE-editie van Into the Woods — de fallback nu Amersfoort geweest en uitverkocht is. Prijs stijgt per fase, dus vroeg boeken.",
+      "parking": ""
     }
   ]
 }

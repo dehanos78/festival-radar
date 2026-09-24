@@ -1,20 +1,10 @@
 # Festival-voorstellen
 
-*Laatste update: 16 sep 2026. Nieuwe voorstellen bij de tweewekelijkse update — Viktor keurt goed vóór toevoegen aan de radar.*
+*Laatste update: 24 sep 2026. Nieuwe voorstellen bij de tweewekelijkse update — Viktor keurt goed vóór toevoegen aan de radar.*
 
-## Nieuwe voorstellen (ronde 16 sep 2026)
+## Nieuwe voorstellen
 
-| # | Festival | Wanneer | Waar + reis vanuit Apeldoorn | Zone | Waarom het past | Info |
-|---|----------|---------|------------------------------|------|-----------------|------|
-| 1 | **Psylân Festival** | begin sept (editie 2026 was 4–6 sep · 2027 nog niet aangekondigd) | Alien Paradise, Zeewolde · ~50 min | near | Kleinschalig non-profit psytrance-festival (tot ~2000 bezoekers) met sterke art/community-vibe — het enige kleine NL-psyfestival dat we konden bevestigen, en vlak bij huis. | [psylan.frl](https://psylan.frl/) |
-| 2 | **Paradise City** | 2–4 jul 2027 (bevestigd) | Kasteelhoekstraat, Steenokkerzeel (bij Brussel, BE) · ~3u | road | Duurzaam kasteelfestival met house en techno in een groene, relaxte setting; nu inschrijven geeft first access op presale. | [paradisecity.be](https://www.paradisecity.be/en/) |
-| 3 | **3000Grad Festival** | 6–8 aug 2027 (bevestigd) | nieuwe locatie in Noordoost-DE nog niet bekendgemaakt (was Feldberg) · ~6u | road | Klein (~5000), liefdevol DIY-festival rond melodic/deep house dat bekendstaat om snel uitverkochte tickets; early birds al weg, regulier €199 loopt. | [3000-festival.de](https://3000-festival.de/) |
-| 4 | **Burning Mountain Festival** | 24–27 jun 2027 (bevestigd) | alpenweide bij Zernez, Engadin (CH) · vlucht Zürich + trein, of ~9u rijden | bucket | Intieme psytrance/progressive-gathering op 1500 m hoogte — precies de goa/organic-kant, in een onwaarschijnlijk decor; tickets (~CHF 159 incl. camping) 'coming soon'. | [burning-mountain.ch](https://www.burning-mountain.ch/) |
-| 5 | **Anjunadeep Explorations** | 10–15 jun 2027 (bevestigd) | Dhërmi, Albanië · vlucht Tirana + ~3u | bucket | Kleinschalig melodic/deep-house-festival aan zee, gecureerd door Anjunadeep; super-early-bird al uitverkocht, volgende verkoop 'over een paar maanden'. | [anjunadeep.com](https://anjunadeep.com/events/explorations) |
-
-*Aandachtspunten:*
-- *Psylân heeft nog geen 2027-datum; de rest wel. 3000Grad en Explorations verkopen het snelst — daar loont inschrijven voor de nieuwsbrief.*
-- *Alternatief in de jungle: Day Zero Tulum (9 jan 2027, Mexico, line-up bekend) — flink verder weg en groter, daarom niet in de top 5.*
+*Alle vijf voorstellen van 16 sep zijn op 24 sep goedgekeurd en staan nu op de radar (zie hieronder). Nieuwe voorstellen volgen bij de volgende ronde.*
 
 ---
 
@@ -40,3 +30,9 @@ Niet opnieuw voorstellen:
 | Own Spirit Festival (ES) | ⏳ Voorgesteld 11 aug, geen besluit; editie 2026 geweest, 2027 nog niet aangekondigd | 16 sep 2026 |
 | Universo Paralello (BR, 27 dec 2026 – 4 jan 2027) | ⏳ Voorgesteld 11 aug, geen besluit vastgelegd; editie gaat door, verkoop via Ingresse | 16 sep 2026 |
 | Loveland, Dekmantel, Dekmantel Selectors, Kappa FuturFestival, PAROOKAVILLE, YARD | ✅ Als community-tip van Mark toegevoegd aan de radar | 16 sep 2026 |
+| Psylân Festival (Zeewolde) | ✅ Toegevoegd aan de radar | 24 sep 2026 |
+| Paradise City (Steenokkerzeel BE) | ✅ Toegevoegd aan de radar | 24 sep 2026 |
+| 3000Grad Festival (DE) | ✅ Toegevoegd aan de radar | 24 sep 2026 |
+| Burning Mountain Festival (CH) | ✅ Toegevoegd aan de radar | 24 sep 2026 |
+| Anjunadeep Explorations (AL) | ✅ Toegevoegd aan de radar | 24 sep 2026 |
+| Into the Woods ADE (23–24 okt 2026) | ✅ Als aparte editie-kaart toegevoegd | 24 sep 2026 |
