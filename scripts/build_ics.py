@@ -189,7 +189,15 @@ def build():
         # kaartverkoop-event (met melding) zodra bekend
         sale = d(ev.get("ticketSaleStart"))
         if sale:
-            sale_dt = datetime(sale.year, sale.month, sale.day, 10, 0)
+            # optioneel "ticketSaleTime": "12:00" (NL-tijd); anders 10:00 als veilige default
+            hh, mm = 10, 0
+            t = str(ev.get("ticketSaleTime") or "").strip()
+            if ":" in t:
+                try:
+                    hh, mm = int(t.split(":")[0]), int(t.split(":")[1])
+                except ValueError:
+                    hh, mm = 10, 0
+            sale_dt = datetime(sale.year, sale.month, sale.day, hh, mm)
             body += vevent(
                 ev["id"] + "-sale",
                 sale_dt,

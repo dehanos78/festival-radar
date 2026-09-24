@@ -251,8 +251,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:modem-sale@festival-radar
 DTSTAMP:20260924T000000Z
-DTSTART:20261001T100000
-DTEND:20261001T101500
+DTSTART:20261001T120000
+DTEND:20261001T121500
 SUMMARY:🎟️ Kaartverkoop start: Mo:Dem
 DESCRIPTION:Kaartverkoop opent voor Mo:Dem (Robinzon Kamp\, Donje Primišl
  je (Kroatië)). Early bird (€230 + €10) uitverkocht · reguliere verk
@@ -340,8 +340,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:parookaville-sale@festival-radar
 DTSTAMP:20260924T000000Z
-DTSTART:20261004T100000
-DTEND:20261004T101500
+DTSTART:20261004T120000
+DTEND:20261004T121500
 SUMMARY:🎟️ Kaartverkoop start: PAROOKAVILLE
 DESCRIPTION:Kaartverkoop opent voor PAROOKAVILLE (Airport Weeze (DE)). Wee
  kendshop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping 
