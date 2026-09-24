@@ -1463,7 +1463,9 @@
       if (typeof L === "undefined"){ return; }
       mapInited = true;
       mapObj = L.map("map", { scrollWheelZoom: false }).setView([50.5, 8], 5);
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      // CARTO Voyager — key is verplicht (zonder key komt er een "API KEY REQUIRED"-watermerk
+      // over de tegels). Client-side kaart, dus de key is publiek: beperkt tot dit domein in CARTO.
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=cb1_3wce_1_722b72d310a2f634a52b4d99", {
         attribution: '&copy; OpenStreetMap, &copy; CARTO', maxZoom: 19
       }).addTo(mapObj);
       const zc = { near: "#13a99a", road: "#e8712f", bucket: "#9b45f0" };
