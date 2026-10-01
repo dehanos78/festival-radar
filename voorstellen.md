@@ -6,7 +6,6 @@
 
 | # | Festival | Datum | Locatie · reistijd vanuit Apeldoorn | Zone | Waarom het past | Info |
 |---|---|---|---|---|---|---|
-| 1 | **Landjuweel** | doorgaans rond volle maan eind jul/aug (2026: 23–26 jul) · 2027 nog niet aangekondigd | Vrijstaat Ruigoord, Amsterdam · ~1u10 | near | Klein, oudste vrijplaats-festival van Amsterdam met trance (Dutch Acid Family), ambient-plekken en nachtparade — 2026 was uitverkocht. | https://ruigoord.weticket.io/landjuweel-2026 |
 | 2 | **Het Nest** | za 28 aug 2027 (bevestigd) | Goffertpark, Nijmegen · ~50 min | near | Melodic techno, deep/organic house en downtempo als seizoensafsluiter; let op: eendaags en groter (12–15k). | https://www.hetnest.nl/ |
 | 3 | **Horst Arts & Music** | Hemelvaartweekend (2026: 14–16 mei) · 2027 nog niet officieel (aggregator: 6–8 mei) | Asiat Park, Vilvoorde (BE) · ~2u45 | road | Sterk gecureerd underground house/techno op een oude militaire site met architectuur-installaties; 2026 uitverkocht. | https://www.horstartsandmusic.com/festival |
 | 4 | **Nachtdigital** | 30 jul – 1 aug 2027 (bevestigd) | Bungalowdorf Olganitz bij Leipzig (DE) · ~5u30 | road | Klein, legendarisch goed gecureerd (~60 acts) aan een meer — registratie voor de 2027-presale loopt al. | https://nachtdigital.de/en/tickets |
@@ -44,3 +43,4 @@ Niet opnieuw voorstellen:
 | Burning Mountain Festival (CH) | ✅ Toegevoegd aan de radar | 24 sep 2026 |
 | Anjunadeep Explorations (AL) | ✅ Toegevoegd aan de radar | 24 sep 2026 |
 | Into the Woods ADE (23–24 okt 2026) | ✅ Als aparte editie-kaart toegevoegd | 24 sep 2026 |
+| Landjuweel (Ruigoord, Amsterdam) | ✅ Toegevoegd aan de radar | 1 okt 2026 |

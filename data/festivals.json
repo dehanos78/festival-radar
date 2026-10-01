@@ -883,6 +883,32 @@
         "price": null,
         "url": "https://www.ticketswap.nl/festival-tickets/a/into-the-woods-ade"
       }
+    },
+    {
+      "id": "landjuweel",
+      "name": "Landjuweel",
+      "zone": "near",
+      "status": "watch",
+      "where": "Vrijplaats Ruigoord, Amsterdam",
+      "travel": "~1u10",
+      "lat": 52.411,
+      "lng": 4.744,
+      "start": null,
+      "end": null,
+      "when": "rond volle maan eind jul/aug · 2026 was 23–26 jul · 2027 nog niet aangekondigd",
+      "tickets": "Editie 2026 (23–26 jul) was uitverkocht · verkoop via WeTicket · datum en verkoop 2027 nog niet aangekondigd.",
+      "ticketSaleStart": null,
+      "tags": [
+        "trance",
+        "psy",
+        "vrijplaats",
+        "kleinschalig"
+      ],
+      "lineup": [],
+      "lineupUrl": "",
+      "url": "https://ruigoord.nl/landjuweel/",
+      "note": "Oudste vrijplaats-festival van Amsterdam: trance van de Dutch Acid Family, ambient-plekken en een nachtelijke parade. Klein en snel uitverkocht — alarm zodra 2027 bekend is.",
+      "parking": ""
     }
   ]
 }
