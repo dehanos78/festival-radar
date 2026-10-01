@@ -1,6 +1,6 @@
 {
   "_comment": "MASTER-DATA voor de Festival Radar: de site rendert hier ALLE kaarten uit (lijst + kaart-tab + Spotify-lineups), de ICS-agenda komt er ook uit. Voeg festivals hier toe — nooit meer HTML aanpassen. Velden: zone = near|road|bucket|community; subzone = 'past' zet 'm in het 'dit jaar al gehad'-grid van de near-zone; status = go|watch|gone|past (bepaalt badge-kleur); badge = optionele custom badge-tekst (anders het standaardlabel van de status); hot = de tag die geaccentueerd wordt; note = de 'Next:'-regel onder de kaart; tags in weergavevolgorde. Datums in YYYY-MM-DD, 'end' is de laatste festivaldag (inclusief). Onbekend = null of leeg.",
-  "updated": "2026-09-24",
+  "updated": "2026-10-01",
   "festivals": [
     {
       "id": "wildeburg",
@@ -152,7 +152,7 @@
       "name": "Geheime Liefde",
       "edition": "HRFST",
       "zone": "near",
-      "status": "watch",
+      "status": "gone",
       "where": "Fort bij Vechten, Marsdijk 2, Bunnik",
       "travel": "~55 min",
       "lat": 52.0625,
@@ -160,7 +160,7 @@
       "start": "2026-10-03",
       "end": "2026-10-03",
       "when": "3 okt 2026 · 14:00–23:00",
-      "tickets": "Reguliere verkoop nog open via geheimeliefde.nl (CM.com) · final phase €65,34 · 14:00–23:00, 18+ · 'ticketlock': tickets pas 48 uur vooraf vrijgegeven.",
+      "tickets": "UITVERKOCHT bij de officiële shop (CM.com) · add-ons nog los te koop: parkeerticket €15, pendelbus Utrecht CS €12,50 · 14:00–23:00, 18+ · 'ticketlock': tickets pas 48 uur vooraf vrijgegeven.",
       "ticketSaleStart": "2026-06-26",
       "tags": [
         "techno",
@@ -171,14 +171,15 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://geheimeliefde.nl",
-      "note": "Herfsteditie van Geheime Liefde op Fort bij Vechten (18+). Line-up blijft geheim tot de dag zelf. Locatie is bevestigd via de officiële site.",
+      "note": "Herfsteditie van Geheime Liefde op Fort bij Vechten (18+), za 3 okt. Uitverkocht — alleen nog via TicketSwap (loterij bij nieuw aanbod). Line-up blijft geheim tot de dag zelf.",
       "parking": "Navigeer naar Achterdijk 12, Bunnik en volg 'P bezoekers' — parkeerkaart via de officiële ticketshop; kiss & ride op dezelfde plek. Pendelbus vanaf Utrecht CS (Jaarbeurszijde, roltrap af en linksaf).",
       "resale": {
-        "checked": "2026-09-24",
-        "status": "reguliere verkoop nog open · TicketSwap: 99+ beschikbaar, 127 verkocht, 380 gezocht (ook parkeer- en shuttlebustickets)",
-        "price": "~€65–70 (TicketSwap capt op originele prijs + fee)",
+        "checked": "2026-10-01",
+        "status": "TicketSwap: 25 beschikbaar, 688 verkocht, 909 gezocht · type 'Normaal' 0 beschikbaar (loterij bij nieuw aanbod) · wel 'Double the love'-combitickets (HRFST + 1 of 8 mei 2027) en parkeer-/shuttletickets",
+        "price": "recent verkocht ~€85 (Normaal)",
         "url": "https://www.ticketswap.nl/festival-tickets/a/geheime-liefde-hrfst"
-      }
+      },
+      "badge": "uitverkocht"
     },
     {
       "id": "geheime-liefde-voorjaar",
@@ -265,7 +266,7 @@
       "lineupUrl": "",
       "url": "https://www.kommschonalter.de",
       "note": "Alarm jan/feb voor de 2027-editie. Er is ook een kleiner \"Das Mini Festival\" op 22 aug 2026 in Amsterdam.",
-      "parking": ""
+      "parking": "Zeer beperkt parkeerterrein naast het festival (navigeer naar Nico Broekhuysenweg 8, volg de borden) · parkeerkaart vooraf in de ticketshop, vol=vol · organisatie raadt shuttlebus vanaf Station Sloterdijk of fiets aan."
     },
     {
       "id": "awakenings-upclose",
@@ -311,9 +312,9 @@
       ],
       "lineup": [],
       "lineupUrl": "",
-      "url": "https://lentekabinet.nl",
+      "url": "https://www.lentekabinet.com",
       "note": "Zelfde weekend als Awakenings Upclose 2027. Alarm jan/feb voor de verkoop.",
-      "parking": "Parkeren kost €20 per dag met ~20 min lopen · de organisatie raadt fiets of shuttle vanaf metro Noord aan."
+      "parking": "€20 per dag, te betalen bij aankomst, ~20 min lopen · één toegangsweg door Natura2000-gebied, organisatie ontmoedigt de auto en raadt fiets of shuttle vanaf metro Noord aan."
     },
     {
       "id": "lago-lago",
@@ -334,12 +335,7 @@
         "melodic",
         "kamperen"
       ],
-      "lineup": [
-        "Job Jobse",
-        "Joy Orbison",
-        "Shanti Celeste",
-        "Call Super"
-      ],
+      "lineup": [],
       "lineupUrl": "",
       "url": "https://lagolago.nl",
       "note": "2027-editie staat vast — verkoop-alarm volgt zodra de verkoopdatum bekend is.",
@@ -350,7 +346,7 @@
       "name": "Gardens of Babylon",
       "zone": "near",
       "status": "go",
-      "badge": "ADE-editie",
+      "badge": "bijna uitverkocht",
       "hot": "jouw lane",
       "where": "WestWeelde, Amsterdam",
       "travel": "~1u15",
@@ -359,25 +355,40 @@
       "start": "2026-10-24",
       "end": "2026-10-25",
       "when": "24–25 okt 2026 (ADE) · 18+",
-      "tickets": "ADE-editie 'The Seekers of Light' is in verkoop: za 24 okt dag (14:00–22:00, Damian Lazarus, Sinego live) + night (23:00–06:00), zo 25 okt 16:00–04:00.",
+      "tickets": "ADE 'The Seekers of Light' bijna uitverkocht: za dag (14:00–22:00) UITVERKOCHT · za nacht (23:00–06:00) LAATSTE TICKETS · zo (16:00–04:00, brunch vanaf 12:00) UITVERKOCHT.",
       "ticketSaleStart": null,
       "tags": [
         "jouw lane",
         "organic",
         "melodic/psy"
       ],
-      "lineup": [],
-      "lineupUrl": "",
-      "url": "https://www.gardensofbabylon.com",
+      "lineup": [
+        "Damian Lazarus",
+        "Sinego (live)",
+        "Xinobi",
+        "Roy Rosenfeld",
+        "Britta Arnold",
+        "Sarah Wild",
+        "MXGPU (live)",
+        "Hot Oasis b2b Tony L Issac"
+      ],
+      "lineupUrl": "https://www.thegardensofbabylon.com/events/the-seekers-of-light-ade",
+      "url": "https://www.thegardensofbabylon.com",
       "note": "NL-strandeditie 2027 nog niet aangekondigd; laatste was Dunes of Babylon (Zandvoort, 1–2 aug 2026). Winteredities staan wel al gepland.",
-      "parking": "",
+      "parking": "WestWeelde ligt op het autoluwe Westergasterrein · parkeren in Q-Park Westerpark (paar min lopen, vooraf reserveren met korting) of betaald op straat · OV: tram 19 / bus 21-22 halte Van Hallstraat.",
       "subEvents": [
         {
           "name": "The Night Sky (winteredititie)",
-          "date": "2026-12-11",
-          "note": "aangekondigd · verkoop nog niet open (Coming Soon)"
+          "date": "2026-12-12",
+          "note": "nieuwe locatie AMAZE, Amsterdam · verkoop start do 8 okt 2026 12:00"
         }
-      ]
+      ],
+      "resale": {
+        "checked": "2026-10-01",
+        "status": "TicketSwap: 38 beschikbaar, 379 verkocht, 669 gezocht · vooral za-nacht (27); zo-dag 1 beschikbaar",
+        "price": "zo-dag €65,58–87,28 (origineel €66)",
+        "url": "https://www.ticketswap.nl/festival-tickets/a/the-gardens-of-babylon-ade"
+      }
     },
     {
       "id": "voov-experience",
@@ -470,7 +481,7 @@
       "start": "2027-08-02",
       "end": "2027-08-08",
       "when": "2–8 aug 2027 (poorten 31 jul – 9 aug)",
-      "tickets": "Early bird (€230 + €10) uitverkocht · reguliere verkoop start 1 okt 2026 vanaf €260 + fee, daarna €288 · ook termijnbetaling (€298) · niet overdraagbaar. (Exacte starttijd niet officieel bevestigd.)",
+      "tickets": "Early bird uitverkocht · reguliere verkoop start do 1 okt 2026 om 12:00 (NL-tijd): fase 1 €260 + €10 fee, daarna fase 2 €288 + €10 · termijnbetaling (5/3/2 mnd) €298 + fee · gepersonaliseerd, overzetten alleen via Mo:Dem:Space · restitutie 15 jan – 15 mei 2027 (€25 kosten).",
       "ticketSaleStart": "2026-10-01",
       "ticketSaleTime": "12:00",
       "tags": [
@@ -480,7 +491,7 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://modemfestival.com",
-      "note": "Terrassen-canyon aan de Mrežnica-rivier met drie podia. Volgende verkoopfase 1 okt — alarm staat.",
+      "note": "Terrassen-canyon aan de Mrežnica-rivier met drie podia. Reguliere verkoop opent vandaag (1 okt) om 12:00 — starttijd nu officieel bevestigd.",
       "parking": ""
     },
     {
@@ -495,7 +506,7 @@
       "start": "2027-07-18",
       "end": "2027-07-25",
       "when": "18–25 jul 2027",
-      "tickets": "Verkoop 2027 nog niet gestart · ambassadors + Friendly Price (€34,38/dag ≈ €275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 om 09:00 Portugese tijd = 10:00 NL · 2e fase €41,88/dag ≈ €335 (excl. fee).",
+      "tickets": "Verkoop 2027 · Boomland Tribe-voorverkoop (recente bezoekers) vanaf 1 okt 2026 10:00 NL · ambassadors + Friendly Price (€34,38/dag ≈ €275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 om 09:00 Portugese tijd = 10:00 NL · 2e fase €41,88/dag ≈ €335 (excl. fee).",
       "ticketSaleStart": "2026-10-13",
       "ticketSaleTime": "10:00",
       "tags": [
@@ -586,7 +597,7 @@
       "lineupUrl": "https://dekmantelfestival.com/",
       "url": "https://dekmantelfestival.com/",
       "note": "Tip van Mark. Datum volgt zodra Dekmantel die officieel bevestigt.",
-      "parking": "",
+      "parking": "Beperkt parkeren op loopafstand (Rietwijkeroordweg 59, Amstelveen) · €40 weekend / €20 per dag · organisatie ontmoedigt de auto sterk, shuttlebus of fiets aangeraden.",
       "tippedBy": "Mark"
     },
     {
@@ -601,7 +612,7 @@
       "start": "2027-07-16",
       "end": "2027-07-18",
       "when": "16–18 jul 2027",
-      "tickets": "Weekendshop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping €289) · alle dagtickets komen zo 4 okt 2026 om 12:00 in verkoop (prijs nog niet bekend; 2026 was vanaf €109).",
+      "tickets": "Weekendshop open (Full Weekend €279, Young Visa 18–25 incl. camping €289, za+zo-combi €235) · dagtickets zo 4 okt 2026 om 12:00: vrijdag €145, zaterdag €175, zondag €109 (VIP €265/€295/€229).",
       "ticketSaleStart": "2026-10-04",
       "ticketSaleTime": "12:00",
       "tags": [
@@ -633,7 +644,7 @@
       "start": "2027-07-02",
       "end": "2027-07-04",
       "when": "2–4 jul 2027",
-      "tickets": "Early Bird uitverkocht · wachtlijst open voor de volgende releases.",
+      "tickets": "VIP early bird (€430) en GOLD early bird (€1.300) uitverkocht · General Admission staat in de officiële shop (prijs niet getoond) · wachtlijst open voor volgende releases.",
       "ticketSaleStart": null,
       "tags": [
         "techno",
@@ -678,15 +689,15 @@
       "id": "yard-festival",
       "name": "YARD Festival",
       "zone": "bucket",
-      "status": "watch",
+      "status": "go",
       "where": "The White Sand Mountains, Azeitão bij Lissabon (PT)",
       "travel": "vlucht Lissabon + ~40 min",
       "lat": 38.57,
       "lng": -8.95,
-      "start": null,
-      "end": null,
-      "when": "doorgaans mei · 2027 nog niet aangekondigd",
-      "tickets": "Editie 2026 (21–24 mei) en alle zomerevents uitverkocht · 2027 nog niet in verkoop.",
+      "start": "2027-05-27",
+      "end": "2027-05-30",
+      "when": "27–30 mei 2027",
+      "tickets": "Season Ticket 2027 (YARD Festival 27–30 mei + One Last Summer Dance 10–11 sep) ~€220 via Shotgun · 'limited tickets available'.",
       "ticketSaleStart": null,
       "tags": [
         "house",
@@ -696,7 +707,7 @@
       "lineup": [],
       "lineupUrl": "https://www.yard-events.com/events/",
       "url": "https://www.yard-events.com/",
-      "note": "Tip van Mark. Alarm zodra de 2027-datums bekend zijn — verkoopt uit.",
+      "note": "Tip van Mark. 2027-datums bekend en Season Tickets in verkoop — 2026 was helemaal uitverkocht, dus niet te lang wachten.",
       "parking": "",
       "tippedBy": "Mark"
     },
@@ -750,7 +761,7 @@
       "lineupUrl": "",
       "url": "https://www.paradisecity.be/en/",
       "note": "Duurzaam kasteelfestival in het groen bij Brussel. Schrijf je in voor first access — dan mis je de presale niet.",
-      "parking": ""
+      "parking": "Festivalparking bij kruispunt Tervuursesteenweg/Kampenhoutsesteenweg in Perk · online €25/dag of €40/weekend, ter plaatse €30/€45 (alleen kaart) — info editie 2026."
     },
     {
       "id": "3000grad",
@@ -764,7 +775,7 @@
       "start": "2027-08-06",
       "end": "2027-08-08",
       "when": "6–8 aug 2027",
-      "tickets": "Early bird (€139) uitverkocht · reguliere tickets €199 nu in verkoop.",
+      "tickets": "Early bird €139 uitverkocht · Festival-Ticket €199 nu in verkoop · daarna Late-Bird €230 · Support-Ticket vanaf €250 · groepstickets (4/6/10 pers.) met korting.",
       "ticketSaleStart": null,
       "tags": [
         "melodic house",
@@ -775,7 +786,7 @@
       "lineup": [],
       "lineupUrl": "",
       "url": "https://3000-festival.de/",
-      "note": "Klein (~5000), liefdevol DIY-festival dat snel uitverkoopt. Verhuist in 2027 weg van Feldberg; locatie volgt — dan pas reistijd en kaartpositie definitief.",
+      "note": "Klein (~5000), liefdevol DIY-festival dat snel uitverkoopt. Verhuist in 2027 naar een nog onbekend terrein (terugkeer naar Feldberg wordt voor 2028 onderzocht) — locatie volgt, dan pas reistijd en kaartpositie definitief.",
       "parking": ""
     },
     {
@@ -836,7 +847,7 @@
       "edition": "ADE",
       "zone": "near",
       "status": "go",
-      "badge": "verkoop open",
+      "badge": "laatste tickets",
       "where": "NDSM-Werf, Amsterdam",
       "travel": "~1u15",
       "lat": 52.401,
@@ -844,7 +855,7 @@
       "start": "2026-10-23",
       "end": "2026-10-24",
       "when": "23–24 okt 2026 · ADE-weekender",
-      "tickets": "In verkoop via Paylogic, nog niet uitverkocht · 7 overdekte stages, 60+ artiesten · vr vanaf €74,50, za vanaf €84,50, weekend vanaf €152,50 (prijs loopt op per fase).",
+      "tickets": "First wave, Early en Regular UITVERKOCHT voor alle dagen · alleen Late-tickets over: vr €81,50, za €93,50, weekend €168,50 (incl. €6,50 kosten) · 13:00–23:00, 7 indoor stages.",
       "ticketSaleStart": null,
       "tags": [
         "sprookjesbos",
@@ -852,11 +863,26 @@
         "ADE",
         "indoor"
       ],
-      "lineup": [],
+      "lineup": [
+        "Antal & Danilo Plessow",
+        "Young Marco",
+        "DJ Boring",
+        "Sidney Charles",
+        "Locklead",
+        "Héctor Oaks",
+        "Weval (DJ)",
+        "Budakid"
+      ],
       "lineupUrl": "https://ade.intothewoods.nl/",
       "url": "https://intothewoods.nl/en/ade/",
-      "note": "De overdekte ADE-editie van Into the Woods — de fallback nu Amersfoort geweest en uitverkocht is. Prijs stijgt per fase, dus vroeg boeken.",
-      "parking": ""
+      "note": "De overdekte ADE-editie van Into the Woods — de fallback nu Amersfoort geweest is. Alleen Late-tickets over; boeken als je wilt.",
+      "parking": "",
+      "resale": {
+        "checked": "2026-10-01",
+        "status": "Nog in verkoop (Late) · TicketSwap: aanbod pas vlak voor het event, 30 op wachtlijst, 1872 alerts",
+        "price": null,
+        "url": "https://www.ticketswap.nl/festival-tickets/a/into-the-woods-ade"
+      }
     }
   ]
 }

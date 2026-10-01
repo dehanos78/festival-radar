@@ -8,10 +8,10 @@ X-WR-TIMEZONE:Europe/Amsterdam
 X-WR-CALDESC:Vik's shortlist festivals + kaartverkoop-meldingen
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
-X-BUILT:20260924T000000Z
+X-BUILT:20261001T000000Z
 BEGIN:VEVENT
 UID:wildeburg@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270708
 DTEND;VALUE=DATE:20270712
 SUMMARY:♪ Wildeburg · Voor de deur
@@ -22,7 +22,7 @@ DESCRIPTION:Kraggenburg — Reistijd ~40 min — Status: te scoren — Eer
 END:VEVENT
 BEGIN:VEVENT
 UID:wildeburg-sale@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART:20260715T100000
 DTEND:20260715T101500
 SUMMARY:🎟️ Kaartverkoop start: Wildeburg
@@ -43,7 +43,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270724
 DTEND;VALUE=DATE:20270725
 SUMMARY:♪ Geheime Liefde · Tuinen van Geluk · Voor de deur
@@ -54,7 +54,7 @@ DESCRIPTION:De Middengaarde\, Nieuwegein — Reistijd ~55 min — Status:
 END:VEVENT
 BEGIN:VEVENT
 UID:lief@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270904
 DTEND;VALUE=DATE:20270905
 SUMMARY:♪ Lief · Voor de deur
@@ -65,7 +65,7 @@ DESCRIPTION:Strijkviertel\, Utrecht — Reistijd ~50 min — Status: in de
 END:VEVENT
 BEGIN:VEVENT
 UID:into-the-woods@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20260920
 SUMMARY:♪ Into the Woods · Voor de deur
@@ -75,25 +75,27 @@ DESCRIPTION:Bosspot Openluchttheater\, Amersfoort — Reistijd ~40 min —
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-hrfst@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:♪ Geheime Liefde · HRFST · Voor de deur
 DESCRIPTION:Fort bij Vechten\, Marsdijk 2\, Bunnik — Reistijd ~55 min 
- — Status: in de gaten — Reguliere verkoop nog open via geheimeliefde.
- nl (CM.com) · final phase €65\,34 · 14:00–23:00\, 18+ · 'ticketloc
- k': tickets pas 48 uur vooraf vrijgegeven. — https://geheimeliefde.nl
+ — Status: uitverkocht / resale — UITVERKOCHT bij de officiële shop (
+ CM.com) · add-ons nog los te koop: parkeerticket €15\, pendelbus Utrec
+ ht CS €12\,50 · 14:00–23:00\, 18+ · 'ticketlock': tickets pas 48 uu
+ r vooraf vrijgegeven. — https://geheimeliefde.nl
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-hrfst-sale@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART:20260626T100000
 DTEND:20260626T101500
 SUMMARY:🎟️ Kaartverkoop start: Geheime Liefde
 DESCRIPTION:Kaartverkoop opent voor Geheime Liefde (Fort bij Vechten\, Mar
- sdijk 2\, Bunnik). Reguliere verkoop nog open via geheimeliefde.nl (CM.co
- m) · final phase €65\,34 · 14:00–23:00\, 18+ · 'ticketlock': ticke
- ts pas 48 uur vooraf vrijgegeven.
+ sdijk 2\, Bunnik). UITVERKOCHT bij de officiële shop (CM.com) · add-ons
+  nog los te koop: parkeerticket €15\, pendelbus Utrecht CS €12\,50 ·
+  14:00–23:00\, 18+ · 'ticketlock': tickets pas 48 uur vooraf vrijgegev
+ en.
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🎟️ Kaartverkoop start: Geheime Liefde
@@ -107,7 +109,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-voorjaar@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270501
 DTEND;VALUE=DATE:20270502
 SUMMARY:♪ Geheime Liefde · Voorjaar · Voor de deur
@@ -118,7 +120,7 @@ DESCRIPTION:Fort bij Vechten\, Marsdijk 2\, Bunnik — Reistijd ~55 min
 END:VEVENT
 BEGIN:VEVENT
 UID:geheime-liefde-voorjaar-sale@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART:20261026T100000
 DTEND:20261026T101500
 SUMMARY:🎟️ Kaartverkoop start: Geheime Liefde
@@ -138,7 +140,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:thuishaven-mees-salome@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20260711
 DTEND;VALUE=DATE:20260712
 SUMMARY:♪ Thuishaven x Mees Salomé · Voor de deur
@@ -147,7 +149,7 @@ DESCRIPTION:Contactweg\, Amsterdam — Reistijd ~1u15 — Editie is gewees
 END:VEVENT
 BEGIN:VEVENT
 UID:komm-schon-alter@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20260523
 DTEND;VALUE=DATE:20260524
 SUMMARY:♪ Komm Schon Alter · Voor de deur
@@ -156,7 +158,7 @@ DESCRIPTION:Tuinen van West\, A'dam — Reistijd ~1u15 — "Playground for
 END:VEVENT
 BEGIN:VEVENT
 UID:awakenings-upclose@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270515
 DTEND;VALUE=DATE:20270517
 SUMMARY:♪ Awakenings Upclose · Voor de deur
@@ -166,17 +168,17 @@ DESCRIPTION:Houtrak\, Spaarnwoude — Reistijd ~1u20 — Status: in de gat
 END:VEVENT
 BEGIN:VEVENT
 UID:lente-kabinet@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270515
 DTEND;VALUE=DATE:20270517
 SUMMARY:♪ Lente Kabinet · Voor de deur
 DESCRIPTION:Het Twiske\, Oostzaan — Reistijd ~1u20 — Status: in de gat
  en — Het kleine zusje van Dekmantel · editie 2027 bevestigd · verkoop
- datum nog niet bekend. — https://lentekabinet.nl
+ datum nog niet bekend. — https://www.lentekabinet.com
 END:VEVENT
 BEGIN:VEVENT
 UID:lago-lago@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270625
 DTEND;VALUE=DATE:20270628
 SUMMARY:♪ Lago Lago · Voor de deur
@@ -187,27 +189,29 @@ DESCRIPTION:Stroombroek\, Braamt — Reistijd ~45 min — Status: in de ga
 END:VEVENT
 BEGIN:VEVENT
 UID:gardens-of-babylon@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261026
 SUMMARY:♪ Gardens of Babylon · Voor de deur
 DESCRIPTION:WestWeelde\, Amsterdam — Reistijd ~1u15 — Status: te score
- n — ADE-editie 'The Seekers of Light' is in verkoop: za 24 okt dag (14:
- 00–22:00\, Damian Lazarus\, Sinego live) + night (23:00–06:00)\, zo 2
- 5 okt 16:00–04:00. — https://www.gardensofbabylon.com
+ n — ADE 'The Seekers of Light' bijna uitverkocht: za dag (14:00–22:00
+ ) UITVERKOCHT · za nacht (23:00–06:00) LAATSTE TICKETS · zo (16:00–
+ 04:00\, brunch vanaf 12:00) UITVERKOCHT. — https://www.thegardensofbaby
+ lon.com
 END:VEVENT
 BEGIN:VEVENT
-UID:gardens-of-babylon-sub0-20261211@festival-radar
-DTSTAMP:20260924T000000Z
-DTSTART;VALUE=DATE:20261211
-DTEND;VALUE=DATE:20261212
+UID:gardens-of-babylon-sub0-20261212@festival-radar
+DTSTAMP:20261001T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
 SUMMARY:♪ Gardens of Babylon · The Night Sky (winteredititie)
-DESCRIPTION:WestWeelde\, Amsterdam — aangekondigd · verkoop nog niet op
- en (Coming Soon) — https://www.gardensofbabylon.com
+DESCRIPTION:WestWeelde\, Amsterdam — nieuwe locatie AMAZE\, Amsterdam ·
+  verkoop start do 8 okt 2026 12:00 — https://www.thegardensofbabylon.co
+ m
 END:VEVENT
 BEGIN:VEVENT
 UID:voov-experience@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270716
 DTEND;VALUE=DATE:20270720
 SUMMARY:♪ VooV Experience · Roadtrip
@@ -218,7 +222,7 @@ DESCRIPTION:Putlitz (DE) — Reistijd ~5u — Status: te scoren — VooV 2
 END:VEVENT
 BEGIN:VEVENT
 UID:antaris-project@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20260624
 DTEND;VALUE=DATE:20260628
 SUMMARY:♪ Antaris Project · Roadtrip
@@ -227,7 +231,7 @@ DESCRIPTION:Gollenberg/Rhinow (DE) — Reistijd ~5\,5u — Legendarisch\,
 END:VEVENT
 BEGIN:VEVENT
 UID:ozora@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270723
 DTEND;VALUE=DATE:20270804
 SUMMARY:♪ OZORA · Bucketlist
@@ -238,27 +242,29 @@ DESCRIPTION:Dádpuszta\, Hongarije — Reistijd vlucht Boedapest — Statu
 END:VEVENT
 BEGIN:VEVENT
 UID:modem@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270802
 DTEND;VALUE=DATE:20270809
 SUMMARY:♪ Mo:Dem · Bucketlist
 DESCRIPTION:Robinzon Kamp\, Donje Primišlje (Kroatië) — Reistijd vluch
- t Zagreb — Status: te scoren — Early bird (€230 + €10) uitverkoch
- t · reguliere verkoop start 1 okt 2026 vanaf €260 + fee\, daarna €28
- 8 · ook termijnbetaling (€298) · niet overdraagbaar. (Exacte starttij
- d niet officieel bevestigd.) — https://modemfestival.com
+ t Zagreb — Status: te scoren — Early bird uitverkocht · reguliere ve
+ rkoop start do 1 okt 2026 om 12:00 (NL-tijd): fase 1 €260 + €10 fee\,
+  daarna fase 2 €288 + €10 · termijnbetaling (5/3/2 mnd) €298 + fee
+  · gepersonaliseerd\, overzetten alleen via Mo:Dem:Space · restitutie 1
+ 5 jan – 15 mei 2027 (€25 kosten). — https://modemfestival.com
 END:VEVENT
 BEGIN:VEVENT
 UID:modem-sale@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART:20261001T120000
 DTEND:20261001T121500
 SUMMARY:🎟️ Kaartverkoop start: Mo:Dem
 DESCRIPTION:Kaartverkoop opent voor Mo:Dem (Robinzon Kamp\, Donje Primišl
- je (Kroatië)). Early bird (€230 + €10) uitverkocht · reguliere verk
- oop start 1 okt 2026 vanaf €260 + fee\, daarna €288 · ook termijnbet
- aling (€298) · niet overdraagbaar. (Exacte starttijd niet officieel be
- vestigd.)
+ je (Kroatië)). Early bird uitverkocht · reguliere verkoop start do 1 ok
+ t 2026 om 12:00 (NL-tijd): fase 1 €260 + €10 fee\, daarna fase 2 €2
+ 88 + €10 · termijnbetaling (5/3/2 mnd) €298 + fee · gepersonaliseer
+ d\, overzetten alleen via Mo:Dem:Space · restitutie 15 jan – 15 mei 20
+ 27 (€25 kosten).
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🎟️ Kaartverkoop start: Mo:Dem
@@ -272,27 +278,28 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:boom-festival@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270718
 DTEND;VALUE=DATE:20270726
 SUMMARY:♪ Boom Festival · Bucketlist
 DESCRIPTION:Boomland\, Idanha-a-Nova (PT) — Reistijd vlucht Lissabon + ~
- 2\,5u — Status: in de gaten — Verkoop 2027 nog niet gestart · ambass
- adors + Friendly Price (€34\,38/dag ≈ €275) vanaf 6 okt 2026 · onl
- ine verkoop 13 okt 2026 om 09:00 Portugese tijd = 10:00 NL · 2e fase €
- 41\,88/dag ≈ €335 (excl. fee). — https://www.boomfestival.org
+ 2\,5u — Status: in de gaten — Verkoop 2027 · Boomland Tribe-voorverk
+ oop (recente bezoekers) vanaf 1 okt 2026 10:00 NL · ambassadors + Friend
+ ly Price (€34\,38/dag ≈ €275) vanaf 6 okt 2026 · online verkoop 13
+  okt 2026 om 09:00 Portugese tijd = 10:00 NL · 2e fase €41\,88/dag ≈
+  €335 (excl. fee). — https://www.boomfestival.org
 END:VEVENT
 BEGIN:VEVENT
 UID:boom-festival-sale@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART:20261013T100000
 DTEND:20261013T101500
 SUMMARY:🎟️ Kaartverkoop start: Boom Festival
 DESCRIPTION:Kaartverkoop opent voor Boom Festival (Boomland\, Idanha-a-Nov
- a (PT)). Verkoop 2027 nog niet gestart · ambassadors + Friendly Price (
- €34\,38/dag ≈ €275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 
- om 09:00 Portugese tijd = 10:00 NL · 2e fase €41\,88/dag ≈ €335 (e
- xcl. fee).
+ a (PT)). Verkoop 2027 · Boomland Tribe-voorverkoop (recente bezoekers) v
+ anaf 1 okt 2026 10:00 NL · ambassadors + Friendly Price (€34\,38/dag 
+ ≈ €275) vanaf 6 okt 2026 · online verkoop 13 okt 2026 om 09:00 Portu
+ gese tijd = 10:00 NL · 2e fase €41\,88/dag ≈ €335 (excl. fee).
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🎟️ Kaartverkoop start: Boom Festival
@@ -306,7 +313,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:las-festival@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20260624
 DTEND;VALUE=DATE:20260630
 SUMMARY:♪ LAS Festival · Bucketlist
@@ -316,7 +323,7 @@ DESCRIPTION:Paczyn\, Lubawka (PL) — Reistijd vlucht Wrocław + ~1\,5u
 END:VEVENT
 BEGIN:VEVENT
 UID:loveland-festival@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270807
 DTEND;VALUE=DATE:20270809
 SUMMARY:♪ Loveland Festival · Voor de deur
@@ -327,26 +334,26 @@ DESCRIPTION:Sloterpark\, Amsterdam — Reistijd ~1u15 — Status: in de ga
 END:VEVENT
 BEGIN:VEVENT
 UID:parookaville@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270716
 DTEND;VALUE=DATE:20270719
 SUMMARY:♪ PAROOKAVILLE · Roadtrip
 DESCRIPTION:Airport Weeze (DE) — Reistijd ~1u30 — Status: te scoren 
- — Weekendshop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. cam
- ping €289) · alle dagtickets komen zo 4 okt 2026 om 12:00 in verkoop (
- prijs nog niet bekend\; 2026 was vanaf €109). — https://www.parookavi
- lle.com/en/
+ — Weekendshop open (Full Weekend €279\, Young Visa 18–25 incl. camp
+ ing €289\, za+zo-combi €235) · dagtickets zo 4 okt 2026 om 12:00: vr
+ ijdag €145\, zaterdag €175\, zondag €109 (VIP €265/€295/€229)
+ . — https://www.parookaville.com/en/
 END:VEVENT
 BEGIN:VEVENT
 UID:parookaville-sale@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART:20261004T120000
 DTEND:20261004T121500
 SUMMARY:🎟️ Kaartverkoop start: PAROOKAVILLE
 DESCRIPTION:Kaartverkoop opent voor PAROOKAVILLE (Airport Weeze (DE)). Wee
- kendshop open sinds 21 jul 2026 (o.a. Young Visa 18–25 incl. camping 
- €289) · alle dagtickets komen zo 4 okt 2026 om 12:00 in verkoop (prijs
-  nog niet bekend\; 2026 was vanaf €109).
+ kendshop open (Full Weekend €279\, Young Visa 18–25 incl. camping €
+ 289\, za+zo-combi €235) · dagtickets zo 4 okt 2026 om 12:00: vrijdag 
+ €145\, zaterdag €175\, zondag €109 (VIP €265/€295/€229).
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:🎟️ Kaartverkoop start: PAROOKAVILLE
@@ -360,17 +367,19 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kappa-futurfestival@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270702
 DTEND;VALUE=DATE:20270705
 SUMMARY:♪ Kappa FuturFestival · Bucketlist
 DESCRIPTION:Parco Dora\, Turijn (IT) — Reistijd vlucht Turijn + ~20 min 
- — Status: in de gaten — Early Bird uitverkocht · wachtlijst open voo
- r de volgende releases. — https://www.kappafuturfestival.it/en
+ — Status: in de gaten — VIP early bird (€430) en GOLD early bird (
+ €1.300) uitverkocht · General Admission staat in de officiële shop (p
+ rijs niet getoond) · wachtlijst open voor volgende releases. — https:/
+ /www.kappafuturfestival.it/en
 END:VEVENT
 BEGIN:VEVENT
 UID:dekmantel-selectors@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270820
 DTEND;VALUE=DATE:20270825
 SUMMARY:♪ Dekmantel Selectors · Bucketlist
@@ -379,8 +388,20 @@ DESCRIPTION:The Garden\, Tisno (HR) — Reistijd vlucht Split + ~1u — St
  en niet op de site. — https://dekmantelselectors.com/
 END:VEVENT
 BEGIN:VEVENT
+UID:yard-festival@festival-radar
+DTSTAMP:20261001T000000Z
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270531
+SUMMARY:♪ YARD Festival · Bucketlist
+DESCRIPTION:The White Sand Mountains\, Azeitão bij Lissabon (PT) — Reis
+ tijd vlucht Lissabon + ~40 min — Status: te scoren — Season Ticket 20
+ 27 (YARD Festival 27–30 mei + One Last Summer Dance 10–11 sep) ~€22
+ 0 via Shotgun · 'limited tickets available'. — https://www.yard-events
+ .com/
+END:VEVENT
+BEGIN:VEVENT
 UID:paradise-city@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270702
 DTEND;VALUE=DATE:20270705
 SUMMARY:♪ Paradise City · Roadtrip
@@ -391,18 +412,19 @@ DESCRIPTION:Kasteel van Ribaucourt\, Steenokkerzeel (BE) — Reistijd ~3u
 END:VEVENT
 BEGIN:VEVENT
 UID:3000grad@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270806
 DTEND;VALUE=DATE:20270809
 SUMMARY:♪ 3000Grad Festival · Roadtrip
 DESCRIPTION:nieuwe locatie in NO-Duitsland (nog niet bekendgemaakt) — Re
  istijd ~6u (o.b.v. oude locatie Feldberg) — Status: te scoren — Early
-  bird (€139) uitverkocht · reguliere tickets €199 nu in verkoop. —
-  https://3000-festival.de/
+  bird €139 uitverkocht · Festival-Ticket €199 nu in verkoop · daarn
+ a Late-Bird €230 · Support-Ticket vanaf €250 · groepstickets (4/6/1
+ 0 pers.) met korting. — https://3000-festival.de/
 END:VEVENT
 BEGIN:VEVENT
 UID:burning-mountain@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270624
 DTEND;VALUE=DATE:20270628
 SUMMARY:♪ Burning Mountain Festival · Bucketlist
@@ -413,7 +435,7 @@ DESCRIPTION:alpenweide bij Zernez\, Engadin (CH) — Reistijd vlucht Züri
 END:VEVENT
 BEGIN:VEVENT
 UID:anjunadeep-explorations@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20270610
 DTEND;VALUE=DATE:20270616
 SUMMARY:♪ Anjunadeep Explorations · Bucketlist
@@ -424,14 +446,14 @@ DESCRIPTION:Dhërmi\, Albanië — Reistijd vlucht Tirana + ~3u — Status
 END:VEVENT
 BEGIN:VEVENT
 UID:into-the-woods-ade@festival-radar
-DTSTAMP:20260924T000000Z
+DTSTAMP:20261001T000000Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261025
 SUMMARY:♪ Into the Woods · ADE · Voor de deur
 DESCRIPTION:NDSM-Werf\, Amsterdam — Reistijd ~1u15 — Status: te scoren
-  — In verkoop via Paylogic\, nog niet uitverkocht · 7 overdekte stages
- \, 60+ artiesten · vr vanaf €74\,50\, za vanaf €84\,50\, weekend van
- af €152\,50 (prijs loopt op per fase). — https://intothewoods.nl/en/a
- de/
+  — First wave\, Early en Regular UITVERKOCHT voor alle dagen · alleen 
+ Late-tickets over: vr €81\,50\, za €93\,50\, weekend €168\,50 (incl
+ . €6\,50 kosten) · 13:00–23:00\, 7 indoor stages. — https://intoth
+ ewoods.nl/en/ade/
 END:VEVENT
 END:VCALENDAR

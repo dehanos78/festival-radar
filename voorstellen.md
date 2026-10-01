@@ -1,10 +1,18 @@
 # Festival-voorstellen
 
-*Laatste update: 24 sep 2026. Nieuwe voorstellen bij de tweewekelijkse update — Viktor keurt goed vóór toevoegen aan de radar.*
+*Laatste update: 1 okt 2026. Nieuwe voorstellen bij de tweewekelijkse update — Viktor keurt goed vóór toevoegen aan de radar.*
 
 ## Nieuwe voorstellen
 
-*Alle vijf voorstellen van 16 sep zijn op 24 sep goedgekeurd en staan nu op de radar (zie hieronder). Nieuwe voorstellen volgen bij de volgende ronde.*
+| # | Festival | Datum | Locatie · reistijd vanuit Apeldoorn | Zone | Waarom het past | Info |
+|---|---|---|---|---|---|---|
+| 1 | **Landjuweel** | doorgaans rond volle maan eind jul/aug (2026: 23–26 jul) · 2027 nog niet aangekondigd | Vrijstaat Ruigoord, Amsterdam · ~1u10 | near | Klein, oudste vrijplaats-festival van Amsterdam met trance (Dutch Acid Family), ambient-plekken en nachtparade — 2026 was uitverkocht. | https://ruigoord.weticket.io/landjuweel-2026 |
+| 2 | **Het Nest** | za 28 aug 2027 (bevestigd) | Goffertpark, Nijmegen · ~50 min | near | Melodic techno, deep/organic house en downtempo als seizoensafsluiter; let op: eendaags en groter (12–15k). | https://www.hetnest.nl/ |
+| 3 | **Horst Arts & Music** | Hemelvaartweekend (2026: 14–16 mei) · 2027 nog niet officieel (aggregator: 6–8 mei) | Asiat Park, Vilvoorde (BE) · ~2u45 | road | Sterk gecureerd underground house/techno op een oude militaire site met architectuur-installaties; 2026 uitverkocht. | https://www.horstartsandmusic.com/festival |
+| 4 | **Nachtdigital** | 30 jul – 1 aug 2027 (bevestigd) | Bungalowdorf Olganitz bij Leipzig (DE) · ~5u30 | road | Klein, legendarisch goed gecureerd (~60 acts) aan een meer — registratie voor de 2027-presale loopt al. | https://nachtdigital.de/en/tickets |
+| 5 | **Waking Life** | juni (2026: 16–22 jun) · 2027 nog niet officieel | stuwmeer bij Crato, Alentejo (PT) · vlucht Lissabon + ~2u30 | bucket | ~8.000 bezoekers, community-gedragen techno/house/ambient aan het water — Garbicz-achtig maar dan in Portugal. | https://wakinglife.pt/ |
+
+*Welke wil je op de radar? Zeg het en ze worden bij de volgende run toegevoegd.*
 
 ---
 
